@@ -6,7 +6,7 @@
 #    By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/05 16:18:14 by aaudiber          #+#    #+#              #
-#    Updated: 2015/11/05 17:14:31 by aaudiber         ###   ########.fr        #
+#    Updated: 2015/11/05 17:33:10 by aaudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ all : $(NAME)
 
 $(NAME):
 	@/bin/echo "-----Compilating sources-----"
-	@make -C ~/Desktop/libft
+	@make -C ./libft
 	@/bin/echo "---Done---"
 	@/bin/echo "-----Creating executable-----"
-	@gcc $(FLAGS) -o $(NAME) $(SRC) ~/Desktop/libft/includes/lft
+	@gcc $(FLAGS) -o $(NAME) $(SRC) -I./libft/includes/lft
 	@/bin/echo "---Done---"
 
 clean:
