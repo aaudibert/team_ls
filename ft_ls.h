@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/05 17:19:47 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/05 17:49:36 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ typedef struct			s_file
 	char				*f_name;
 	struct stat			*stat;
 }						t_file;
+
+typedef struct			t_path
+{
+	struct t_path		*next;
+	char				**path;
+}						t_path;
 
 typedef struct			dirent	t_dirent;
 
