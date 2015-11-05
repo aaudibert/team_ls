@@ -6,13 +6,14 @@
 #    By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/05 16:18:14 by aaudiber          #+#    #+#              #
-#    Updated: 2015/11/05 17:33:10 by aaudiber         ###   ########.fr        #
+#    Updated: 2015/11/05 18:56:15 by aaudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_ls
 
-SRC = \
+SRC = ft_ls.c\
+	  parser.c\
 
 OBJ = $(SRC:.c:.o)
 
