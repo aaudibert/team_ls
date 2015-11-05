@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 15:35:32 by aaudiber          #+#    #+#             */
-/*   Updated: 2014/12/24 17:12:06 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/05 19:00:54 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ char	**parser(int ac, char **av)
 	char	**add;
 
 	add = NULL;
+	(void)ac;
 	//add = (char **)malloc(sizeof(char *) * (ac - 2));
 	if (av[1][0] == '-')
 		check_opt(av[1]);
