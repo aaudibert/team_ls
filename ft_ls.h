@@ -45,4 +45,6 @@ typedef struct			t_path
 
 typedef struct			dirent	t_dirent;
 
+//fonction
+char	**parser(int ac, char **av);
 #endif
