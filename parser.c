@@ -64,23 +64,5 @@ static void		check_opt(char *opt)
 
 void			parser(int argc, char **argv)
 {
-	int		i;
-	int		ct;
-	char	nf;
 
-	nf = 0;
-	ct = 1;
-	while (ct < argc)
-	{
-		i = 0;
-		while (argv[ct][i] != '\0')
-		{
-			if (argv[1][0] == '-' && argv[1][1] == '-')
-				nf = 1;
-			else if (argv[1][0] == '-' && argv[1][1] != '\0' && nf == 0)
-				check_opt(argv[1]);
-			i++;
-		}
-		ct++;
-	}
 }
