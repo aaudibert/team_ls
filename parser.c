@@ -62,7 +62,14 @@ static void		check_opt(char *opt)
 	}
 }
 
-void			parser(int argc, char **argv)
+char	**parser(int ac, char **av)
 {
+	char	**add;
 
+	add = NULL;
+	//add = (char **)malloc(sizeof(char *) * (ac - 2));
+	if (av[1][0] == '-')
+		check_opt(av[1]);
+	//add = param_sort(av);  ------- > A faire 
+	return (add);
 }
