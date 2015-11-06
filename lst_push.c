@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/12 14:25:02 by aaudiber          #+#    #+#             */
-/*   Updated: 2014/12/17 21:05:56 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/06 19:36:16 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void		lst_push(t_file *elem, t_file **lst)
 {
-	elem->prev = NULL;
-	elem->next = *lst;
 	if (*lst)
-		(*lst)->prev = elem;
-	*lst = elem;
+	{
+		(*lst)->next = elem;
+		elem->prev = (*lst);
+	}
 }
