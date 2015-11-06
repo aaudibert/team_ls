@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:15:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/06 16:42:16 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/06 18:00:08 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,31 @@ int		*g_flags;
 
 int		main(int ac, char **av)
 {
-	int i;
+	int		f;
+	char	**paths;
 
-	i = 1;
-	g_flags = (int *)malloc(sizeof(int) * 5);
-	ft_bzero(g_flags, sizeof(int) * 5);
-	if (parser(ac, av) == (ac - 1))
+	f = 0;
+	ft_putendl("test");
+	ft_putnbr(ac);
+	ft_putchar('\n');
+	if (ac > 1)
+	{
+		f = parser(ac, av);
+		ft_putendl("test");
+		paths = (char **)malloc(sizeof(char *) * (f + 1));
+		ft_putendl("test");
+		g_flags = (int *)malloc(sizeof(int) * 5);
+		ft_bzero(g_flags, sizeof(int) * 5);
+	}
+	else 
+	{
+		ft_putendl("else");
 		get_data(".");
+	}
+	/*else
+	{
+		paths = check_params(f + 1, av);
+		paths = sort_params(paths);
+	}*/
 	return (0);
 }

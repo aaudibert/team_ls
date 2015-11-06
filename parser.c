@@ -6,14 +6,15 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 15:35:32 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/06 16:38:16 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/06 18:06:40 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void		act_flag(char flag)
+void		act_flag(char flag)
 {
+	ft_putendl("yolo");
 	if (flag == 'l')
 		g_flags[FLAG_L] = 1;
 	else if (flag == 'r')
@@ -23,10 +24,14 @@ static void		act_flag(char flag)
 	else if (flag == 't')
 		g_flags[FLAG_T] = 1;
 	else if (flag == 'a')
+	{
 		g_flags[FLAG_A] = 1;
+		ft_putendl("mdr");
+	}
+	ft_putendl("yolo");
 }
 
-static void		wrong_flag(char flag)
+void		wrong_flag(char flag)
 {
 	ft_putstr("ft_ls: illegal option -- ");
 	ft_putchar(flag);
@@ -36,7 +41,7 @@ static void		wrong_flag(char flag)
 	exit(1);
 }
 
-static int		check_flags(char flag)
+int			check_flags(char flag)
 {
 	if (flag == 'R'
 		|| flag == 'l'
@@ -47,17 +52,22 @@ static int		check_flags(char flag)
 	return (0);
 }
 
-static void		check_opt(char *opt)
+void		check_opt(char *opt)
 {
 	int i;
 
 	i = 1;
 	while (opt[i] != '\0')
 	{
+		ft_putendl("dbt wh opt");
 		if (check_flags(opt[i]) == 0)
 			wrong_flag(opt[i]);
 		else
+		{
+			ft_putendl("else opt");
 			act_flag(opt[i]);
+		}
+		ft_putendl("fin while opt");
 		i++;
 	}
 }
@@ -69,14 +79,19 @@ int			parser(int ac, char **av)
 
 	f = 0;
 	i = 1;
-	while (i <= ac || av[i][0] == '-')
+		ft_putendl("opt");
+	while (i <= ac && av[i][0] == '-')
 	{
+		ft_putendl("dbt wh pars");
 		if (av[i][0] == '-')
 		{
-			check_opt(av[1]);
+			ft_putendl("if pars");
+			check_opt(av[i]);
 			f++;
 		}
+		ft_putendl("fin wh pars");
 		i++;
 	}
+		ft_putendl("opt");
 	return (f);
 }

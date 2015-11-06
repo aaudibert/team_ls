@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/06 16:43:27 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/06 17:32:01 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,8 @@ typedef struct			dirent	t_dirent;
 
 //fonction
 int			parser(int ac, char **av);
+void		get_data(char *path);
+void		lst_push(t_file *elem, t_file **lst);
+t_file		*lst_new(char *f_name, char *path);
+void		print_dir(t_file *dir);
 #endif

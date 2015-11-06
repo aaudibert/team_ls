@@ -6,7 +6,7 @@
 #    By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/05 16:18:14 by aaudiber          #+#    #+#              #
-#    Updated: 2015/11/05 19:04:37 by aaudiber         ###   ########.fr        #
+#    Updated: 2015/11/06 17:32:08 by aaudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,10 @@ NAME = ft_ls
 
 SRC = ft_ls.c\
 	  parser.c\
+	  get_data.c\
+	  lst_new.c\
+	  lst_push.c\
+	  print_dir.c\
 
 OBJ = $(SRC:.c:.o)
 
