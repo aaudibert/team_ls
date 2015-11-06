@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 15:35:32 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/05 19:00:54 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/06 16:38:16 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,21 @@ static void		check_opt(char *opt)
 	}
 }
 
-char	**parser(int ac, char **av)
+int			parser(int ac, char **av)
 {
-	char	**add;
+	int	f;
+	int	i;
 
-	add = NULL;
-	(void)ac;
-	//add = (char **)malloc(sizeof(char *) * (ac - 2));
-	if (av[1][0] == '-')
-		check_opt(av[1]);
-	//add = param_sort(av);  ------- > A faire 
-	return (add);
+	f = 0;
+	i = 1;
+	while (i <= ac || av[i][0] == '-')
+	{
+		if (av[i][0] == '-')
+		{
+			check_opt(av[1]);
+			f++;
+		}
+		i++;
+	}
+	return (f);
 }

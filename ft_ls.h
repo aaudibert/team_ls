@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/05 17:49:36 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/06 16:43:27 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ typedef struct			t_path
 typedef struct			dirent	t_dirent;
 
 //fonction
-char	**parser(int ac, char **av);
+int			parser(int ac, char **av);
 #endif
