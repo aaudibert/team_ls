@@ -6,7 +6,7 @@
 #    By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/05 16:18:14 by aaudiber          #+#    #+#              #
-#    Updated: 2015/11/06 18:35:06 by aaudiber         ###   ########.fr        #
+#    Updated: 2015/11/06 18:41:11 by aaudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC = ft_ls.c\
 	  lst_new.c\
 	  lst_push.c\
 	  print_dir.c\
-	  check_params.c\
+#	  check_params.c\
 
 OBJ = $(SRC:.c:.o)
 

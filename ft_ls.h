@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/06 18:35:34 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/06 18:41:22 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ void		get_data(char *path);
 void		lst_push(t_file *elem, t_file **lst);
 t_file		*lst_new(char *f_name, char *path);
 void		print_dir(t_file *dir);
-char		**check_params(int ac, char **av, int f);
+//char		**check_params(int ac, char **av, int f);
 #endif
