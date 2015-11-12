@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:15:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/06 19:09:38 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/11/12 16:08:49 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ int		main(int ac, char **av)
 		f = parser(ac, av);
 	}
 	else 
-	{
-		get_data(".");
-	}
+		get_data("./");
 	/*else
 	{
 		paths = check_params(f + 1, av);
