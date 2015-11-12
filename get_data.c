@@ -6,13 +6,13 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 15:29:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/12 16:26:24 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/12 17:36:32 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void		get_data(char *path)
+t_file		*get_data(char *path)
 {
 	DIR			*rep;
 	t_dirent	*fr;
@@ -28,5 +28,7 @@ void		get_data(char *path)
 	}
 	else
 		perror("");
+	while (dir->prev != NULL)
 	print_dir(dir);
+	return (dir);
 }
