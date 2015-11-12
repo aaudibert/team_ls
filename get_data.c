@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 15:29:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/12 17:36:32 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/12 20:48:09 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,14 @@ t_file		*get_data(char *path)
 		closedir(rep);
 	}
 	else
+	{
 		perror("");
-	while (dir->prev != NULL)
+		return (0);
+	}
+	while (dir->next->next != NULL)
+		dir = dir->next;
+	dir->next = NULL;
+	dir = rewind_lst(dir);
 	print_dir(dir);
 	return (dir);
 }
