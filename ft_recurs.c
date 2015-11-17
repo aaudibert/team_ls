@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_dir.c                                        :+:      :+:    :+:   */
+/*   ft_recurs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/06 17:30:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/16 12:20:56 by aaudiber         ###   ########.fr       */
+/*   Created: 2015/11/17 14:27:26 by aaudiber          #+#    #+#             */
+/*   Updated: 2015/11/17 15:23:32 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int *g_flags;
-
-void		print_dir(t_file *dir)
+void		ft_recurs(t_file *dir)
 {
-	if (g_flags[FLAG_R] != 1)
+	print_list(dir);
+	ft_putchar('\n');
+	while (dir != NULL)
 	{
-		while (dir != NULL)
-		{
-			if (opt_a(dir))
-				ft_putendl(dir->f_name);
+		while (dir && (ft_strequ(".", dir->f_name) == 1 ||
+					ft_strequ("..", dir->f_name) == 1))
 			dir = dir->next;
-		}
-	}
-	else
-	{
-		while (dir->next != NULL)
-			dir = dir->next;
-		while (dir->prev != NULL)
+		if (dir)
 		{
-			if (opt_a(dir))
-				ft_putendl(dir->f_name);
-			dir = dir->prev;
+			if (S_ISDIR(dir->stat->st_mode))
+			{
+				ft_putstr(dir->path);
+				ft_putendl(" :");
+				get_data(dir->path);
+			}
+			dir = dir->next;
 		}
 	}
 }
