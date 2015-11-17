@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/17 14:27:59 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/17 16:44:48 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ typedef struct			t_path
 	struct t_path		*next;
 	char				**path;
 }						t_path;
+
+typedef struct			s_prm
+{
+	int					d;
+	int					e;
+	int					f;
+}						t_prm;
 
 typedef struct			dirent	t_dirent;
 
