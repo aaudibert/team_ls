@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_params.c                                     :+:      :+:    :+:   */
+/*   count_params.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaint-j <psaint-j@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/06 17:05:49 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/11/17 16:56:13 by psaint-j         ###   ########.fr       */
+/*   Created: 2015/11/17 16:43:56 by psaint-j          #+#    #+#             */
+/*   Updated: 2015/11/17 17:04:37 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,34 @@
 #include <stdio.h>
 
 
-char		**check_params(int ac, char **av, int i)
+void	count_params(int ac, char **av, t_prm *s, int i)
 {
 	int				v;
 	DIR				*dir;
 	struct stat		t;
-	t_prm s;
 
-	s->d;
+	s->d = 0;
+	s->f = 0;
+	s->e = 0;
 	while (av[i])
 	{
 		dir = opendir(av[i]);
 		v = stat(av[i], &t);
 		if (dir)
-			printf("%s\tDIR\n", av[i]);
+			s->d++;
 		if (v != 0)
 		{
-			printf("%s\tERROR\n", av[i]);
+			s->e++;
 		}
 		else if ((t.st_mode & S_IFREG))
-			printf("%s\tFILE\n", av[i]);
+			s->f++;
 		i++;
 	}
-	return (true_path);
 }
 
 
 int		main(int ac, char **av)
 {
-	check_params(ac, av, 1);
+	count_params(ac, av,t_pr, 1);
 	return (0);
 }

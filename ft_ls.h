@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/17 16:44:48 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/17 17:04:50 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ typedef struct			s_prm
 	int					d;
 	int					e;
 	int					f;
+	char				**error;
+	char				**file;
+	char				**ddir;
 }						t_prm;
 
 typedef struct			dirent	t_dirent;
