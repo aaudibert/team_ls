@@ -6,11 +6,13 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:27:26 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/18 18:25:56 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/19 19:31:00 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+int			*g_flags;
 
 void		ft_recurs(t_file *dir)
 {
@@ -23,9 +25,9 @@ void		ft_recurs(t_file *dir)
 			dir = dir->next;
 		if (dir)
 		{
-			ft_putendl("lol");
 			if (S_ISDIR(dir->stat->st_mode))
 			{
+				if (dir->f_name[0] == '.' && g_flags[FLAG_RR])
 				ft_putstr(dir->path);
 				ft_putendl(" :");
 				get_data(ft_strjoin(ft_strjoin(dir->path, dir->f_name), "/"));
