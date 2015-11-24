@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:27:26 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/19 19:31:00 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/24 17:28:47 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ void		ft_recurs(t_file *dir)
 			dir = dir->next;
 		if (dir)
 		{
-			if (S_ISDIR(dir->stat->st_mode))
+			if (dir->izdir == 1)
 			{
-				if (dir->f_name[0] == '.' && g_flags[FLAG_RR])
-				ft_putstr(dir->path);
+				ft_putstr(ft_strjoin(ft_strjoin(dir->path, dir->f_name), "/"));
 				ft_putendl(" :");
 				get_data(ft_strjoin(ft_strjoin(dir->path, dir->f_name), "/"));
 			}
