@@ -3,32 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rlechapt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 15:09:34 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/11/24 15:52:31 by rlechapt         ###   ########.fr       */
+/*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
+/*   Updated: 2015/11/24 17:44:44 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "stdlib.h"
-#include "unistd.h"
-#include "stdio.h"*/
 #include "ft_ls.h"
 
-
-/*void	print_tab(char **tab)
+void	sort_dir(t_file *dir)
 {
-	int	i;
-
-	i = 0;
-	while (tab[i])
+	char	*tmp;
+	while (dir->next)
 	{
-		printf("%s\n", tab[i]);
-		i++;
+		if (ft_strcmp(dir->f_name, dir->next->f_name) > 0)
+		{
+			tmp = dir->f_name;
+			dir->f_name = dir->next->f_name;
+			dir->next->f_name = tmp;
+			dir = rewind_lst(dir);
+		}
+		else
+			dir = dir->next;
 	}
 }
-*/
-void	sort(char **tab)
+
+void	sort_params(char **tab)
 {
 	int	i;
 	char *tmp;
@@ -47,23 +48,3 @@ void	sort(char **tab)
 			i++;
 	}
 }
-
-/*int		main(void)
-{
-	char **tab;
-
-	tab = (char**)malloc(sizeof(char*) * 8);
-	tab[0] = "Makefile";
-	tab[1] = "234567";
-	tab[2] = "24567";
-	tab[3] = "moumou";
-	tab[4] = "Mate";
-	tab[5] = "zozo";
-	tab[6] = "@#$%^";
-	tab[7] = NULL;
-	print_tab(tab);
-	sort(tab);
-	printf("\n");
-	print_tab(tab);
-	return (0);
-}*/
