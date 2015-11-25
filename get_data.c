@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 15:29:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/24 17:49:04 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/25 15:48:16 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ t_file		*get_data(char *path)
 	dir->next = NULL;
 	dir = rewind_lst(dir);
 	sort_dir(dir);
-//	print_dir(dir);
-	ft_recurs(dir);
+	if (g_flags[FLAG_RR] != 1)
+		print_dir(dir);
+	else
+		ft_recurs(dir);
 	return (dir);
 }
