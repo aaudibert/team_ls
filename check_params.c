@@ -6,42 +6,47 @@
 /*   By: psaint-j <psaint-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:05:49 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/11/17 16:56:13 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/11/25 16:20:28 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-#include <stdio.h>
 
-
-char		**check_params(int ac, char **av, int i)
+void	check_params(int ac, char **av, t_prm *s, int i)
 {
 	int				v;
 	DIR				*dir;
 	struct stat		t;
-	t_prm s;
 
-	s->d;
+	s->error = (char **)malloc(sizeof(char*) * (s->e + 1));
+	s->file = (char **)malloc(sizeof(char*) * (s->f + 1));
+	s->ddir = (char **)malloc(sizeof(char*) * (s->d + 1));
+	//s->file[s->f + 1] = NULL;
+	//s->error[s->e + 1] = NULL;
+	//s->ddir[s->d + 1] = NULL;
+	s->f--;
+	s->e--;
+	s->d--;
 	while (av[i])
 	{
 		dir = opendir(av[i]);
 		v = stat(av[i], &t);
 		if (dir)
-			printf("%s\tDIR\n", av[i]);
-		if (v != 0)
 		{
-			printf("%s\tERROR\n", av[i]);
+			s->ddir[s->d] = av[i];
+			s->d--;
+			closedir(dir);
+		}
+		else if (v != 0)
+		{
+			s->error[s->e] = av[i];
+			s->e--;
 		}
 		else if ((t.st_mode & S_IFREG))
-			printf("%s\tFILE\n", av[i]);
+		{
+			s->file[s->f] = av[i];
+			s->f--;
+		}
 		i++;
 	}
-	return (true_path);
-}
-
-
-int		main(int ac, char **av)
-{
-	check_params(ac, av, 1);
-	return (0);
 }
