@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:15:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/25 18:11:37 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/25 19:08:06 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,23 @@
 
 int		*g_flags;
 
-int		main(int ac, char **av)
+void		to_prm(char **paths)
+{
+	int f;
+
+	f = 0;
+	while (paths[f])
+	{
+		ft_putstr(paths[f]);
+		ft_putendl(" :");
+		get_data(paths[f]);
+		f++;
+		if (paths[f])
+			ft_putchar('\n');
+	}
+}
+
+int			main(int ac, char **av)
 {
 	int		f;
 	char	**paths;
@@ -26,11 +42,12 @@ int		main(int ac, char **av)
 	{
 		paths = (char **)malloc(sizeof(char *) * (f + 1));
 		f = parser(ac, av);
+		//Probleme de segfault random en utilisant des flags
 		paths = checks(av, f + 1);
-		paths = sort_params(paths);
-		f = 0;
-		while (paths[f])
-			get_data(paths);
+		if (f == (ac - 1))	
+			get_data("./");
+		else
+			to_prm(paths);
 	}
 	else 
 		get_data("./");

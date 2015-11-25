@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:30:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/17 19:09:08 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/25 19:23:47 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		print_dir(t_file *dir)
 	{
 		while (dir->next != NULL)
 			dir = dir->next;
-		while (dir->prev != NULL)
+		while (dir != NULL)
 		{
 			if (opt_a(dir))
 				ft_putendl(dir->f_name);

@@ -6,7 +6,7 @@
 #    By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/05 16:18:14 by aaudiber          #+#    #+#              #
-#    Updated: 2015/11/25 16:52:32 by aaudiber         ###   ########.fr        #
+#    Updated: 2015/11/25 18:20:22 by aaudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,9 @@ SRC = ft_ls.c\
 	  rewind_lst.c\
 	  opt_a.c\
 	  ft_recurs.c\
-	  sort.c
+	  sort.c\
 	  check_params.c\
+	  checks.c\
 
 OBJ = $(SRC:.c:.o)
 
