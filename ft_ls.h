@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/25 16:02:50 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/25 16:50:47 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void		print_dir(t_file *dir);
 int			opt_a(t_file *dir);
 void		ft_recurs(t_file *dir);
 void		ft_rrecurs(t_file *dir);
-//char		**check_params(int ac, char **av, int f);
+void		check_params(int ac, char **av, t_prm *s, int i);
 void		sort_params(char **tab);
 void		sort_dir(t_file *dir);
 #endif
