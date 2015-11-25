@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 16:43:56 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/11/17 17:04:37 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/11/25 16:27:33 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 
-void	count_params(int ac, char **av, t_prm *s, int i)
+t_prm	*count_params(int ac, char **av, t_prm *s, int i)
 {
 	int				v;
 	DIR				*dir;
@@ -37,11 +37,43 @@ void	count_params(int ac, char **av, t_prm *s, int i)
 			s->f++;
 		i++;
 	}
+	return (s);
+}
+
+void ft_printab(char **env)
+{
+	int		i;
+
+	i = 0;
+	if (env != NULL)
+	{
+		while (env[i])
+		{
+			ft_putendl(env[i]);
+			i++;
+		}
+	}
+	else
+		return;
 }
 
 
 int		main(int ac, char **av)
 {
-	count_params(ac, av,t_pr, 1);
+	t_prm	s;
+	char	**avv;
+
+	avv = av;
+	count_params(ac, avv, &s, 1);
+	check_params(ac, avv, &s, 1);
+	//printf("File : %d\n", s.f);
+	//printf("errorr : %d\n", s.e);
+	//printf("Dir : %d\n", s.d);
+	ft_putendl("\033[31m--TAB ERROR--");
+	ft_printab(s.error);
+	ft_putendl("\033[32m--TAB FILE--");
+	ft_printab(s.file);
+	ft_putendl("\033[35m--TAB DIR--");
+	ft_printab(s.ddir);
 	return (0);
 }
