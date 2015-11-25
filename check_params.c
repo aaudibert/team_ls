@@ -6,27 +6,30 @@
 /*   By: psaint-j <psaint-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:05:49 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/11/25 16:20:28 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/11/25 17:13:30 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	check_params(int ac, char **av, t_prm *s, int i)
+void		prm_new(t_prm * s)
+{
+	s->error = (char **)malloc(sizeof(char*) * (s->e + 1));
+	s->file = (char **)malloc(sizeof(char*) * (s->f + 1));
+	s->ddir = (char **)malloc(sizeof(char*) * (s->d + 1));
+	s->f--;
+	s->e--;
+	s->d--;
+	return (s);
+}
+
+t_prm		*check_params(char **paths, t_prm *s, int i)
 {
 	int				v;
 	DIR				*dir;
 	struct stat		t;
 
-	s->error = (char **)malloc(sizeof(char*) * (s->e + 1));
-	s->file = (char **)malloc(sizeof(char*) * (s->f + 1));
-	s->ddir = (char **)malloc(sizeof(char*) * (s->d + 1));
-	//s->file[s->f + 1] = NULL;
-	//s->error[s->e + 1] = NULL;
-	//s->ddir[s->d + 1] = NULL;
-	s->f--;
-	s->e--;
-	s->d--;
+	prm_new(s);
 	while (av[i])
 	{
 		dir = opendir(av[i]);
@@ -49,4 +52,5 @@ void	check_params(int ac, char **av, t_prm *s, int i)
 		}
 		i++;
 	}
+	return (s);
 }

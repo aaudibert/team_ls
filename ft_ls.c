@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:15:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/24 17:47:20 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/25 17:04:32 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int		main(int ac, char **av)
 	{
 		paths = (char **)malloc(sizeof(char *) * (f + 1));
 		f = parser(ac, av);
-	/*	paths = check_params(f + 1, av);
+		paths = checks(av, f + 1);
 		paths = sort_params(paths);
-		get_data(paths);*/
+		get_data(paths);
 	}
 	else 
 		get_data("./");
