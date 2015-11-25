@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/19 19:28:50 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/24 17:54:21 by rlechapt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct			s_file
 	struct s_file		*prev;
 	char				*path;
 	char				*f_name;
+	int					izdir;
 	struct stat			*stat;
 }						t_file;
 
@@ -65,4 +66,6 @@ void		print_dir(t_file *dir);
 int			opt_a(t_file *dir);
 void		ft_recurs(t_file *dir);
 //char		**check_params(int ac, char **av, int f);
+void		sort_params(char **tab);
+void		sort_dir(t_file *dir);
 #endif
