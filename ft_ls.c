@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:15:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/25 19:08:06 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/26 15:38:57 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ int			main(int ac, char **av)
 		f = parser(ac, av);
 		//Probleme de segfault random en utilisant des flags
 		paths = checks(av, f + 1);
-		if (f == (ac - 1))	
+		if (f == (ac - 1))
 			get_data("./");
 		else
 			to_prm(paths);
 	}
-	else 
+	else
 		get_data("./");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: psaint-j <psaint-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:05:49 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/11/25 18:22:44 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/26 15:55:24 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,21 @@
 
 void		prm_new(t_prm *s)
 {
-	s->error = (char **)malloc(sizeof(char*) * (s->e + 1));
-	s->file = (char **)malloc(sizeof(char*) * (s->f + 1));
-	s->ddir = (char **)malloc(sizeof(char*) * (s->d + 1));
+	if (s->e)
+		s->error = (char **)malloc(sizeof(char*) * (s->e + 1));
+	if (s->f)
+		s->file = (char **)malloc(sizeof(char*) * (s->f + 1));
+	if (s->d)
+		s->ddir = (char **)malloc(sizeof(char*) * (s->d + 1));
 	s->f--;
 	s->e--;
 	s->d--;
+}
+
+char		*errfunc(t_prm *s, char *path)
+{
+	s->e--;
+	return (path);
 }
 
 t_prm		*check_params(char **paths, t_prm *s, int i)
@@ -40,10 +49,7 @@ t_prm		*check_params(char **paths, t_prm *s, int i)
 			closedir(dir);
 		}
 		else if (v != 0)
-		{
-			s->error[s->e] = paths[i];
-			s->e--;
-		}
+			s->error[s->e] = errfunc(s, paths[i]);
 		else if ((t.st_mode & S_IFREG))
 		{
 			s->file[s->f] = paths[i];

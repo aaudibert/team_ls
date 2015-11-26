@@ -6,13 +6,13 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/25 18:58:26 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/26 16:01:16 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-t_prm	*count_params(char **paths, t_prm *s, int i)
+t_prm		*count_params(char **paths, t_prm *s, int i)
 {
 	int				v;
 	DIR				*dir;
@@ -45,7 +45,7 @@ void		print_err(char **err)
 	i = 0;
 	if (g_flags[FLAG_R] != 1)
 	{
-		while(err[i])
+		while (err[i])
 			i++;
 		while (--i >= 0)
 		{
@@ -73,7 +73,7 @@ void		print_file(char **file)
 	i = 0;
 	if (g_flags[FLAG_R] != 1)
 	{
-		while(file[i])
+		while (file[i])
 			i++;
 		while (--i >= 0)
 		{
@@ -100,6 +100,7 @@ char		**checks(char **paths, int i)
 
 	count_params(paths, &s, i);
 	check_params(paths, &s, i);
+	ft_putendl("lwiheiuwenvivuwenonaiwenvinweivni");
 	if (s.error)
 	{
 		sort_params(s.error);
@@ -114,5 +115,6 @@ char		**checks(char **paths, int i)
 		ft_putchar('\n');
 	if (s.ddir)
 		sort_params(s.ddir);
+	ft_putendl("lwiheiuwenvivuwenonaiwenvinweivni");
 	return (s.ddir);
 }

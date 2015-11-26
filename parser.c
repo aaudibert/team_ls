@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 15:35:32 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/12 19:57:19 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/26 15:40:01 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int			parser(int ac, char **av)
 {
 	int	f;
 	int	i;
-	(void)ac;
 
 	f = 0;
 	i = 1;
