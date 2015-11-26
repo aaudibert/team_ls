@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/26 16:01:16 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/26 16:10:52 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,19 +100,24 @@ char		**checks(char **paths, int i)
 
 	count_params(paths, &s, i);
 	check_params(paths, &s, i);
-	ft_putendl("lwiheiuwenvivuwenonaiwenvinweivni");
 	if (s.error)
 	{
+		//crash dans sort_parms
 		sort_params(s.error);
+	ft_putendl("lwiheiuwenvivuwenonaiwenvinweivni");
 		print_err(s.error);
+	ft_putendl("lwiheiuwenvivuwenonaiwenvinweivni");
 	}
+	ft_putendl("lwiheiuwenvivuwenonaiwenvinweivni");
 	if (s.file)
 	{
 		sort_params(s.file);
 		print_file(s.file);
 	}
+	ft_putendl("lwiheiuwenvivuwenonaiwenvinweivni");
 	if (s.ddir && (s.file || s.error))
 		ft_putchar('\n');
+	ft_putendl("lwiheiuwenvivuwenonaiwenvinweivni");
 	if (s.ddir)
 		sort_params(s.ddir);
 	ft_putendl("lwiheiuwenvivuwenonaiwenvinweivni");
