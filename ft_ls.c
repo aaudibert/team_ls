@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:15:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/27 13:08:02 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/27 13:51:20 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,15 @@ int			main(int ac, char **av)
 	f = 0;
 	if (ac > 1)
 	{
-		paths = (char **)malloc(sizeof(char *) * (f + 1));
 		f = parser(ac, av);
-		paths = checks(av, f + 1);
-		if (f == (ac - 1))
+		paths = (char **)malloc(sizeof(char *) * (f + 1));
+		if (ac - f == 1)
 			get_data("./");
 		else
+		{
+			paths = checks(av, f + 1);
 			to_prm(paths);
+		}
 	}
 	else
 		get_data("./");
