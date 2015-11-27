@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/26 16:10:52 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/27 13:11:58 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ char		**checks(char **paths, int i)
 	check_params(paths, &s, i);
 	if (s.error)
 	{
-		//crash dans sort_parms
 		sort_params(s.error);
 	ft_putendl("lwiheiuwenvivuwenonaiwenvinweivni");
 		print_err(s.error);

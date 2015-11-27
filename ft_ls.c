@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:15:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/26 16:37:43 by yalaouf          ###   ########.fr       */
+/*   Updated: 2015/11/27 13:08:02 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			main(int ac, char **av)
 	{
 		paths = (char **)malloc(sizeof(char *) * (f + 1));
 		f = parser(ac, av);
-		paths = checks(av, f + 1); //le segfault vient de cette ligne
+		paths = checks(av, f + 1);
 		if (f == (ac - 1))
 			get_data("./");
 		else
