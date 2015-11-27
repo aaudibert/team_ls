@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:27:26 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/26 15:35:22 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/11/27 13:54:29 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void		ft_recurs(t_file *dir)
 			{
 				if (dir->izdir == 1)
 				{
-					ft_putendl(dir->f_name);
 					ft_putstr(ft_strjoin(ft_strjoin(dir->path, dir->f_name),
 								"/"));
 					ft_putendl(" :");
