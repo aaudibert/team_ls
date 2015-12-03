@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:15:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/27 14:40:55 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/12/03 19:52:46 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		to_prm(char **paths)
 	int f;
 
 	f = 0;
-	if (paths)
+	if (paths[1])
 	{
 		while (paths[f])
 		{
@@ -31,6 +31,8 @@ void		to_prm(char **paths)
 				ft_putchar('\n');
 		}
 	}
+	else
+		get_data(paths[f]);
 }
 
 int			main(int ac, char **av)
