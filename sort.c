@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/12/03 19:22:00 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/12/04 18:54:24 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	sort_date(t_file *dir)
 {
 	char	*tmp;
 	int		i;
+	int		j;
 
 	while (dir->next)
 	{
@@ -23,10 +24,13 @@ void	sort_date(t_file *dir)
 		{
 			tmp = dir->f_name;
 			i = dir->izdir;
+			j = dir->date;
 			dir->f_name = dir->next->f_name;
 			dir->izdir = dir->next->izdir;
+			dir->date = dir->next->date;
 			dir->next->f_name = tmp;
 			dir->next->izdir = i;
+			dir->next->date = j;
 			dir = rewind_lst(dir);
 		}
 		else
@@ -39,20 +43,25 @@ void	sort_dir(t_file *dir)
 	char	*tmp;
 	int		i;
 
-	while (dir->next)
+	if (g_flags[FLAG_T] == 1)
+		sort_date(dir);
+	else
 	{
-		if (ft_strcmp(dir->f_name, dir->next->f_name) > 0)
+		while (dir->next)
 		{
-			tmp = dir->f_name;
-			i = dir->izdir;
-			dir->f_name = dir->next->f_name;
-			dir->izdir = dir->next->izdir;
-			dir->next->f_name = tmp;
-			dir->next->izdir = i;
-			dir = rewind_lst(dir);
+			if (ft_strcmp(dir->f_name, dir->next->f_name) > 0)
+			{
+				tmp = dir->f_name;
+				i = dir->izdir;
+				dir->f_name = dir->next->f_name;
+				dir->izdir = dir->next->izdir;
+				dir->next->f_name = tmp;
+				dir->next->izdir = i;
+				dir = rewind_lst(dir);
+			}
+			else
+				dir = dir->next;
 		}
-		else
-			dir = dir->next;
 	}
 }
 
