@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/12 12:06:53 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/25 15:14:23 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/12/04 18:16:40 by jumiguel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_file		*lst_new(char *f_name, char *path)
 	new_link->stat = malloc(sizeof(stat));
 	lstat(ft_strjoin(ft_strjoin(new_link->path, new_link->f_name), "/"), &tmp);
 	new_link->stat = &tmp;
+//	new_link->date = tmp->st_ctime;
 	new_link->prev = NULL;
 	new_link->next = NULL;
 	if (S_ISDIR(new_link->stat->st_mode))
