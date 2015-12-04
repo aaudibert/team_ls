@@ -23,7 +23,7 @@ t_file		*lst_new(char *f_name, char *path)
 	new_link->stat = malloc(sizeof(stat));
 	lstat(ft_strjoin(ft_strjoin(new_link->path, new_link->f_name), "/"), &tmp);
 	new_link->stat = &tmp;
-//	new_link->date = tmp->st_ctime;
+	new_link->date = tmp.st_ctime;
 	new_link->prev = NULL;
 	new_link->next = NULL;
 	if (S_ISDIR(new_link->stat->st_mode))
