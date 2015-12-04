@@ -65,4 +65,5 @@ t_prm		*check_params(char **paths, t_prm *s, int i);
 char		**checks(char **paths, int f);
 void		sort_params(char **tab);
 void		sort_dir(t_file *dir);
+void		sort_date(t_file *dir);
 #endif
