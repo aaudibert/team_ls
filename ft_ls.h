@@ -19,6 +19,7 @@
 # include <dirent.h>
 # include <sys/stat.h>
 # include "libft/includes/libft.h"
+# include <time.h>
 
 # define FLAG_R		0
 # define FLAG_RR	1
