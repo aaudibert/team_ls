@@ -36,7 +36,7 @@ typedef struct		s_file
 	char			*path;
 	char			*f_name;
 	int				izdir;
-	int				date;
+	time_t			date;
 	struct stat		*stat;
 }					t_file;
 
