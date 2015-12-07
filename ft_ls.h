@@ -20,6 +20,8 @@
 # include <sys/stat.h>
 # include "libft/includes/libft.h"
 # include <time.h>
+# include <pwd.h>
+# include <grp.h>
 
 # define FLAG_R		0
 # define FLAG_RR	1
@@ -67,4 +69,18 @@ char		**checks(char **paths, int f);
 void		sort_params(char **tab);
 void		sort_dir(t_file *dir);
 void		sort_date(t_file *dir);
+void		permissions_proprio(struct stat stats);
+void		permissions_locataire(struct stat stats);
+void		permissions_babacar(struct stat stats);
+void		nationalite(struct stat stats);
+void		letters(struct stat stats);
+int		*max(t_file *dir);
+void		display_size_right(int max_size, struct stat stats);
+void		display_link_right(int max_link, struct stat stats);
+void		ft_putstr_space(char *str, int nbr_sp);
+void		display_date_right(char **tab);
+void		total_block(t_file *dir);
+void		affect(struct stat stats);
+void		ifslnk(struct stat stats, struct dirent *lecture);
+void		date(struct stat stats);
 #endif

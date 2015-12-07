@@ -24,6 +24,10 @@ SRC = ft_ls.c\
 	  sort.c\
 	  check_params.c\
 	  checks.c\
+	  flag.c\
+	  ls_l_tools.c\
+	  permission.c\
+	  tools.c
 
 OBJ = $(SRC:.c:.o)
 
