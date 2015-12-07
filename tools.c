@@ -6,13 +6,26 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2015/11/24 16:50:24 by yalaouf          ###   ########.fr       */
+/*   Updated: 2015/12/07 17:59:36 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		*max(t_file *dir)
+int					ft_intlen(int nbr)
+{
+	int	len;
+	
+	len = 0;
+	while (len > 9)
+	{
+		len++;
+		nbr = nbr / 10;
+	}
+	return (len);
+}
+
+unsigned int		*max(t_file *dir)
 {
 	DIR				*rep;
 	struct dirent	*lecture;
@@ -36,13 +49,13 @@ int		*max(t_file *dir)
 	return (max_all);
 }
 
-void	display_size_right(int max_size, struct stat stats)
+void			display_size_right(int max_size, struct stat stats)
 {
 	int		max_length;
 	int		actual_length;
 	int		space_nbr;
 
-	(unsigned int)max_length = ft_intlen(max_size);
+	max_length = ft_intlen(max_size);
 	actual_length = ft_intlen(stats.st_size);
 	space_nbr = max_length - actual_length;
 	if (max_length == actual_length)
@@ -55,7 +68,7 @@ void	display_size_right(int max_size, struct stat stats)
 	}
 }
 
-void	display_link_right(int max_link, struct stat stats)
+void			display_link_right(int max_link, struct stat stats)
 {
 	int		max_length;
 	int		actual_length;
@@ -77,7 +90,7 @@ void	display_link_right(int max_link, struct stat stats)
 	}
 }
 
-void	date(struct stat stats)
+void			date(struct stat stats)
 {
 	char	**date;
 	char	**date_f;

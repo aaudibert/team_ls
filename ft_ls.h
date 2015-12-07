@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/04 18:16:47 by jumiguel         ###   ########.fr       */
+/*   Updated: 2015/12/07 18:02:16 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,32 +55,33 @@ typedef struct	s_prm
 typedef struct dirent	t_dirent;
 
 //fonction
-int			parser(int ac, char **av);
-void		get_data(char *path);
-void		lst_push(t_file *elem, t_file **lst);
-t_file		*lst_new(char *f_name, char *path);
-t_file		*rewind_lst(t_file *lst);
-void		print_dir(t_file *dir);
-int			opt_a(t_file *dir);
-void		ft_recurs(t_file *dir);
-void		ft_rrecurs(t_file *dir);
-t_prm		*check_params(char **paths, t_prm *s, int i);
-char		**checks(char **paths, int f);
-void		sort_params(char **tab);
-void		sort_dir(t_file *dir);
-void		sort_date(t_file *dir);
-void		permissions_proprio(struct stat stats);
-void		permissions_locataire(struct stat stats);
-void		permissions_babacar(struct stat stats);
-void		nationalite(struct stat stats);
-void		letters(struct stat stats);
-int		*max(t_file *dir);
-void		display_size_right(int max_size, struct stat stats);
-void		display_link_right(int max_link, struct stat stats);
-void		ft_putstr_space(char *str, int nbr_sp);
-void		display_date_right(char **tab);
-void		total_block(t_file *dir);
-void		affect(struct stat stats);
-void		ifslnk(struct stat stats, struct dirent *lecture);
-void		date(struct stat stats);
+int				parser(int ac, char **av);
+void			get_data(char *path);
+void			lst_push(t_file *elem, t_file **lst);
+t_file			*lst_new(char *f_name, char *path);
+t_file			*rewind_lst(t_file *lst);
+void			print_dir(t_file *dir);
+int				opt_a(t_file *dir);
+void			ft_recurs(t_file *dir);
+void			ft_rrecurs(t_file *dir);
+t_prm			*check_params(char **paths, t_prm *s, int i);
+char			**checks(char **paths, int f);
+void			sort_params(char **tab);
+void			sort_dir(t_file *dir);
+void			sort_date(t_file *dir);
+void			ls_l(t_file *dir);
+void			permissions_proprio(struct stat stats);
+void			permissions_locataire(struct stat stats);
+void			permissions_babacar(struct stat stats);
+void			nationalite(struct stat stats);
+void			letters(struct stat stats);
+unsigned int	*max(t_file *dir);
+void			display_size_right(int max_size, struct stat stats);
+void			display_link_right(int max_link, struct stat stats);
+void			ft_putstr_space(char *str, int nbr_sp);
+void			display_date_right(char **tab);
+void			total_block(t_file *dir);
+void			affect(struct stat stats);
+void			ifslnk(struct stat stats, struct dirent *lecture);
+void			date(struct stat stats);
 #endif

@@ -6,7 +6,7 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2015/11/26 19:47:33 by yalaouf          ###   ########.fr       */
+/*   Updated: 2015/12/07 17:59:20 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ls_l(t_file *dir)
 	struct dirent	*lecture;
 	DIR				*rep;
 	struct stat		stats;
-	int				*max_all;
+	unsigned int	*max_all;
 
 	total_block(dir);
 	max_all = max(dir);
