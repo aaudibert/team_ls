@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/07 18:02:16 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/12/08 15:43:08 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@ typedef struct		s_file
 	time_t			date;
 	struct stat		*stat;
 }					t_file;
+
+typedef struct		s_param
+{
+	struct s_file	*next;
+	struct s_file	*prev;
+	char			*f_name;
+	struct stat		*stat;
+}					t_param;
 
 typedef struct	s_prm
 {
