@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/04 16:47:57 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/12/08 16:46:10 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,9 @@ char		**checks(char **paths, int i)
 		sort_params(s.error);
 		print_err(s.error);
 	}
-	if (s.file)
+	if (s.file && (g_flags[FLAG_T] || g_flags[FLAG_L]))
+		file_tl(s.file);
+	else if (s.file)
 	{
 		sort_params(s.file);
 		print_file(s.file);
