@@ -6,7 +6,7 @@
 #    By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/05 16:18:14 by aaudiber          #+#    #+#              #
-#    Updated: 2015/11/25 18:20:22 by aaudiber         ###   ########.fr        #
+#    Updated: 2015/12/08 16:49:43 by aaudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRC = ft_ls.c\
 	  flag.c\
 	  ls_l_tools.c\
 	  permission.c\
-	  tools.c
+	  tools.c\
+	  file_tl.c
 
 OBJ = $(SRC:.c:.o)
 
