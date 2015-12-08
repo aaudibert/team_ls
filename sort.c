@@ -6,13 +6,39 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/12/04 18:54:24 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:29:27 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
 void	sort_date(t_file *dir)
+{
+	char	*tmp;
+	int		i;
+	int		j;
+
+	while (dir->next)
+	{
+		if (dir->date < dir->next->date)
+		{
+			tmp = dir->f_name;
+			i = dir->izdir;
+			j = dir->date;
+			dir->f_name = dir->next->f_name;
+			dir->izdir = dir->next->izdir;
+			dir->date = dir->next->date;
+			dir->next->f_name = tmp;
+			dir->next->izdir = i;
+			dir->next->date = j;
+			dir = rewind_lst(dir);
+		}
+		else
+			dir = dir->next;
+	}
+}
+
+void	sort_date_file(t_file *dir)
 {
 	char	*tmp;
 	int		i;
