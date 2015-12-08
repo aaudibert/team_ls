@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/08 15:43:08 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:19:36 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ typedef struct		s_file
 	struct stat		*stat;
 }					t_file;
 
-typedef struct		s_param
+typedef struct		s_fl
 {
-	struct s_file	*next;
-	struct s_file	*prev;
-	char			*f_name;
+	struct s_fl		*next;
+	struct s_fl		*prev;
+	char			*f;
 	struct stat		*stat;
-}					t_param;
+}					t_fl;
 
 typedef struct	s_prm
 {
@@ -92,4 +92,5 @@ void			total_block(t_file *dir);
 void			affect(struct stat stats);
 void			ifslnk(struct stat stats, struct dirent *lecture);
 void			date(struct stat stats);
+void			file_tl(char **file);
 #endif
