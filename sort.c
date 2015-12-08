@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/12/08 17:29:27 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/12/08 18:29:41 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,30 +38,30 @@ void	sort_date(t_file *dir)
 	}
 }
 
-void	sort_date_file(t_file *dir)
+void	sort_ftl(t_fl *dir)
 {
-	char	*tmp;
-	int		i;
-	int		j;
+	char		*tmp;
+	struct stat	*tp;
 
 	while (dir->next)
 	{
-		if (dir->date < dir->next->date)
+		if (dir->stat->st_mtime < dir->next->stat->st_mtime)
 		{
-			tmp = dir->f_name;
-			i = dir->izdir;
-			j = dir->date;
-			dir->f_name = dir->next->f_name;
-			dir->izdir = dir->next->izdir;
-			dir->date = dir->next->date;
-			dir->next->f_name = tmp;
-			dir->next->izdir = i;
-			dir->next->date = j;
-			dir = rewind_lst(dir);
+			tmp = dir->f;
+			tp = dir->stat;
+			dir->f = dir->next->f;
+			dir->stat = dir->next->stat;
+			dir->next->f = tmp;
+			dir->next->stat = tp;
+			while (dir->prev != NULL)
+				dir = dir->prev;
 		}
 		else
 			dir = dir->next;
 	}
+	while (dir->prev != NULL)
+		dir = dir->prev;
+	print_ftl();
 }
 
 void	sort_dir(t_file *dir)

@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 16:50:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/08 17:28:53 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/12/08 17:45:57 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ void		file_tl(char **ftab)
 		tmp->prev = prm;
 		prm->next = tmp;
 		prm = prm->next;
+		prm->next = NULL;
 		free(tmp);
 		i++;
 	}
-	//sort_ftl(prm);
+	ft_putendl(prm->prev->f);
+	sort_ftl(prm);
 }
