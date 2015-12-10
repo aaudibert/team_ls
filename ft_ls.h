@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/08 17:38:43 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/12/10 19:07:09 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,5 @@ void			ifslnk(struct stat stats, struct dirent *lecture);
 void			date(struct stat stats);
 void			file_tl(char **file);
 void			sort_ftl(t_fl *file);
+void			print_ftl(t_fl *dir);
 #endif
