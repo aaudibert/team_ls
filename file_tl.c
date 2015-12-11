@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 16:50:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/08 17:45:57 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/12/11 19:14:54 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,27 @@ void		file_tl(char **ftab)
 	t_fl	*tmp;
 
 	i = 0;
-	prm = malloc(sizeof(t_fl*));
-	tmp = malloc(sizeof(t_fl*));
+	prm = malloc(sizeof(t_fl));
 	prm->f = ft_strdup(ftab[i]);
 	prm->stat = malloc(sizeof(struct stat));
 	lstat(ftab[i], prm->stat);
 	prm->prev = NULL;
-	prm->next = NULL;
+	ft_putendl(prm->f);
 	i++;
 	while (ftab[i])
 	{
+		tmp = malloc(sizeof(t_fl));
 		tmp->f = ft_strdup(ftab[i]);
 		tmp->stat = malloc(sizeof(struct stat));
 		lstat(ftab[i], tmp->stat);
+		ft_putendl(tmp->f);
 		tmp->prev = prm;
 		prm->next = tmp;
 		prm = prm->next;
-		prm->next = NULL;
-		free(tmp);
+		tmp = tmp->next; 
 		i++;
 	}
-	ft_putendl(prm->prev->f);
+	prm->next = NULL;
 	sort_ftl(prm);
+//	ft_putendl("HERE");
 }
