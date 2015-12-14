@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 16:14:33 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/12/14 16:25:00 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/12/14 17:20:56 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void		file_tl(char **ftab)
 		i++;
 	}
 	prm->next = NULL;
+	while (prm->prev != NULL)
+		prm = prm->prev;
 	sort_ftl(prm);
 }

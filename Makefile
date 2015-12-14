@@ -6,7 +6,7 @@
 #    By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/05 16:18:14 by aaudiber          #+#    #+#              #
-#    Updated: 2015/12/08 17:38:52 by aaudiber         ###   ########.fr        #
+#    Updated: 2015/12/14 16:47:25 by psaint-j         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC = ft_ls.c\
 	  permission.c\
 	  tools.c\
 	  file_tl.c\
+	  same_date.c\
 
 OBJ = $(SRC:.c:.o)
 
