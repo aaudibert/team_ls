@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   file_tl.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 16:50:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/14 15:36:18 by aaudiber         ###   ########.fr       */
-/*   Updated: 2015/12/10 19:57:21 by aaudiber         ###   ########.fr       */
+/*   Created: 2015/12/14 16:14:33 by psaint-j          #+#    #+#             */
+/*   Updated: 2015/12/14 16:25:00 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void		file_tl(char **ftab)
+t_fl		*init_file_tl(char **ftab)
 {
 	int		i;
 	t_fl	*prm;
-	t_fl	*tmp;
 
 	i = 0;
 	prm = malloc(sizeof(t_fl));
@@ -25,7 +23,17 @@ void		file_tl(char **ftab)
 	prm->stat = malloc(sizeof(struct stat));
 	lstat(ftab[i], prm->stat);
 	prm->prev = NULL;
-	i++;
+	return (prm);
+}
+
+void		file_tl(char **ftab)
+{
+	int		i;
+	t_fl	*prm;
+	t_fl	*tmp;
+
+	i = 1;
+	prm = init_file_tl(ftab);
 	while (ftab[i])
 	{
 		tmp = malloc(sizeof(t_fl));
