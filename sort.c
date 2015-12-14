@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/12/10 19:22:17 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/12/14 15:28:35 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,7 @@ void	sort_ftl(t_fl *dir)
 			dir = dir->next;
 	}
 	while (dir->prev != NULL)
-	{
-		ft_putendl(dir->f);
 		dir = dir->prev;
-	}
 	print_ftl(dir);
 }
 
