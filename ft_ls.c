@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:15:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/14 18:52:26 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/12/15 12:46:32 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void		to_prm(char **paths)
 			else
 				get_data(ft_strjoin(paths[f], "/"));
 			f++;
+			if (paths[f])
+				ft_putchar('\n');
 		}
 	}
 	else

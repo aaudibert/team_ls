@@ -6,7 +6,7 @@
 /*   By: psaint-j <psaint-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:05:49 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/12/03 19:20:32 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/12/15 12:42:20 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		prm_new(t_prm *s)
 		s->file = NULL;
 	if (s->d > 0)
 	{
-		s->ddir = (char **)malloc(sizeof(char *) * s->d);
+		s->ddir = (char **)malloc(sizeof(char *) * s->d + 1);
 		s->ddir[s->d] = NULL;
 	}
 	else
