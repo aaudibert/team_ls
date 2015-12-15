@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:30:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/14 18:43:59 by aaudiber         ###   ########.fr       */
+/*   Updated: 2015/12/15 16:26:21 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void		print_ftl(t_fl *dir)
 
 void		print_dir(t_file *dir)
 {
-//	if (g_flags[FLAGS_L] == 1)
-//		ls_l(dir);
-	/*else*/ if (g_flags[FLAG_R] != 1)
+	if (g_flags[FLAG_L] == 1)
+		ls_l(dir);
+	else if (g_flags[FLAG_R] != 1)
 	{
 		while (dir != NULL)
 		{
