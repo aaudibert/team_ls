@@ -26,7 +26,7 @@ void	ls_l(t_file *dir)
 	{
 		if (ft_strncmp(lecture->d_name, ".", 1) != 0)
 		{
-			lstat(lecture->d_name, &stats);
+			lstat(ft_strjoin(dir->path,lecture->d_name), &stats);
 			letters(stats);
 			display_link_right(max_all[1], stats);
 			ft_putchar(' ');
