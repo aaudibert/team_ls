@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/17 14:57:04 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/05 18:57:15 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct			s_file
 	char				*path;
 	char				*f_name;
 	time_t				date;
-	struct s_stat		*stat;
+	t_stat				*stat;
 	struct s_file		*next;
 	struct s_file		*prev;
 }						t_file;
@@ -48,7 +48,7 @@ typedef struct			s_file
 typedef struct			s_fl
 {
 	char				*f;
-	struct s_stat		*stat;
+	t_stat				*stat;
 	struct s_fl			*next;
 	struct s_fl			*prev;
 }						t_fl;

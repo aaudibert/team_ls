@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/12 12:06:53 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/04 18:57:17 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/05 18:05:36 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_file		*lst_new(char *f_name, char *path)
 {
 	t_file		*new_link;
-	struct stat	tmp;
+	t_stat		tmp;
 
 	new_link = (t_file*)malloc(sizeof(t_file));
 	new_link->path = path;

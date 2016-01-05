@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2015/12/14 19:49:53 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/05 19:10:06 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	sort_date(t_file *dir)
 
 void	sort_ftl(t_fl *dir)
 {
-	char		*tmp;
-	struct stat	*tp;
+	char	*tmp;
+	t_stat	*tp;
 
 	while (dir->next)
 	{
@@ -61,6 +61,8 @@ void	sort_ftl(t_fl *dir)
 	}
 	while (dir->prev != NULL)
 		dir = dir->prev;
+	free(tp);
+	free(tmp);
 	print_ftl(dir);
 }
 
