@@ -38,18 +38,21 @@ void	total_block(t_file *dir)
 	struct stat		stats;
 
 	total = 0;
-	rep = opendir(ft_strjoin(dir->path, dir->f_name));
+	if ((rep = opendir(ft_strjoin(dir->path, dir->f_name))) != NULL)
+	{
 	while ((lecture = readdir(rep)) != NULL)
 	{
 		if (ft_strncmp(lecture->d_name, ".", 1) != 0)
 		{
-			lstat(lecture->d_name, &stats);
+			lstat(ft_strjoin(dir->path,lecture->d_name), &stats);
 			total = total + stats.st_blocks;
 		}
 	}
+	closedir(rep);
 	ft_putstr_space("total", 1);
 	ft_putnbr(total);
 	ft_putchar('\n');
+	}
 }
 
 void	affect(struct stat stats)
@@ -59,18 +62,20 @@ void	affect(struct stat stats)
 
 	uid = getpwuid(stats.st_uid);
 	gid = getgrgid(stats.st_gid);
+	if (uid != NULL)
 	ft_putstr_space(uid->pw_name, 2);
+	if (gid != NULL)
 	ft_putstr_space(gid->gr_name, 2);
 }
 
-void	ifslnk(struct stat stats, struct dirent *lecture)
+void	ifslnk(struct stat stats, struct dirent *lecture, t_file *dir)
 {
 	char		*link;
 
 	if (S_ISLNK(stats.st_mode))
 	{
 		link = malloc(stats.st_size + 1);
-		readlink(lecture->d_name, link, stats.st_mode + 1);
+		readlink(ft_strjoin(dir->path,lecture->d_name), link, stats.st_mode + 1);
 		ft_putstr_space(lecture->d_name, 1);
 		ft_putstr_space("->", 1);
 		ft_putendl(link);

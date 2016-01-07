@@ -21,7 +21,8 @@ void	ls_l(t_file *dir)
 
 	total_block(dir);
 	max_all = max(dir);
-	rep = opendir(ft_strjoin(dir->path, dir->f_name));
+	if ((rep = opendir(ft_strjoin(dir->path, dir->f_name))) != NULL)
+	{
 	while ((lecture = readdir(rep)) != NULL)
 	{
 		if (ft_strncmp(lecture->d_name, ".", 1) != 0)
@@ -33,9 +34,10 @@ void	ls_l(t_file *dir)
 			affect(stats);
 			display_size_right(max_all[0], stats);
 			date(stats);
-			ifslnk(stats, lecture);
+			ifslnk(stats, lecture, dir);
 			//implémenter les major/minor pour les device nodes
 		}
 	}
 	closedir(rep);
+	}
 }

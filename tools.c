@@ -38,7 +38,7 @@ unsigned int		*max(t_file *dir)
 	{
 		if (ft_strncmp(lecture->d_name, ".", 1) != 0)
 		{
-			stat(lecture->d_name, &stats);
+			stat(ft_strjoin(dir->path,lecture->d_name), &stats);
 			if (stats.st_size > max_all[0])
 				max_all[0] = stats.st_size;
 			if (stats.st_nlink > max_all[1])
