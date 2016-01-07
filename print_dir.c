@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:30:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/15 16:26:21 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/07 19:13:09 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void		print_ftl(t_fl *dir)
 			dir = dir->prev;
 		}
 	}
+	free(dir);
 }
 
 void		print_dir(t_file *dir)
@@ -60,4 +61,5 @@ void		print_dir(t_file *dir)
 			dir = dir->prev;
 		}
 	}
+	free(dir);
 }
