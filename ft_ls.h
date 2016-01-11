@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/07 17:52:21 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/01/11 17:16:05 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,6 @@ void					sort_same_dir(t_file *dir);
 t_fl					*init_file_tl(char **ftab);
 void					sort_ftl(t_fl *file);
 void					print_ftl(t_fl *dir);
+void					del_link(t_file *dir);
+void					ft_free_dir_lst(t_file *dir);
 #endif

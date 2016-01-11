@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/12 12:06:53 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/08 17:13:48 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/11 17:31:06 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 t_file		*lst_new(char *f_name, char *path)
 {
 	t_file		*new_link;
-	t_stat		tmp;
+	char		*s;
 
 	new_link = (t_file*)malloc(sizeof(t_file));
 	new_link->path = path;
 	new_link->f_name = f_name;
 	new_link->stat = malloc(sizeof(t_stat));
-	lstat(ft_strjoin(new_link->path, new_link->f_name), &tmp);
-	new_link->stat = &tmp;
-	new_link->date = tmp.st_mtime;
+	s = ft_strjoin(new_link->path, new_link->f_name);
+	lstat(s, new_link->stat);
+	free(s);
+	new_link->date = new_link->stat->st_mtime;
 	new_link->prev = NULL;
 	new_link->next = NULL;
 	if (S_ISDIR(new_link->stat->st_mode))
