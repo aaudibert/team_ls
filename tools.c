@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2015/12/07 17:59:36 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/11 17:39:11 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,32 @@ int					ft_intlen(int nbr)
 
 unsigned int		*max(t_file *dir)
 {
-	DIR				*rep;
-	struct dirent	*lecture;
+	DIR						*rep;
+	struct dirent			*lecture;
 	static unsigned int		*max_all = 0;
-	struct stat		stats;
+	t_stat					*stats;
+	char					*tmp;
 
 	max_all = malloc(200);
-	rep = opendir(ft_strjoin(dir->path, dir->f_name));
+	stats = malloc(sizeof(t_stat));
+	if ((rep = opendir(ft_strjoin(dir->path, dir->f_name))) != NULL)
+	{
 	while ((lecture = readdir(rep)) != NULL)
 	{
 		if (ft_strncmp(lecture->d_name, ".", 1) != 0)
 		{
-			stat(ft_strjoin(dir->path,lecture->d_name), &stats);
-			if (stats.st_size > max_all[0])
-				max_all[0] = stats.st_size;
-			if (stats.st_nlink > max_all[1])
-				max_all[1] = stats.st_nlink;
+			tmp = ft_strjoin(dir->path,lecture->d_name);
+			stat(ft_strjoin(dir->path,lecture->d_name), stats);
+			if (stats->st_size > max_all[0])
+				max_all[0] = stats->st_size;
+			if (stats->st_nlink > max_all[1])
+				max_all[1] = stats->st_nlink;
+			free(tmp);
 		}
 	}
 	closedir(rep);
+	free(stats);
+	}
 	return (max_all);
 }
 
