@@ -6,11 +6,12 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2016/01/12 14:41:34 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/12 20:25:46 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+#include <stdio.h>
 
 void	sort_date(t_file *dir)
 {
@@ -66,25 +67,33 @@ void	sort_dir(t_file *dir)
 {
 	char	*tmp;
 	t_stat	*st;
+	t_file	*start;
+	int		swapped;
 
+	start = dir;
 	if (g_flags[FLAG_T] == 1)
 		sort_date(dir);
 	else
 	{
-		while (dir->next)
+		swapped = 1;
+		while (swapped == 1)
 		{
-			if (ft_strcmp(dir->f_name, dir->next->f_name) > 0)
+			swapped = 0;	
+			dir = start;
+			while (dir->next)
 			{
-				st = dir->stat;
-				dir->stat = dir->next->stat;
-				dir->next->stat = st;
-				tmp = dir->f_name;
-				dir->f_name = dir->next->f_name;
-				dir->next->f_name = tmp;
-				dir = rewind_lst(dir);
-			}
-			else
+				if (ft_strcmp(dir->f_name, dir->next->f_name) > 0)
+				{
+					swapped = 1;
+					st = dir->stat;
+					dir->stat = dir->next->stat;
+					dir->next->stat = st;
+					tmp = dir->f_name;
+					dir->f_name = dir->next->f_name;
+					dir->next->f_name = tmp;
+				}
 				dir = dir->next;
+			}
 		}
 	}
 }
