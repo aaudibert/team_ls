@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2016/01/11 18:30:20 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/12 14:41:34 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,18 @@
 void	sort_date(t_file *dir)
 {
 	char	*tmp;
-	int		i;
-	int		j;
+	t_stat	*st;
 
 	while (dir->next)
 	{
-		if (dir->date < dir->next->date)
+		if (dir->stat->st_mtime < dir->next->stat->st_mtime)
 		{
+			st = dir->stat;
+			dir->stat = dir->next->stat;
+			dir->next->stat = st;
 			tmp = dir->f_name;
-			i = dir->izdir;
-			j = dir->date;
 			dir->f_name = dir->next->f_name;
-			dir->izdir = dir->next->izdir;
-			dir->date = dir->next->date;
 			dir->next->f_name = tmp;
-			dir->next->izdir = i;
-			dir->next->date = j;
 			dir = rewind_lst(dir);
 		}
 		else
@@ -69,7 +65,7 @@ void	sort_ftl(t_fl *dir)
 void	sort_dir(t_file *dir)
 {
 	char	*tmp;
-	int		i;
+	t_stat	*st;
 
 	if (g_flags[FLAG_T] == 1)
 		sort_date(dir);
@@ -79,12 +75,12 @@ void	sort_dir(t_file *dir)
 		{
 			if (ft_strcmp(dir->f_name, dir->next->f_name) > 0)
 			{
+				st = dir->stat;
+				dir->stat = dir->next->stat;
+				dir->next->stat = st;
 				tmp = dir->f_name;
-				i = dir->izdir;
 				dir->f_name = dir->next->f_name;
-				dir->izdir = dir->next->izdir;
 				dir->next->f_name = tmp;
-				dir->next->izdir = i;
 				dir = rewind_lst(dir);
 			}
 			else
