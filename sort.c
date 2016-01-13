@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2016/01/12 20:25:46 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/01/13 18:19:48 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,20 @@ void	sort_ftl(t_fl *dir)
 	print_ftl(dir);
 }
 
+int		swap_dir(t_file *dir)
+{
+	char	*tmp;
+	t_stat	*st;
+
+	st = dir->stat;
+	dir->stat = dir->next->stat;
+	dir->next->stat = st;
+	tmp = dir->f_name;
+	dir->f_name = dir->next->f_name;
+	dir->next->f_name = tmp;
+	return (1);
+}
+
 void	sort_dir(t_file *dir)
 {
 	char	*tmp;
@@ -78,20 +92,12 @@ void	sort_dir(t_file *dir)
 		swapped = 1;
 		while (swapped == 1)
 		{
-			swapped = 0;	
+			swapped = 0;
 			dir = start;
 			while (dir->next)
 			{
 				if (ft_strcmp(dir->f_name, dir->next->f_name) > 0)
-				{
-					swapped = 1;
-					st = dir->stat;
-					dir->stat = dir->next->stat;
-					dir->next->stat = st;
-					tmp = dir->f_name;
-					dir->f_name = dir->next->f_name;
-					dir->next->f_name = tmp;
-				}
+					swapped = swap_dir(dir);
 				dir = dir->next;
 			}
 		}
