@@ -6,32 +6,47 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2016/01/14 15:58:17 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/01/14 17:16:16 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include <stdio.h>
 
-void	sort_date(t_file *dir)
+int		swap_dir(t_file *dir)
 {
 	char	*tmp;
 	t_stat	*st;
 
-	while (dir->next)
+	st = dir->stat;
+	dir->stat = dir->next->stat;
+	dir->next->stat = st;
+	tmp = dir->f_name;
+	dir->f_name = dir->next->f_name;
+	dir->next->f_name = tmp;
+	return (1);
+}
+
+void	sort_date(t_file *dir)
+{
+	t_file	*start;
+	int		swapped;
+
+	start = dir;
+	swapped = 1;
+	while (swapped == 1)
 	{
-		if (dir->stat->st_mtime < dir->next->stat->st_mtime)
+		swapped = 0;
+		dir = start;
+		while (dir->next)
 		{
-			st = dir->stat;
-			dir->stat = dir->next->stat;
-			dir->next->stat = st;
-			tmp = dir->f_name;
-			dir->f_name = dir->next->f_name;
-			dir->next->f_name = tmp;
-			dir = rewind_lst(dir);
-		}
-		else
+			if (dir->stat->st_mtime < dir->next->stat->st_mtime)
+				swapped = swap_dir(dir);
+			else if (dir->stat->st_mtime == dir->next->stat->st_mtime &&
+					ft_strcmp(dir->f_name, dir->next->f_name) > 0)
+				swapped = swap_dir(dir);
 			dir = dir->next;
+		}
 	}
 }
 
@@ -61,20 +76,6 @@ void	sort_ftl(t_fl *dir)
 	free(tp);
 	free(tmp);
 	print_ftl(dir);
-}
-
-int		swap_dir(t_file *dir)
-{
-	char	*tmp;
-	t_stat	*st;
-
-	st = dir->stat;
-	dir->stat = dir->next->stat;
-	dir->next->stat = st;
-	tmp = dir->f_name;
-	dir->f_name = dir->next->f_name;
-	dir->next->f_name = tmp;
-	return (1);
 }
 
 void	sort_dir(t_file *dir)

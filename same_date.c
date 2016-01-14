@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 18:27:58 by psaint-j          #+#    #+#             */
-/*   Updated: 2016/01/12 15:17:19 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/14 17:19:36 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,4 @@ void		sort_same_date(t_fl *dir)
 	}
 	while (dir->prev != NULL)
 		dir = dir->prev;
-}
-
-void		sort_same_dir(t_file *dir)
-{
-	char		*tmp;
-	t_stat		*st;
-
-	while (dir->next)
-	{
-		if (dir->stat->st_mtime == dir->next->stat->st_mtime &&
-				ft_strcmp(dir->f_name, dir->next->f_name) > 0)
-		{
-			st = dir->stat;
-			dir->stat = dir->next->stat;
-			dir->next->stat = st;
-			tmp = dir->f_name;
-			dir->f_name = dir->next->f_name;
-			dir->next->f_name = tmp;
-			dir = rewind_lst(dir);
-		}
-		else
-			dir = dir->next;
-	}
 }
