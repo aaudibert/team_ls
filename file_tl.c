@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 16:14:33 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/12/14 17:20:56 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/01/14 19:08:04 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void		file_tl(char **ftab)
 		tmp = malloc(sizeof(t_fl));
 		tmp->f = ft_strdup(ftab[i]);
 		tmp->stat = malloc(sizeof(struct stat));
-		lstat(ftab[i], tmp->stat);
 		lstat(ftab[i], tmp->stat);
 		tmp->f = ft_strdup(ftab[i]);
 		tmp->prev = prm;

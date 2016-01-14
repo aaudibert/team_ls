@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/14 17:22:50 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/14 19:07:07 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ void					print_ftl(t_fl *dir);
 void					del_link(t_file *dir);
 void					ft_free_dir_lst(t_file *dir);
 int						swap_dir(t_file *dir);
+void					free_fl_dir(t_fl *dir);
 #endif
