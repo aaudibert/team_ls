@@ -6,7 +6,7 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/11 17:44:06 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/01/14 17:30:17 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void	ls_l(t_file *dir)
 		}
 		closedir(rep);
 		free(stats);
+		free(max_all);
 	}
 }
