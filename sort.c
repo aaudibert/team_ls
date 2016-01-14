@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2016/01/13 18:19:48 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/14 15:58:17 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ int		swap_dir(t_file *dir)
 
 void	sort_dir(t_file *dir)
 {
-	char	*tmp;
-	t_stat	*st;
 	t_file	*start;
 	int		swapped;
 
