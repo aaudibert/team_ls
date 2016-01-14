@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/11 17:39:11 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/01/14 17:32:20 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ unsigned int		*max(t_file *dir)
 		if (ft_strncmp(lecture->d_name, ".", 1) != 0)
 		{
 			tmp = ft_strjoin(dir->path,lecture->d_name);
-			stat(ft_strjoin(dir->path,lecture->d_name), stats);
+			stat(tmp, stats);
 			if (stats->st_size > max_all[0])
 				max_all[0] = stats->st_size;
 			if (stats->st_nlink > max_all[1])
@@ -111,4 +111,6 @@ void			date(struct stat stats)
 	ft_putstr(date_f[0]);
 	ft_putchar(':');
 	ft_putstr_space(date_f[1], 1);
+	free(date);
+	free(date_f);
 }
