@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:30:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/11 18:28:02 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/18 19:07:43 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		print_dir(t_file *dir)
 {
 	if (g_flags[FLAG_L] == 1)
 		ls_l(dir);
-	else if (g_flags[FLAG_R] != 1)
+	else
 	{
 		while (dir != NULL)
 		{
@@ -49,7 +49,7 @@ void		print_dir(t_file *dir)
 			dir = dir->next;
 		}
 	}
-	else
+/*	else
 	{
 		while (dir->next != NULL)
 			dir = dir->next;
@@ -59,5 +59,5 @@ void		print_dir(t_file *dir)
 				ft_putendl(dir->f_name);
 			dir = dir->prev;
 		}
-	}
+	}*/
 }

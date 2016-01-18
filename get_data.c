@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 15:29:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/11 17:08:10 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/18 18:30:27 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 void		data_proc(t_file *dir)
 {
-	sort_dir(dir);
+	if (g_flags[FLAG_R] == 1)
+		rsort_dir(dir);
+	else
+		sort_dir(dir);
 	if (g_flags[FLAG_RR] != 1)
 		print_dir(dir);
-	else if (g_flags[FLAG_RR] == 1 && g_flags[FLAG_R] == 1)
-	{
-		while (dir->next != NULL)
-			dir = dir->next;
-		ft_rrecurs(dir);
-	}
 	else
 		ft_recurs(dir);
 	ft_free_dir_lst(dir);
