@@ -6,7 +6,7 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/14 17:30:17 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/01/25 18:10:54 by yalaouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,19 @@ void	ls_l(t_file *dir)
 					display_link_right(max_all[1], *stats);
 					ft_putchar(' ');
 					affect(*stats);
-					display_size_right(max_all[0], *stats);
+					if (S_ISCHR(stats->st_mode) || S_ISBLK(stats->st_mode))
+					{
+						ft_putnbr(major(stats->st_rdev));
+						ft_putstr(", ");
+						ft_putnbr(minor(stats->st_rdev));
+						ft_putchar(' ');
+					}
+					else
+						display_size_right(max_all[0], *stats);
 					date(*stats);
 					ifslnk(*stats, lecture, dir);
 				}
 				free(tmp);
-				//implémenter les major/minor pour les device nodes
 			}
 		}
 		closedir(rep);
