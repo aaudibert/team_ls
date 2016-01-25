@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/14 16:37:36 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/01/25 19:42:22 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,36 +32,26 @@ void	display_date_right(char **tab)
 
 void	total_block(t_file *dir)
 {
-	DIR				*rep;
-	struct dirent	*lecture;
 	int				total;
-	struct stat		stats;
-	char			*tmp;
 	int				i;
 
 	total = 0;
 	i = 0;
-	if ((rep = opendir(ft_strjoin(dir->path, dir->f_name))) != NULL)
+	while (dir != NULL)
 	{
-		while ((lecture = readdir(rep)) != NULL)
+		if (opt_a(dir))
 		{
-			if (ft_strncmp(lecture->d_name, ".", 1) != 0)
-			{
-				tmp = ft_strjoin(dir->path,lecture->d_name);
-				if (lstat(ft_strjoin(dir->path,lecture->d_name), &stats) != -1)
-					total = total + stats.st_blocks;
-				free(tmp);
-				i++;
-			}
+			total = total + dir->stat->st_blocks;
+			i++;
 		}
-		closedir(rep);
-		if (i != 0)
-		{
-			ft_putstr_space("total", 1);
-			ft_putnbr(total);
-		}
-		ft_putchar('\n');
+		dir = dir->next;
 	}
+	if (i != 0)
+	{
+		ft_putstr_space("total", 1);
+		ft_putnbr(total);
+	}
+	ft_putchar('\n');
 }
 
 void	affect(struct stat stats)
@@ -79,18 +69,19 @@ void	affect(struct stat stats)
 		ft_putstr_space(gid->gr_name, 2);
 }
 
-void	ifslnk(struct stat stats, struct dirent *lecture, t_file *dir)
+void	ifslnk(struct stat stats, t_file *dir)
 {
 	char		*link;
 
 	if (S_ISLNK(stats.st_mode))
 	{
 		link = malloc(stats.st_size + 1);
-		ft_putstr_space(lecture->d_name, 1);
+		ft_putstr_space(dir->f_name, 1);
 		ft_putstr_space("->", 1);
-		if (readlink(ft_strjoin(dir->path,lecture->d_name), link, stats.st_mode + 1) != -1)
+		if (readlink(ft_strjoin(dir->path, dir->f_name), link,
+					stats.st_mode + 1) != -1)
 			ft_putendl(link);
 	}
 	else
-		ft_putendl(lecture->d_name);
+		ft_putendl(dir->f_name);
 }

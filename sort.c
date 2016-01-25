@@ -6,11 +6,39 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2016/01/18 18:07:38 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/25 19:33:16 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+void	sort_ftl(t_fl *dir)
+{
+	char	*tmp;
+	t_stat	*tp;
+
+	while (dir->next)
+	{
+		if (dir->stat->st_mtime < dir->next->stat->st_mtime)
+		{
+			tmp = dir->f;
+			tp = dir->stat;
+			dir->f = dir->next->f;
+			dir->stat = dir->next->stat;
+			dir->next->f = tmp;
+			dir->next->stat = tp;
+			while (dir->prev != NULL)
+				dir = dir->prev;
+		}
+		else
+			dir = dir->next;
+	}
+	while (dir->prev != NULL)
+		dir = dir->prev;
+	free(tp);
+	free(tmp);
+	print_ftl(dir);
+}
 
 int		swap_dir(t_file *dir)
 {
@@ -47,34 +75,6 @@ void	sort_date(t_file *dir)
 			dir = dir->next;
 		}
 	}
-}
-
-void	sort_ftl(t_fl *dir)
-{
-	char	*tmp;
-	t_stat	*tp;
-
-	while (dir->next)
-	{
-		if (dir->stat->st_mtime < dir->next->stat->st_mtime)
-		{
-			tmp = dir->f;
-			tp = dir->stat;
-			dir->f = dir->next->f;
-			dir->stat = dir->next->stat;
-			dir->next->f = tmp;
-			dir->next->stat = tp;
-			while (dir->prev != NULL)
-				dir = dir->prev;
-		}
-		else
-			dir = dir->next;
-	}
-	while (dir->prev != NULL)
-		dir = dir->prev;
-	free(tp);
-	free(tmp);
-	print_ftl(dir);
 }
 
 void	sort_dir(t_file *dir)

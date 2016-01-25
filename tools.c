@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/14 17:32:20 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/01/25 19:39:12 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int					ft_intlen(int nbr)
 {
 	int	len;
-	
+
 	len = 0;
 	while (len > 9)
 	{
@@ -27,40 +27,28 @@ int					ft_intlen(int nbr)
 
 unsigned int		*max(t_file *dir)
 {
-	DIR						*rep;
-	struct dirent			*lecture;
-	static unsigned int		*max_all = 0;
-	t_stat					*stats;
-	char					*tmp;
+	static unsigned int *max_all = 0;
 
 	max_all = malloc(200);
-	stats = malloc(sizeof(t_stat));
-	if ((rep = opendir(ft_strjoin(dir->path, dir->f_name))) != NULL)
+	while (dir != NULL)
 	{
-	while ((lecture = readdir(rep)) != NULL)
-	{
-		if (ft_strncmp(lecture->d_name, ".", 1) != 0)
+		if (opt_a(dir))
 		{
-			tmp = ft_strjoin(dir->path,lecture->d_name);
-			stat(tmp, stats);
-			if (stats->st_size > max_all[0])
-				max_all[0] = stats->st_size;
-			if (stats->st_nlink > max_all[1])
-				max_all[1] = stats->st_nlink;
-			free(tmp);
+			if (dir->stat->st_size > max_all[0])
+				max_all[0] = dir->stat->st_size;
+			if (dir->stat->st_nlink > max_all[1])
+				max_all[1] = dir->stat->st_nlink;
 		}
-	}
-	closedir(rep);
-	free(stats);
+		dir = dir->next;
 	}
 	return (max_all);
 }
 
-void			display_size_right(int max_size, struct stat stats)
+void				display_size_right(int max_size, struct stat stats)
 {
-	int		max_length;
-	int		actual_length;
-	int		space_nbr;
+	int max_length;
+	int actual_length;
+	int space_nbr;
 
 	max_length = ft_intlen(max_size);
 	actual_length = ft_intlen(stats.st_size);
@@ -75,11 +63,11 @@ void			display_size_right(int max_size, struct stat stats)
 	}
 }
 
-void			display_link_right(int max_link, struct stat stats)
+void				display_link_right(int max_link, struct stat stats)
 {
-	int		max_length;
-	int		actual_length;
-	int		space_nbr;
+	int max_length;
+	int actual_length;
+	int space_nbr;
 
 	max_length = ft_intlen(max_link);
 	actual_length = ft_intlen(stats.st_nlink);
@@ -97,10 +85,10 @@ void			display_link_right(int max_link, struct stat stats)
 	}
 }
 
-void			date(struct stat stats)
+void				date(struct stat stats)
 {
-	char	**date;
-	char	**date_f;
+	char **date;
+	char **date_f;
 
 	date = ft_strsplit(ctime(&stats.st_mtime), ' ');
 	ft_putchar(' ');

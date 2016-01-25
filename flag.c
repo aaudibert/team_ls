@@ -6,53 +6,42 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/25 18:10:54 by yalaouf          ###   ########.fr       */
+/*   Updated: 2016/01/25 19:27:23 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
+void	print_ischr(t_file *dir)
+{
+	ft_putnbr(major(dir->stat->st_rdev));
+	ft_putstr(", ");
+	ft_putnbr(minor(dir->stat->st_rdev));
+	ft_putchar(' ');
+}
+
 void	ls_l(t_file *dir)
 {
-	struct dirent	*lecture;
-	DIR				*rep;
-	t_stat			*stats;
 	unsigned int	*max_all;
-	char			*tmp;
 
 	total_block(dir);
 	max_all = max(dir);
-	stats = malloc(sizeof(t_stat));
-	if ((rep = opendir(ft_strjoin(dir->path, dir->f_name))) != NULL)
+	while (dir != NULL)
 	{
-		while ((lecture = readdir(rep)) != NULL)
+		if (opt_a(dir))
 		{
-			if (ft_strncmp(lecture->d_name, ".", 1) != 0)
-			{
-				tmp = ft_strjoin(dir->path,lecture->d_name);
-				if (lstat(tmp, stats) != -1)
-				{
-					letters(*stats);
-					display_link_right(max_all[1], *stats);
-					ft_putchar(' ');
-					affect(*stats);
-					if (S_ISCHR(stats->st_mode) || S_ISBLK(stats->st_mode))
-					{
-						ft_putnbr(major(stats->st_rdev));
-						ft_putstr(", ");
-						ft_putnbr(minor(stats->st_rdev));
-						ft_putchar(' ');
-					}
-					else
-						display_size_right(max_all[0], *stats);
-					date(*stats);
-					ifslnk(*stats, lecture, dir);
-				}
-				free(tmp);
-			}
+			letters(*(dir->stat));
+			display_link_right(max_all[1], *(dir->stat));
+			ft_putchar(' ');
+			affect(*(dir->stat));
+			if (S_ISCHR(dir->stat->st_mode) || S_ISBLK(dir->stat->st_mode))
+				print_ischr(dir);
+			else
+				display_size_right(max_all[0], *(dir->stat));
+			date(*(dir->stat));
+			ifslnk(*(dir->stat), dir);
 		}
-		closedir(rep);
-		free(stats);
-		free(max_all);
+		dir = dir->next;
 	}
+	free(max_all);
 }
