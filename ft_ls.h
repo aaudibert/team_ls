@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/26 18:48:11 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/26 19:10:14 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,5 @@ int						swap_dir(t_file *dir);
 void					free_fl_dir(t_fl *dir);
 void					rsort_dir(t_file *dir);
 void					rsort_date(t_file *dir);
-void					file_l(char **file);
+t_file					*file_l(char **file);
 #endif

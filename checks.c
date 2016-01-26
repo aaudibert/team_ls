@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/26 18:02:16 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/26 19:10:52 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void		print_file(char **file)
 char		**checks(char **paths, int i)
 {
 	t_prm	s;
+	t_file	*dir;
 
 	count_params(paths, &s, i);
 	check_params(paths, &s, i);
@@ -106,13 +107,22 @@ char		**checks(char **paths, int i)
 	}
 	if (s.file)
 	{
-		if (s.file[1] && (g_flags[FLAG_T] || g_flags[FLAG_L]))
+		dir = file_l(s.file);
+		if (g_flags[FLAG_R] == 1)
+			rsort_dir(dir);
+		else
+			sort_dir(dir);
+		if (g_flags[FLAG_L] == 1)
+			ls_l(dir, 1);
+		else
+			print_dir(dir);
+		/*if (s.file[1] && (g_flags[FLAG_T] || g_flags[FLAG_L]))
 			file_tl(s.file);
 		else
 		{
 			sort_params(s.file);
 			print_file(s.file);
-		}
+		}*/
 	}
 	if (s.ddir && (s.file || s.error))
 		ft_putchar('\n');
