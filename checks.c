@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/12/15 12:44:45 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/26 18:02:16 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,10 @@ void		print_file(char **file)
 	}
 	else
 	{
-		while (file[i])
+		while (file[i++])
 		{
 			ft_putstr(file[i]);
 			ft_putchar(' ');
-			i++;
 		}
 		ft_putchar('\n');
 	}

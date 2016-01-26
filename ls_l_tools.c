@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/25 19:42:22 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/26 13:30:51 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	display_date_right(char **tab)
 
 void	total_block(t_file *dir)
 {
-	int				total;
-	int				i;
+	int total;
+	int i;
 
 	total = 0;
 	i = 0;
@@ -71,7 +71,7 @@ void	affect(struct stat stats)
 
 void	ifslnk(struct stat stats, t_file *dir)
 {
-	char		*link;
+	char *link;
 
 	if (S_ISLNK(stats.st_mode))
 	{

@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 16:14:33 by psaint-j          #+#    #+#             */
-/*   Updated: 2016/01/14 19:08:04 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/26 18:01:54 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ void		file_tl(char **ftab)
 	prm->next = NULL;
 	while (prm->prev != NULL)
 		prm = prm->prev;
-	sort_ftl(prm);
+	if (g_flags[FLAG_L] == 1)
+		file_l(ftab);
+	else
+		sort_ftl(prm);
 }

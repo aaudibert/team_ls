@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 15:29:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/18 18:30:27 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/26 13:36:50 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		get_data(char *path)
 	else
 	{
 		perror("");
+		ft_putchar('\n');
 		return ;
 	}
 	while (dir->next->next != NULL)

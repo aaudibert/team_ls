@@ -6,7 +6,7 @@
 #    By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/05 16:18:14 by aaudiber          #+#    #+#              #
-#    Updated: 2016/01/18 18:13:16 by aaudiber         ###   ########.fr        #
+#    Updated: 2016/01/26 17:34:46 by aaudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC = ft_ls.c\
 	  same_date.c\
 	  ft_free_dir_lst.c\
 	  rsort.c\
+	  file_l.c\
 
 OBJ = $(SRC:.c:.o)
 

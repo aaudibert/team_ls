@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/25 19:20:54 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/26 18:48:11 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char					**checks(char **paths, int f);
 void					sort_params(char **tab);
 void					sort_dir(t_file *dir);
 void					sort_date(t_file *dir);
-void					ls_l(t_file *dir);
+void					ls_l(t_file *dir, int i);
 void					permissions_proprio(struct stat stats);
 void					permissions_locataire(struct stat stats);
 void					permissions_babacar(struct stat stats);
@@ -100,4 +100,5 @@ int						swap_dir(t_file *dir);
 void					free_fl_dir(t_fl *dir);
 void					rsort_dir(t_file *dir);
 void					rsort_date(t_file *dir);
+void					file_l(char **file);
 #endif

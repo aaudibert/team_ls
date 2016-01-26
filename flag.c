@@ -6,7 +6,7 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/25 19:27:23 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/26 18:49:58 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ void	print_ischr(t_file *dir)
 	ft_putchar(' ');
 }
 
-void	ls_l(t_file *dir)
+void	ls_l(t_file *dir, int i)
 {
 	unsigned int	*max_all;
 
-	total_block(dir);
+	if (i == 0)
+		total_block(dir);
 	max_all = max(dir);
 	while (dir != NULL)
 	{
