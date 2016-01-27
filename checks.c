@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/27 18:19:25 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/27 20:19:27 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ t_prm		*count_params(char **paths, t_prm *s, int i)
 		if (dir)
 			s->d++;
 		if (v != 0)
-		{
 			s->e++;
-		}
 		else if ((t.st_mode & S_IFREG))
 			s->f++;
 		i++;
@@ -82,10 +80,28 @@ void		print_file(char **file)
 	ft_free_dir_lst(dir);
 }
 
+char		**get_dir(char **a)
+{
+	int		i;
+	char	**ret;
+
+	i = 0;
+	ret = (char **)malloc(sizeof(char *) * ft_arr_size(a) + 1);
+	ret[ft_arr_size(a)] = NULL;
+	while (a[i])
+	{
+		ret[i] = ft_strdup(a[i]);
+		i++;
+	}
+	return (ret);
+}
+
 char		**checks(char **paths, int i)
 {
 	t_prm	s;
+	char	**ret;
 
+	ret = NULL;
 	count_params(paths, &s, i);
 	check_params(paths, &s, i);
 	if (s.error)
@@ -98,6 +114,10 @@ char		**checks(char **paths, int i)
 	if (s.ddir && (s.file || s.error))
 		ft_putchar('\n');
 	if (s.ddir)
-		sort_params(s.ddir);
-	return (s.ddir);
+	{
+		ret = get_dir(s.ddir);
+		sort_params(ret);
+	}
+	del_struct(s);
+	return (ret);
 }
