@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/26 13:30:51 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/27 16:48:19 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	affect(struct stat stats)
 		ft_putstr_space(gid->gr_name, 2);
 }
 
-void	ifslnk(struct stat stats, t_file *dir)
+void	ifslnk(struct stat stats, t_file *dir, int file)
 {
 	char *link;
 
@@ -81,6 +81,11 @@ void	ifslnk(struct stat stats, t_file *dir)
 		if (readlink(ft_strjoin(dir->path, dir->f_name), link,
 					stats.st_mode + 1) != -1)
 			ft_putendl(link);
+	}
+	else if (file == 1 && ft_strcmp("./", dir->path) != 0)
+	{
+		ft_putstr(dir->path);
+		ft_putendl(dir->f_name);
 	}
 	else
 		ft_putendl(dir->f_name);

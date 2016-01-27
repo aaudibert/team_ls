@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/26 19:10:14 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/27 16:46:29 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,6 @@ typedef struct			s_file
 	struct s_file		*prev;
 }						t_file;
 
-typedef struct			s_fl
-{
-	char				*f;
-	t_stat				*stat;
-	struct s_fl			*next;
-	struct s_fl			*prev;
-}						t_fl;
-
 typedef struct			s_prm
 {
 	int					d;
@@ -66,7 +58,7 @@ void					get_data(char *path);
 void					lst_push(t_file *elem, t_file **lst);
 t_file					*lst_new(char *f_name, char *path);
 t_file					*rewind_lst(t_file *lst);
-void					print_dir(t_file *dir);
+void					print_dir(t_file *dir, int i);
 int						opt_a(t_file *dir);
 void					ft_recurs(t_file *dir);
 t_prm					*check_params(char **paths, t_prm *s, int i);
@@ -87,17 +79,11 @@ void					ft_putstr_space(char *str, int nbr_sp);
 void					display_date_right(char **tab);
 void					total_block(t_file *dir);
 void					affect(struct stat stats);
-void					ifslnk(struct stat stats, t_file *dir);
+void					ifslnk(struct stat stats, t_file *dir, int i);
 void					date(struct stat stats);
-void					file_tl(char **file);
-void					sort_same_date(t_fl *dir);
-t_fl					*init_file_tl(char **ftab);
-void					sort_ftl(t_fl *file);
-void					print_ftl(t_fl *dir);
 void					del_link(t_file *dir);
 void					ft_free_dir_lst(t_file *dir);
 int						swap_dir(t_file *dir);
-void					free_fl_dir(t_fl *dir);
 void					rsort_dir(t_file *dir);
 void					rsort_date(t_file *dir);
 t_file					*file_l(char **file);

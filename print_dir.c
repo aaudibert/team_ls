@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:30:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/26 18:47:28 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/27 16:41:30 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,7 @@
 
 int *g_flags;
 
-void		print_ftl(t_fl *dir)
-{
-	if (g_flags[FLAG_R] != 1)
-	{
-		while (dir != NULL)
-		{
-			ft_putendl(dir->f);
-			dir = dir->next;
-		}
-	}
-	else
-	{
-		while (dir->next != NULL)
-			dir = dir->next;
-		while (dir != NULL)
-		{
-			ft_putendl(dir->f);
-			dir = dir->prev;
-		}
-	}
-}
-
-void		print_dir(t_file *dir)
+void		print_dir(t_file *dir, int file)
 {
 	if (g_flags[FLAG_L] == 1)
 		ls_l(dir, 0);
@@ -44,7 +22,14 @@ void		print_dir(t_file *dir)
 	{
 		while (dir != NULL)
 		{
-			if (opt_a(dir))
+			if (opt_a(dir) && file == 0)
+				ft_putendl(dir->f_name);
+			else if (file == 1 && ft_strcmp("./", dir->path) != 0)
+			{
+				ft_putstr(dir->path);
+				ft_putendl(dir->f_name);
+			}
+			else
 				ft_putendl(dir->f_name);
 			dir = dir->next;
 		}

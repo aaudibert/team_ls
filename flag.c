@@ -6,7 +6,7 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/26 18:49:58 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/27 16:46:19 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ls_l(t_file *dir, int i)
 			else
 				display_size_right(max_all[0], *(dir->stat));
 			date(*(dir->stat));
-			ifslnk(*(dir->stat), dir);
+			ifslnk(*(dir->stat), dir, i);
 		}
 		dir = dir->next;
 	}

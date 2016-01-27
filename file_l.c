@@ -6,18 +6,39 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 17:34:25 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/26 19:13:37 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/27 16:19:01 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+char		*get_file(char *s)
+{
+	int		i;
+	int		j;
+	char	*ret;
+
+	i = ft_strlen(s);
+	j = 0;
+	while (s[i] != '/' && i >= 0)
+		i--;
+	i++;
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) - i + 1));
+	while (s[i] != '\0')
+	{
+		ret[j] = s[i];
+		i++;
+		j++;
+	}
+	ret[j] = '\0';
+	return (ret);
+}
 
 char		*get_path(char *s)
 {
 	int		i;
 	int		j;
 	char	*ret;
-;
 
 	i = ft_strlen(s);
 	j = 0;
@@ -48,7 +69,7 @@ t_file		*file_l(char **file)
 	dir = lst_new(NULL, ".");
 	while (file[i])
 	{
-		lst_push(lst_new(file[i], get_path(file[i])), &dir);
+		lst_push(lst_new(get_file(file[i]), get_path(file[i])), &dir);
 		i++;
 	}
 	while (dir->next->next != NULL)

@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:27:26 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/25 16:01:13 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/27 16:24:56 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		rec_print(t_file *dir)
 
 void		ft_recurs(t_file *dir)
 {
-	print_dir(dir);
+	print_dir(dir, 0);
 	ft_putchar('\n');
 	while (dir != NULL)
 	{
@@ -37,11 +37,8 @@ void		ft_recurs(t_file *dir)
 			dir = dir->next;
 		if (dir)
 		{
-			if (opt_a(dir))
-			{
-				if (S_ISDIR(dir->stat->st_mode))
+			if (opt_a(dir) && S_ISDIR(dir->stat->st_mode))
 					rec_print(dir);
-			}
 			dir = dir->next;
 		}
 	}
