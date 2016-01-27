@@ -6,7 +6,7 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/27 16:46:19 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/27 18:03:03 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ls_l(t_file *dir, int i)
 	max_all = max(dir);
 	while (dir != NULL)
 	{
-		if (opt_a(dir))
+		if (opt_a(dir) || i == 1)
 		{
 			letters(*(dir->stat));
 			display_link_right(max_all[1], *(dir->stat));
@@ -40,7 +40,7 @@ void	ls_l(t_file *dir, int i)
 			else
 				display_size_right(max_all[0], *(dir->stat));
 			date(*(dir->stat));
-			ifslnk(*(dir->stat), dir, i);
+			ifslnk(*(dir->stat), dir);
 		}
 		dir = dir->next;
 	}

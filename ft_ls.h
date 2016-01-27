@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/27 16:46:29 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/27 17:06:35 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct			s_prm
 int						parser(int ac, char **av);
 void					get_data(char *path);
 void					lst_push(t_file *elem, t_file **lst);
-t_file					*lst_new(char *f_name, char *path);
+t_file					*lst_new(char *f_name, char *path, int i);
 t_file					*rewind_lst(t_file *lst);
 void					print_dir(t_file *dir, int i);
 int						opt_a(t_file *dir);
@@ -79,7 +79,7 @@ void					ft_putstr_space(char *str, int nbr_sp);
 void					display_date_right(char **tab);
 void					total_block(t_file *dir);
 void					affect(struct stat stats);
-void					ifslnk(struct stat stats, t_file *dir, int i);
+void					ifslnk(struct stat stats, t_file *dir);
 void					date(struct stat stats);
 void					del_link(t_file *dir);
 void					ft_free_dir_lst(t_file *dir);

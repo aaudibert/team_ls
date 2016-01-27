@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/27 16:29:56 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/27 18:19:25 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void		print_file(char **file)
 		ls_l(dir, 1);
 	else
 		print_dir(dir, 1);
+	ft_free_dir_lst(dir);
 }
 
 char		**checks(char **paths, int i)
