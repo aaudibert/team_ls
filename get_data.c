@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 15:29:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/27 19:21:46 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/28 17:29:33 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@ void		data_proc(t_file *dir)
 	ft_free_dir_lst(dir);
 }
 
+void		ft_error(char *path)
+{
+	ft_putstr("ls: ");
+	ft_putstr(path);
+	ft_putstr(": ");
+	perror("");
+	ft_putchar('\n');
+}
+
 void		get_data(char *path)
 {
 	DIR			*rep;
@@ -41,8 +50,7 @@ void		get_data(char *path)
 	}
 	else
 	{
-		perror("");
-		ft_putchar('\n');
+		ft_error(path);
 		return ;
 	}
 	while (dir->next->next != NULL)

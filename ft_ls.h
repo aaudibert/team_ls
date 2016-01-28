@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/27 20:22:09 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/28 15:16:08 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ typedef struct			s_prm
 }						t_prm;
 
 int						parser(int ac, char **av);
+t_prm					*check_params(char **paths, t_prm *s, int i);
+char					**checks(char **paths, int f);
+t_file					*file_l(char **file);
 void					get_data(char *path);
 void					lst_push(t_file *elem, t_file **lst);
 t_file					*lst_new(char *f_name, char *path, int i);
@@ -61,11 +64,12 @@ t_file					*rewind_lst(t_file *lst);
 void					print_dir(t_file *dir, int i);
 int						opt_a(t_file *dir);
 void					ft_recurs(t_file *dir);
-t_prm					*check_params(char **paths, t_prm *s, int i);
-char					**checks(char **paths, int f);
 void					sort_params(char **tab);
 void					sort_dir(t_file *dir);
 void					sort_date(t_file *dir);
+void					rsort_dir(t_file *dir);
+void					rsort_date(t_file *dir);
+int						swap_dir(t_file *dir);
 void					ls_l(t_file *dir, int i);
 void					permissions_proprio(struct stat stats);
 void					permissions_locataire(struct stat stats);
@@ -83,9 +87,5 @@ void					ifslnk(struct stat stats, t_file *dir);
 void					date(struct stat stats);
 void					del_link(t_file *dir);
 void					ft_free_dir_lst(t_file *dir);
-int						swap_dir(t_file *dir);
-void					rsort_dir(t_file *dir);
-void					rsort_date(t_file *dir);
-t_file					*file_l(char **file);
 void					del_struct(t_prm s);
 #endif
