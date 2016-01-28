@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/28 17:58:25 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/28 20:48:24 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int						parser(int ac, char **av);
 t_prm					*check_params(char **paths, t_prm *s, int i);
 char					**checks(char **paths, int f);
 t_file					*file_l(char **file);
+char					*get_path(char *s);
+char					*get_file(char *s);
 void					get_data(char *path);
 void					lst_push(t_file *elem, t_file **lst);
 t_file					*lst_new(char *f_name, char *path, int i);
