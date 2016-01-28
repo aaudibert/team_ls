@@ -6,11 +6,11 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 15:29:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/28 17:29:33 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/28 17:58:00 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 void		data_proc(t_file *dir)
 {

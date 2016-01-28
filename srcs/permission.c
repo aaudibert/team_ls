@@ -6,33 +6,28 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:47 by yalaouf           #+#    #+#             */
-/*   Updated: 2015/11/25 19:15:28 by yalaouf          ###   ########.fr       */
+/*   Updated: 2016/01/28 17:48:27 by yalaouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 void	nationalite(struct stat stats)
 {
-	if (stats.st_mode & S_ISVTX)
+	if (S_ISDIR(stats.st_mode))
+		ft_putchar('d');
+	else if (S_ISLNK(stats.st_mode))
+		ft_putchar('l');
+	else if (S_ISFIFO(stats.st_mode))
+		ft_putchar('p');
+	else if (S_ISBLK(stats.st_mode))
+		ft_putchar('b');
+	else if (S_ISSOCK(stats.st_mode))
 		ft_putchar('s');
-	else
-	{
-		if (S_ISDIR(stats.st_mode))
-			ft_putchar('d');
-		else if (S_ISLNK(stats.st_mode))
-			ft_putchar('l');
-		else if (S_ISFIFO(stats.st_mode))
-			ft_putchar('p');
-		else if (S_ISBLK(stats.st_mode))
-			ft_putchar('b');
-		else if (S_ISSOCK(stats.st_mode))
-			ft_putchar('s');
-		else if (S_ISCHR(stats.st_mode))
-			ft_putchar('c');
-		else if (S_ISREG(stats.st_mode))
-			ft_putchar('-');
-	}
+	else if (S_ISCHR(stats.st_mode))
+		ft_putchar('c');
+	else if (S_ISREG(stats.st_mode))
+		ft_putchar('-');
 }
 
 void	permissions_proprio(struct stat stats)

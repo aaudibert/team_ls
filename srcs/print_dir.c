@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_push.c                                         :+:      :+:    :+:   */
+/*   print_dir.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/12 14:25:02 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/24 14:11:42 by psaint-j         ###   ########.fr       */
+/*   Created: 2015/11/06 17:30:14 by aaudiber          #+#    #+#             */
+/*   Updated: 2016/01/28 17:48:37 by yalaouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
-void		lst_push(t_file *elem, t_file **lst)
+int *g_flags;
+
+void		print_dir(t_file *dir, int file)
 {
-	elem->prev = NULL;
-	elem->next = *lst;
-	if (*lst)
-		(*lst)->prev = elem;
-	*lst = elem;
+	if (g_flags[FLAG_L] == 1 && file == 0)
+		ls_l(dir, 0);
+	else
+	{
+		while (dir != NULL)
+		{
+			if (opt_a(dir) || file == 1)
+				ft_putendl(dir->f_name);
+			dir = dir->next;
+		}
+	}
 }

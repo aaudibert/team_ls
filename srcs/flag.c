@@ -6,11 +6,11 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/27 18:03:03 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/28 17:46:02 by yalaouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 void	print_ischr(t_file *dir)
 {

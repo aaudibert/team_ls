@@ -6,11 +6,11 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/25 19:39:12 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/28 17:49:51 by yalaouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 int					ft_intlen(int nbr)
 {
