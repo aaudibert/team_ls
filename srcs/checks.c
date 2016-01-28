@@ -6,11 +6,11 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/27 20:19:27 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/28 17:45:37 by yalaouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 t_prm		*count_params(char **paths, t_prm *s, int i)
 {

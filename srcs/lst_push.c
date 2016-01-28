@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rewind_lst.c                                       :+:      :+:    :+:   */
+/*   lst_push.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/12 19:27:15 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/24 15:34:04 by aaudiber         ###   ########.fr       */
+/*   Created: 2014/12/12 14:25:02 by aaudiber          #+#    #+#             */
+/*   Updated: 2016/01/28 17:47:28 by yalaouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
-t_file		*rewind_lst(t_file *lst)
+void		lst_push(t_file *elem, t_file **lst)
 {
-	while (lst->prev != NULL)
-		lst = lst->prev;
-	return (lst);
+	elem->prev = NULL;
+	elem->next = *lst;
+	if (*lst)
+		(*lst)->prev = elem;
+	*lst = elem;
 }

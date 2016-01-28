@@ -6,11 +6,11 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/12 12:06:53 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/27 18:33:03 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/28 17:47:18 by yalaouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 t_file		*lst_new(char *f_name, char *path, int file)
 {

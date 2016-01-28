@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_dir.c                                        :+:      :+:    :+:   */
+/*   opt_a.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/06 17:30:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/27 17:59:33 by aaudiber         ###   ########.fr       */
+/*   Created: 2015/11/12 20:31:05 by aaudiber          #+#    #+#             */
+/*   Updated: 2016/01/28 17:47:46 by yalaouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
-int *g_flags;
+int		*g_flags;
 
-void		print_dir(t_file *dir, int file)
+int		opt_a(t_file *dir)
 {
-	if (g_flags[FLAG_L] == 1 && file == 0)
-		ls_l(dir, 0);
-	else
-	{
-		while (dir != NULL)
-		{
-			if (opt_a(dir) || file == 1)
-				ft_putendl(dir->f_name);
-			dir = dir->next;
-		}
-	}
+	if (g_flags[FLAG_A] == 1 && dir->f_name[0] == '.')
+		return (1);
+	else if (dir->f_name[0] != '.')
+		return (1);
+	return (0);
 }

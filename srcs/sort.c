@@ -6,11 +6,11 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2016/01/27 16:21:14 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/28 17:49:41 by yalaouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 int		swap_dir(t_file *dir)
 {

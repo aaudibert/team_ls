@@ -6,11 +6,11 @@
 /*   By: psaint-j <psaint-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:05:49 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/12/15 12:42:20 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/28 17:45:25 by yalaouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 void		prm_new(t_prm *s)
 {

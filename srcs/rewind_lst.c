@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   opt_a.c                                            :+:      :+:    :+:   */
+/*   rewind_lst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/12 20:31:05 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/11/12 20:32:56 by aaudiber         ###   ########.fr       */
+/*   Created: 2015/11/12 19:27:15 by aaudiber          #+#    #+#             */
+/*   Updated: 2016/01/28 17:48:54 by yalaouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
-int		*g_flags;
-
-int		opt_a(t_file *dir)
+t_file		*rewind_lst(t_file *lst)
 {
-	if (g_flags[FLAG_A] == 1 && dir->f_name[0] == '.')
-		return (1);
-	else if (dir->f_name[0] != '.')
-		return (1);
-	return (0);
+	while (lst->prev != NULL)
+		lst = lst->prev;
+	return (lst);
 }

@@ -6,11 +6,11 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/27 17:12:30 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/01/28 17:47:08 by yalaouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 void	ft_putstr_space(char *str, int nbr_sp)
 {
