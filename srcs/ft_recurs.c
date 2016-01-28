@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:27:26 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/28 17:46:42 by yalaouf          ###   ########.fr       */
+/*   Updated: 2016/01/28 20:30:06 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		rec_print(t_file *dir)
 	s = ft_strjoin(dir->path, dir->f_name);
 	s = ft_strjoin(s, "/");
 	ft_putstr(s);
-	ft_putendl(" :");
+	ft_putendl(":");
 	get_data(s);
 	free(s);
 }

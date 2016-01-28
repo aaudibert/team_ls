@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:15:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/28 17:46:30 by yalaouf          ###   ########.fr       */
+/*   Updated: 2016/01/28 20:28:59 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,34 @@ int		*g_flags;
 
 void		one_path(char *path)
 {
+	char *s;
+
+	s = ft_strjoin(path, "/");
 	if (path[ft_strlen(path) - 1] == '/')
 		get_data(path);
 	else
-		get_data(ft_strjoin(path, "/"));
+		get_data(s);
+	free(s);
 }
 
 void		to_prm(char **paths)
 {
-	int f;
+	int		f;
+	char	*s;
 
 	f = 0;
+	s = NULL;
 	if (paths[1])
 	{
 		while (paths[f])
 		{
 			ft_putstr(paths[f]);
-			ft_putendl(" :");
+			ft_putendl(":");
+			s = ft_strjoin(paths[f], "/");
 			if (paths[f][ft_strlen(paths[f]) - 1] == '/')
 				get_data(paths[f]);
 			else
-				get_data(ft_strjoin(paths[f], "/"));
+				get_data(s);
 			f++;
 			if (paths[f] && g_flags[FLAG_RR] != 1)
 				ft_putchar('\n');
@@ -44,6 +51,7 @@ void		to_prm(char **paths)
 	}
 	else
 		one_path(paths[f]);
+	free(s);
 }
 
 int			main(int ac, char **av)
