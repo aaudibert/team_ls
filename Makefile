@@ -6,32 +6,32 @@
 #    By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/05 16:18:14 by aaudiber          #+#    #+#              #
-#    Updated: 2016/01/28 20:42:22 by aaudiber         ###   ########.fr        #
+#    Updated: 2016/01/28 20:45:32 by aaudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_ls
 
-SRC = ft_ls.c\
-	  parser.c\
-	  get_data.c\
-	  lst_new.c\
-	  lst_push.c\
-	  print_dir.c\
-	  rewind_lst.c\
-	  opt_a.c\
-	  ft_recurs.c\
-	  sort.c\
-	  check_params.c\
-	  checks.c\
-	  flag.c\
-	  ls_l_tools.c\
-	  permission.c\
-	  tools.c\
-	  ft_free_dir_lst.c\
-	  rsort.c\
-	  get_path.c\
-	  file_l.c\
+SRC = ./srcs/ft_ls.c\
+	  ./srcs/parser.c\
+	  ./srcs/get_data.c\
+	  ./srcs/lst_new.c\
+	  ./srcs/lst_push.c\
+	  ./srcs/print_dir.c\
+	  ./srcs/rewind_lst.c\
+	  ./srcs/opt_a.c\
+	  ./srcs/ft_recurs.c\
+	  ./srcs/sort.c\
+	  ./srcs/check_params.c\
+	  ./srcs/checks.c\
+	  ./srcs/flag.c\
+	  ./srcs/ls_l_tools.c\
+	  ./srcs/permission.c\
+	  ./srcs/tools.c\
+	  ./srcs/ft_free_dir_lst.c\
+	  ./srcs/rsort.c\
+	  ./srcs/get_path.c\
+	  ./srcs/file_l.c\
 
 OBJ = $(SRC:.c:.o)
 
