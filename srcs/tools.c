@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/28 17:49:51 by yalaouf          ###   ########.fr       */
+/*   Updated: 2016/02/04 14:52:07 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ void				date(struct stat stats)
 	ft_putstr(date_f[0]);
 	ft_putchar(':');
 	ft_putstr_space(date_f[1], 1);
-	free(date);
-	free(date_f);
+	ft_free_tab(date);
+	ft_free_tab(date_f);
 }

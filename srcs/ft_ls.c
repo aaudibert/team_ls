@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:15:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/28 20:28:59 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/02/11 13:54:46 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void		to_prm(char **paths)
 	else
 		one_path(paths[f]);
 	free(s);
+	free(g_flags);
 }
 
 int			main(int ac, char **av)
@@ -73,7 +74,7 @@ int			main(int ac, char **av)
 			paths = checks(av, f + 1);
 			if (paths)
 				to_prm(paths);
-			free(paths);
+			ft_free_tab(paths);
 		}
 	}
 	else

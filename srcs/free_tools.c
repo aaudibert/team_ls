@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_dir_lst.c                                  :+:      :+:    :+:   */
+/*   free_tools.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 17:17:02 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/02/04 15:01:40 by psaint-j         ###   ########.fr       */
+/*   Created: 2016/01/26 15:41:14 by psaint-j          #+#    #+#             */
+/*   Updated: 2016/02/11 14:03:15 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void		del_struct(t_prm s)
+void	ft_free_tab(char **tab)
 {
-	free(s.ddir);
-	free(s.file);
-	free(s.error);
-}
+	int		i;
 
-void		del_link(t_file *dir)
-{
-	free(dir->stat);
-	free(dir->f_name);
-	free(dir);
-}
-
-void		ft_free_dir_lst(t_file *dir)
-{
-	t_file *tmp;
-
-	while (dir)
+	i = 0;
+	while (tab[i])
 	{
-		tmp = dir->next;
-		del_link(dir);
-		dir = tmp;
+		free(tab[i]);
+		tab[i] = NULL;
+		i++;
 	}
+	free(tab);
+	tab = NULL;
 }

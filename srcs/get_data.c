@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 15:29:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/29 17:42:46 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/02/11 14:01:53 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,18 @@ void		get_data(char *path)
 	DIR			*rep;
 	t_dirent	*fr;
 	t_file		*dir;
+	char		*tmp;
 
 	rep = opendir(path);
 	dir = lst_new(path, path, 0);
 	if (rep != NULL)
 	{
 		while ((fr = readdir(rep)) != NULL)
-			lst_push(lst_new(ft_strdup(fr->d_name), path, 0), &dir);
+		{
+			tmp = ft_strdup(fr->d_name);
+			lst_push(lst_new(tmp, path, 0), &dir);
+			free(tmp);
+		}
 		closedir(rep);
 	}
 	else

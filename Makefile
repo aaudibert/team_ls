@@ -6,7 +6,7 @@
 #    By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/05 16:18:14 by aaudiber          #+#    #+#              #
-#    Updated: 2016/01/28 20:45:32 by aaudiber         ###   ########.fr        #
+#    Updated: 2016/02/11 14:02:29 by psaint-j         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC = ./srcs/ft_ls.c\
 	  ./srcs/rsort.c\
 	  ./srcs/get_path.c\
 	  ./srcs/file_l.c\
+	  ./srcs/free_tools.c
 
 OBJ = $(SRC:.c:.o)
 
