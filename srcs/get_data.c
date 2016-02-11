@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 15:29:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/02/11 14:01:53 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/02/11 14:38:18 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void		data_proc(t_file *dir)
 {
+	dir->next = NULL;
+	dir = rewind_lst(dir);
 	if (g_flags[FLAG_R] == 1)
 		rsort_dir(dir);
 	else
@@ -63,7 +65,5 @@ void		get_data(char *path)
 	}
 	while (dir->next->next != NULL)
 		dir = dir->next;
-	dir->next = NULL;
-	dir = rewind_lst(dir);
 	data_proc(dir);
 }

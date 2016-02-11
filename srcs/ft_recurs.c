@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:27:26 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/28 20:30:06 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/02/11 14:38:43 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		ft_recurs(t_file *dir)
 		if (dir)
 		{
 			if (opt_a(dir) && S_ISDIR(dir->stat->st_mode))
-					rec_print(dir);
+				rec_print(dir);
 			dir = dir->next;
 		}
 	}
