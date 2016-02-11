@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/28 17:47:08 by yalaouf          ###   ########.fr       */
+/*   Updated: 2016/02/11 14:31:05 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,12 @@ void	ifslnk(struct stat stats, t_file *dir)
 					stats.st_mode + 1) != -1)
 			ft_putendl(link);
 	}
-	ft_putendl(dir->f_name);
+	if (S_ISDIR(dir->stat->st_mode))
+	{
+		ft_putstr(BLUE);
+		ft_putendl(dir->f_name);
+		ft_putstr(RESET);
+	}
+	else
+		ft_putendl(dir->f_name);
 }

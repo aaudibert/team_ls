@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:30:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/02/01 21:22:29 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/02/11 14:27:49 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,13 @@ void		print_dir(t_file *dir, int file)
 	{
 		while (dir != NULL)
 		{
-			if (opt_a(dir) || file == 1)
+			if (opt_a(dir) && file == 0 && S_ISDIR(dir->stat->st_mode))
+			{
+				ft_putstr(BLUE);
+				ft_putendl(dir->f_name);
+				ft_putstr(RESET);
+			}
+			else if (opt_a(dir) || file == 1)
 				ft_putendl(dir->f_name);
 			dir = dir->next;
 		}

@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/02/11 13:46:35 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/02/11 14:33:32 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define FLAG_L			2
 # define FLAG_A			3
 # define FLAG_T			4
+
+# define RESET			"\x1B[0m"
+# define BLUE			"\x1B[36m"
 
 extern int				*g_flags;
 
