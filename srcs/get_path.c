@@ -6,9 +6,11 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 16:44:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/02/11 16:44:29 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/02/12 16:07:53 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../inc/ft_ls.h"
 
 char		*get_name(char *s)
 {
