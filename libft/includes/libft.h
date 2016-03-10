@@ -6,7 +6,7 @@
 /*   By: aaudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 10:32:44 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/27 19:34:17 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/06 19:51:28 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 # include <sys/uio.h>
 # include <fcntl.h>
 
-# define BUFF_SIZE 1
+# define BUFF_SIZE	1
+
+# define RESET		"\x1B[0m"
 
 typedef struct		s_list
 {
@@ -87,6 +89,12 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-int					ft_arr_size(char **a);
+int					arr_size(char **a);
+void				ft_free_arr(char **arr);
+int					print_arr(char **array);
+void				ft_putstr_color(char *str, char *color);
+void				ft_putendl_color(char *str, char *color);
+void				ft_putjoin(char *s1, char *s2);
+char				*replace_char(char *s, char o, char r);
 
 #endif

@@ -6,42 +6,12 @@
 /*   By: aaudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 19:12:15 by aaudiber          #+#    #+#             */
-/*   Updated: 2015/03/12 17:42:51 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/02/16 17:21:09 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-
-static char		*ft_strgetndup(char **s, char c)
-{
-	int		i;
-	int		j;
-	char	*ret;
-
-	i = 0;
-	j = 0;
-	while ((*s)[i] != c && (*s)[i] != '\0')
-	{
-		i++;
-	}
-	if ((ret = (char*)malloc(sizeof(char) * (i + 1))) == NULL)
-		return (NULL);
-	while (i > 0)
-	{
-		ret[j] = **s;
-		(*s)++;
-		j++;
-		i--;
-	}
-	return (ret);
-}
-
-static void		ft_skipc(const char **s, char c)
-{
-	while (**s == c)
-		(*s)++;
-}
 
 static int		ft_word_count(char const *s, char c)
 {
@@ -59,6 +29,36 @@ static int		ft_word_count(char const *s, char c)
 	return (ret);
 }
 
+char			*ft_strndup(char const *s, int start, int len)
+{
+	char	*ret;
+	int		i;
+
+	i = 0;
+	ret = (char *)malloc(sizeof(char) * len);
+	ret[len] = 0;
+	while (i < len)
+	{
+		ret[i] = s[start];
+		i++;
+		start++;
+	}
+	return (ret);
+}
+
+int				len_c(char const *s, char c, int start)
+{
+	int i;
+
+	i = 0;
+	while (s[start] != '\0' && s[start] != c)
+	{
+		start++;
+		i++;
+	}
+	return (i);
+}
+
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**ret;
@@ -71,14 +71,16 @@ char			**ft_strsplit(char const *s, char c)
 	wc = ft_word_count(s, c);
 	if ((ret = (char**)malloc(sizeof(char*) * (wc + 1))) == NULL)
 		return (NULL);
-	while (s != '\0')
+	ret[wc] = 0;
+	wc = -1;
+	while (s[i] != '\0')
 	{
-		ft_skipc(&s, c);
-		if (*s == '\0')
+		while (s[i] == c)
+			i++;
+		if (s[i] == '\0')
 			break ;
-		ret[i] = ft_strgetndup((char**)&s, c);
-		i++;
+		ret[++wc] = ft_strndup(s, i, len_c(s, c, i));
+		i += len_c(s, c, i);
 	}
-	ret[i] = 0;
 	return (ret);
 }

@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   replace_char.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 17:44:23 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/02/15 20:16:44 by aaudiber         ###   ########.fr       */
+/*   Created: 2016/03/06 19:46:54 by aaudiber          #+#    #+#             */
+/*   Updated: 2016/03/06 19:54:06 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 #include <stdlib.h>
 
-char		*ft_strsub(char const *s, unsigned int start, size_t len)
+char		*replace_char(char *s, char o, char r)
 {
-	char			*ret;
-	unsigned int	i;
+	int		i;
+	char	*ret;
 
 	i = 0;
-	if (!s)
-		return (NULL);
-	if ((ret = (char*)malloc(sizeof(char) * len + 1)) == NULL)
-		return (NULL);
-	while (i < len)
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	while (s[i])
 	{
-		ret[i] = s[start];
+		if (s[i] == o)
+			ret[i] = r;
+		else
+			ret[i] = s[i];
 		i++;
-		start++;
 	}
-	ret[i] = '\0';
+	ret[i] = 0;
+	free(s);
 	return (ret);
 }

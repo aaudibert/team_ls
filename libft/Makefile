@@ -6,7 +6,7 @@
 #    By: aaudiber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/06 18:24:16 by aaudiber          #+#    #+#              #
-#    Updated: 2016/01/27 19:33:19 by aaudiber         ###   ########.fr        #
+#    Updated: 2016/03/06 19:51:01 by aaudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,13 @@ SRC = ft_memset.c\
 	  ft_lstdelone.c\
 	  ft_lstiter.c\
 	  ft_lstmap.c\
-	  ft_arr_size.c\
+	  arr_size.c\
+	  ft_free_arr.c\
+	  print_arr.c\
+	  ft_putendl_color.c\
+	  ft_putstr_color.c\
+	  ft_putjoin.c\
+	  replace_char.c
 
 OBJ = $(SRC:.c=.o)
 
