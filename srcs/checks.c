@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/28 17:45:37 by yalaouf          ###   ########.fr       */
+/*   Updated: 2016/03/10 16:34:43 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char		**get_dir(char **a)
 	char	**ret;
 
 	i = 0;
-	ret = (char **)malloc(sizeof(char *) * ft_arr_size(a) + 1);
+	ret = (char **)malloc(sizeof(char *) * arr_size(a) + 1);
 	ret[ft_arr_size(a)] = NULL;
 	while (a[i])
 	{
