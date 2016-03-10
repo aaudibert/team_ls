@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:47 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/01/28 17:48:27 by yalaouf          ###   ########.fr       */
+/*   Updated: 2016/03/10 19:39:17 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,14 @@ void	permissions_proprio(struct stat stats)
 	else
 		ft_putchar('-');
 	if (stats.st_mode & S_IXUSR)
-		ft_putchar('x');
+	{
+		if (stats.st_mode & S_ISUID)
+			ft_putchar('s');
+		else
+			ft_putchar('x');
+	}
+	else if (stats.st_mode & S_ISUID)
+		ft_putchar('S');
 	else
 		ft_putchar('-');
 }
@@ -57,7 +64,14 @@ void	permissions_locataire(struct stat stats)
 	else
 		ft_putchar('-');
 	if (stats.st_mode & S_IXGRP)
-		ft_putchar('x');
+	{
+		if (stats.st_mode & S_ISGID)
+			ft_putchar('s');
+		else
+			ft_putchar('x');
+	}
+	else if (stats.st_mode & S_ISGID)
+		ft_putchar('S');
 	else
 		ft_putchar('-');
 }
@@ -73,7 +87,14 @@ void	permissions_babacar(struct stat stats)
 	else
 		ft_putchar('-');
 	if (stats.st_mode & S_IXOTH)
-		ft_putchar('x');
+	{
+		if (stats.st_mode & S_ISVTX)
+			ft_putchar('t');
+		else
+			ft_putchar('x');
+	}
+	else if (stats.st_mode & S_ISVTX)
+		ft_putchar('T');
 	else
 		ft_putchar('-');
 }
