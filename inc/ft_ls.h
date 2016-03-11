@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/10 19:45:21 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/11 19:16:22 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,4 @@ void					ifslnk(struct stat stats, t_file *dir);
 void					date(struct stat stats);
 void					del_link(t_file *dir);
 void					ft_free_dir_lst(t_file *dir);
-void					del_struct(t_prm s);
 #endif

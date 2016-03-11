@@ -6,18 +6,11 @@
 /*   By: aaudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:17:02 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/02/04 15:01:40 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/03/11 19:16:06 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
-
-void		del_struct(t_prm s)
-{
-	free(s.ddir);
-	free(s.file);
-	free(s.error);
-}
 
 void		del_link(t_file *dir)
 {

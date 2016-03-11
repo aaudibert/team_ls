@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:30:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/10 19:48:19 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/11 19:24:59 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void		print_dir(t_file *dir, int file)
 		{
 			if (opt_a(dir) && file == 0 && S_ISDIR(dir->stat->st_mode))
 				ft_putendl_color(dir->f_name, CYAN);
-			else if (opt_a(dir) && file == 0 && dir->stat->st_mode & S_IXUSR)
+			else if (opt_a(dir) && file == 0 && dir->stat->st_mode & S_IXUSR &&
+					S_ISREG(dir->stat->st_mode))
 				ft_putendl_color(dir->f_name, RED);
 			else if (opt_a(dir) || file == 1)
 				ft_putendl(dir->f_name);

@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/11 16:13:22 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/11 19:16:27 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,5 @@ char		**checks(char **paths, int i)
 		ret = get_dir(s.ddir);
 		sort_params(ret);
 	}
-	del_struct(s);
 	return (ret);
 }
