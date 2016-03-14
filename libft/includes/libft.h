@@ -6,7 +6,7 @@
 /*   By: aaudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 10:32:44 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/06 19:51:28 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/14 19:43:05 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ void				ft_putstr_color(char *str, char *color);
 void				ft_putendl_color(char *str, char *color);
 void				ft_putjoin(char *s1, char *s2);
 char				*replace_char(char *s, char o, char r);
+int					ft_intlen(int i);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/11 19:16:27 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/14 20:51:59 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		print_err(char **err)
 		{
 			ft_putstr("ls: ");
 			ft_putstr(err[i]);
-			ft_putendl(" No such file or directory");
+			ft_putendl(": No such file or directory");
 		}
 	}
 	else
@@ -58,7 +58,7 @@ void		print_err(char **err)
 		{
 			ft_putstr("ls: ");
 			ft_putstr(err[i]);
-			ft_putendl(" No such file or directory");
+			ft_putendl(": No such file or directory");
 			i++;
 		}
 	}
@@ -111,7 +111,7 @@ char		**checks(char **paths, int i)
 	}
 	if (s.file)
 		print_file(s.file);
-	if (s.ddir && (s.file || s.error))
+	if (s.ddir && s.file)
 		ft_putchar('\n');
 	if (s.ddir)
 	{

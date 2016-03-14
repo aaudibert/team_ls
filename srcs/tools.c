@@ -6,45 +6,55 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/02/04 14:52:07 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/03/14 22:06:30 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-int					ft_intlen(int nbr)
+void				set_align(t_align *mx)
 {
-	int	len;
-
-	len = 0;
-	while (len > 9)
-	{
-		len++;
-		nbr = nbr / 10;
-	}
-	return (len);
+	max_all->rights = 0;
+	max_all->link = 0;
+	max_all->usr = 0;
+	max_all->grp = 0;
+	max_all->size = 0;
+	max_all->date = 0;
 }
 
-unsigned int		*max(t_file *dir)
+t_align				*max(t_file *dir)
 {
-	static unsigned int *max_all = 0;
+	t_align	*max_all;
+	char	*tusr;
+	char	*tgrp;
 
-	max_all = malloc(200);
+	if (getpwuid(dir->stat->st_uid))
+		tusr = getpwuid(dir->stat->st_uid)->pw_name;
+	if (getgrgid(dir->stat->st_gid))
+		tgrp = getpgrgid(dir->stat->st_gid)->gr_name;
+	max_all = (t_align*)malloc(sizeof(t_align));
 	while (dir != NULL)
 	{
 		if (opt_a(dir))
 		{
-			if (dir->stat->st_size > max_all[0])
-				max_all[0] = dir->stat->st_size;
-			if (dir->stat->st_nlink > max_all[1])
-				max_all[1] = dir->stat->st_nlink;
+			/*if (max_all->rights || verif @ || verif +)
+				max_all->rights = 1;*/
+			if (dir->stat->st_nlink > max_all->link)
+				max_all->link = dir->stat->st_nlink;
+			if (ft_strlen(tusr) > max_all->usr)
+				max_all->usr = ft_strlen(tusr);
+			if (ft_strlen(tgrp) > max_all->grp)
+				max_all->grp = ft_strlen(tgrp);
+			if (dir->stat->st_size > max_all->size)
+				max_all->size = dir->stat->st_size;
+			//date
 		}
 		dir = dir->next;
 	}
 	return (max_all);
 }
 
-void				display_size_right(int max_size, struct stat stats)
+void				display_size_right(int max_size, t_stat stats)
 {
 	int max_length;
 	int actual_length;
@@ -63,7 +73,7 @@ void				display_size_right(int max_size, struct stat stats)
 	}
 }
 
-void				display_link_right(int max_link, struct stat stats)
+void				display_link_right(int max_link, t_stat stats)
 {
 	int max_length;
 	int actual_length;
@@ -85,7 +95,7 @@ void				display_link_right(int max_link, struct stat stats)
 	}
 }
 
-void				date(struct stat stats)
+void				date(t_stat stats)
 {
 	char **date;
 	char **date_f;

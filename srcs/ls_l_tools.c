@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/11 19:23:13 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/14 19:14:23 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	total_block(t_file *dir)
 	ft_putchar('\n');
 }
 
-void	affect(struct stat stats)
+void	affect(t_stat stats)
 {
 	struct passwd	*uid;
 	struct group	*gid;
@@ -69,7 +69,7 @@ void	affect(struct stat stats)
 		ft_putstr_space(gid->gr_name, 2);
 }
 
-void	ifslnk(struct stat stats, t_file *dir)
+void	ifslnk(t_stat stats, t_file *dir)
 {
 	char *link;
 

@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/11 19:16:22 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/14 21:19:05 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,18 @@ typedef struct			s_prm
 	char				**file;
 	char				**ddir;
 }						t_prm;
-void					ft_free_tab(char **tab);
 
+typedef struct			s_align
+{
+	int					rights;
+	int					link;
+	int					usr;
+	int					grp;
+	int					size;
+	int					date;
+}						t_align;
+
+void					ft_free_tab(char **tab);
 int						parser(int ac, char **av);
 t_prm					*check_params(char **paths, t_prm *s, int i);
 char					**checks(char **paths, int f);

@@ -6,27 +6,12 @@
 /*   By: aaudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 17:23:31 by aaudiber          #+#    #+#             */
-/*   Updated: 2014/11/28 14:27:15 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/14 19:43:56 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-
-static int		ft_intlen(int n)
-{
-	int i;
-	int len;
-
-	len = 1;
-	i = 10;
-	while (i <= n && i <= 1000000000)
-	{
-		len++;
-		i = i * 10;
-	}
-	return (len);
-}
 
 static int		ft_intlenneg(int n)
 {
