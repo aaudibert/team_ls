@@ -6,49 +6,25 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/14 22:06:30 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/15 17:15:49 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void				set_align(t_align *mx)
+t_align				*max(t_file *dir)
 {
-	max_all->rights = 0;
+	t_align	*max_all;
+	max_all = (t_align*)malloc(sizeof(t_align));
 	max_all->link = 0;
 	max_all->usr = 0;
 	max_all->grp = 0;
 	max_all->size = 0;
 	max_all->date = 0;
-}
-
-t_align				*max(t_file *dir)
-{
-	t_align	*max_all;
-	char	*tusr;
-	char	*tgrp;
-
-	if (getpwuid(dir->stat->st_uid))
-		tusr = getpwuid(dir->stat->st_uid)->pw_name;
-	if (getgrgid(dir->stat->st_gid))
-		tgrp = getpgrgid(dir->stat->st_gid)->gr_name;
-	max_all = (t_align*)malloc(sizeof(t_align));
 	while (dir != NULL)
 	{
 		if (opt_a(dir))
-		{
-			/*if (max_all->rights || verif @ || verif +)
-				max_all->rights = 1;*/
-			if (dir->stat->st_nlink > max_all->link)
-				max_all->link = dir->stat->st_nlink;
-			if (ft_strlen(tusr) > max_all->usr)
-				max_all->usr = ft_strlen(tusr);
-			if (ft_strlen(tgrp) > max_all->grp)
-				max_all->grp = ft_strlen(tgrp);
-			if (dir->stat->st_size > max_all->size)
-				max_all->size = dir->stat->st_size;
-			//date
-		}
+			set_max(dir, max_all);
 		dir = dir->next;
 	}
 	return (max_all);
@@ -56,16 +32,14 @@ t_align				*max(t_file *dir)
 
 void				display_size_right(int max_size, t_stat stats)
 {
-	int max_length;
 	int actual_length;
 	int space_nbr;
 
-	max_length = ft_intlen(max_size);
 	actual_length = ft_intlen(stats.st_size);
-	space_nbr = max_length - actual_length;
-	if (max_length == actual_length)
+	space_nbr = max_size - actual_length;
+	if (max_size == actual_length)
 		ft_putnbr(stats.st_size);
-	else if (max_length > actual_length)
+	else if (max_size > actual_length)
 	{
 		while (space_nbr--)
 			ft_putchar(' ');
@@ -75,22 +49,21 @@ void				display_size_right(int max_size, t_stat stats)
 
 void				display_link_right(int max_link, t_stat stats)
 {
-	int max_length;
 	int actual_length;
 	int space_nbr;
 
-	max_length = ft_intlen(max_link);
 	actual_length = ft_intlen(stats.st_nlink);
-	space_nbr = max_length - actual_length;
-	if (max_length == actual_length)
+	space_nbr = max_link - actual_length;
+	if (max_link == actual_length)
 	{
 		ft_putstr("  ");
 		ft_putnbr(stats.st_nlink);
 	}
-	else if (max_length > actual_length)
+	else if (max_link > actual_length)
 	{
 		while (space_nbr--)
 			ft_putchar(' ');
+		ft_putstr("  ");
 		ft_putnbr(stats.st_nlink);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/14 19:14:23 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/15 19:34:21 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_putstr_space(char *str, int nbr_sp)
 {
-	ft_putstr(str);
+	if (str)
+		ft_putstr(str);
 	while (nbr_sp--)
 		ft_putchar(' ');
 }
@@ -54,7 +55,7 @@ void	total_block(t_file *dir)
 	ft_putchar('\n');
 }
 
-void	affect(t_stat stats)
+void	affect(t_stat stats, t_align *max_all)
 {
 	struct passwd	*uid;
 	struct group	*gid;
@@ -62,11 +63,16 @@ void	affect(t_stat stats)
 	uid = getpwuid(stats.st_uid);
 	gid = getgrgid(stats.st_gid);
 	if (uid != NULL)
-		ft_putstr_space(uid->pw_name, 2);
+		ft_putstr_space(uid->pw_name, (max_all->usr -
+				ft_strlen(uid->pw_name) + 2));
 	else if (uid == NULL)
+	{
+		ft_putstr_space(NULL, (max_all->usr - ft_intlen(stats.st_uid) + 2));
 		ft_putnbr(stats.st_uid);
+	}
 	if (gid != NULL)
-		ft_putstr_space(gid->gr_name, 2);
+		ft_putstr_space(gid->gr_name, (max_all->grp -
+					ft_strlen(gid->gr_name) + 2));
 }
 
 void	ifslnk(t_stat stats, t_file *dir)
@@ -85,11 +91,17 @@ void	ifslnk(t_stat stats, t_file *dir)
 	}
 	else
 	{
-		if (S_ISDIR(dir->stat->st_mode))
+		if (S_ISDIR(dir->stat->st_mode) && dir->stat->st_mode & S_IRUSR)
 			ft_putendl_color(dir->f_name, CYAN);
-		else if (dir->stat->st_mode & S_IXUSR && S_ISREG(dir->stat->st_mode))
+		else if (dir->stat->st_mode & S_IXUSR && S_ISREG(dir->stat->st_mode) &&
+				dir->stat->st_mode & S_IRUSR)
 			ft_putendl_color(dir->f_name, RED);
-		else
+		else if (dir->stat->st_mode & S_IRUSR)
 			ft_putendl(dir->f_name);
+		else
+		{
+			ft_putstr("ls: ");
+			ft_putjoin(dir->f_name, ": Permission denied");
+		}
 	}
 }

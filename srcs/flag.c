@@ -6,7 +6,7 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/14 20:58:19 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/15 15:18:03 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_ischr(t_file *dir)
 
 void	ls_l(t_file *dir, int i)
 {
-	unsigned int	*max_all;
+	t_align *max_all;
 
 	if (i == 0)
 		total_block(dir);
@@ -32,13 +32,13 @@ void	ls_l(t_file *dir, int i)
 		if (opt_a(dir) || i == 1)
 		{
 			letters(*(dir->stat));
-			display_link_right(max_all[1], *(dir->stat));
+			display_link_right(max_all->link, *(dir->stat));
 			ft_putchar(' ');
-			affect(*(dir->stat));
+			affect(*(dir->stat), max_all);
 			if (S_ISCHR(dir->stat->st_mode) || S_ISBLK(dir->stat->st_mode))
 				print_ischr(dir);
 			else
-				display_size_right(max_all[0], *(dir->stat));
+				display_size_right(max_all->size, *(dir->stat));
 			date(*(dir->stat));
 			ifslnk(*(dir->stat), dir);
 		}
