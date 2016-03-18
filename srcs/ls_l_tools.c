@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/15 19:34:21 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/17 19:50:46 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	total_block(t_file *dir)
 
 	total = 0;
 	i = 0;
+	if (!no_perm(dir))
+		return ;
 	while (dir != NULL)
 	{
 		if (opt_a(dir))
@@ -86,22 +88,19 @@ void	ifslnk(t_stat stats, t_file *dir)
 		ft_putstr_space("->", 1);
 		if (readlink(ft_strjoin(dir->path, dir->f_name), link,
 					stats.st_mode + 1) != -1)
+		{
+			link[ft_strlen(link)] = 0;
 			ft_putendl(link);
+		}
 		free(link);
 	}
 	else
 	{
-		if (S_ISDIR(dir->stat->st_mode) && dir->stat->st_mode & S_IRUSR)
+		if (S_ISDIR(dir->stat->st_mode))
 			ft_putendl_color(dir->f_name, CYAN);
-		else if (dir->stat->st_mode & S_IXUSR && S_ISREG(dir->stat->st_mode) &&
-				dir->stat->st_mode & S_IRUSR)
+		else if (dir->stat->st_mode & S_IXUSR && S_ISREG(dir->stat->st_mode))
 			ft_putendl_color(dir->f_name, RED);
-		else if (dir->stat->st_mode & S_IRUSR)
-			ft_putendl(dir->f_name);
 		else
-		{
-			ft_putstr("ls: ");
-			ft_putjoin(dir->f_name, ": Permission denied");
-		}
+			ft_putendl(dir->f_name);
 	}
 }

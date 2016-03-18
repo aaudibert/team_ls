@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 19:31:48 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/15 17:10:17 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/17 19:56:11 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ void		set_max(t_file *dir, t_align *max_all)
 		max_all->grp = ft_strlen(tgrp);
 	if (ft_intlen(dir->stat->st_size) > max_all->size)
 		max_all->size = ft_intlen(dir->stat->st_size);
-	//date
 }

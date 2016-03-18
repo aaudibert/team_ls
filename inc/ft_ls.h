@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/15 17:11:02 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/17 19:56:26 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef struct			s_align
 	int					usr;
 	int					grp;
 	int					size;
-	int					date;
 }						t_align;
 
 void					ft_free_tab(char **tab);
@@ -95,6 +94,7 @@ void					rsort_dir(t_file *dir);
 void					rsort_date(t_file *dir);
 int						swap_dir(t_file *dir);
 void					ls_l(t_file *dir, int i);
+int						no_perm(t_file *dir);
 void					set_max(t_file *dir, t_align *max_all);
 void					permissions_proprio(t_stat stats);
 void					permissions_locataire(t_stat stats);

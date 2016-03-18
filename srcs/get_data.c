@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 15:29:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/15 19:27:00 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/17 19:58:06 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,16 @@ void		data_proc(t_file *dir)
 
 void		ft_error(char *path)
 {
-	char *s;
-	t_stat stat;
+	char	*s;
+	t_stat	stat;
 
 	lstat(path, &stat);
-	if (stat.st_mode & S_IRUSR)
-		;
-	else
-	{
-		ft_putstr("ls: ");
-		ft_putjoin(path, ": Permission denied");
-		return ;
-	}
 	s = get_name(path);
 	ft_putstr("ls: ");
 	ft_putstr(s);
 	ft_putstr(": ");
 	perror("");
-		ft_putchar('\n');
+	ft_putchar('\n');
 }
 
 DIR			*ft_opendir(char *path)

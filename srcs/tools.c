@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/15 17:15:49 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/17 19:56:57 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ t_align				*max(t_file *dir)
 	max_all->usr = 0;
 	max_all->grp = 0;
 	max_all->size = 0;
-	max_all->date = 0;
 	while (dir != NULL)
 	{
-		if (opt_a(dir))
+		if (opt_a(dir) && dir->stat->st_mode & S_IRUSR)
 			set_max(dir, max_all);
 		dir = dir->next;
 	}
@@ -79,9 +78,17 @@ void				date(t_stat stats)
 	display_date_right(date);
 	ft_putchar(' ');
 	date_f = ft_strsplit(date[3], ':');
-	ft_putstr(date_f[0]);
-	ft_putchar(':');
-	ft_putstr_space(date_f[1], 1);
+//	if (&stats.st_mtime > time(0)/* || &stats.st_mtime <= */)
+//	{
+//		ft_putchar(' ');
+//		ft_putstr(date[4]);
+//	}
+//	else
+//	{
+		ft_putstr(date_f[0]);
+		ft_putchar(':');
+		ft_putstr_space(date_f[1], 1);
+//	}
 	ft_free_tab(date);
 	ft_free_tab(date_f);
 }
