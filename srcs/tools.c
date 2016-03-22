@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/17 19:56:57 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/22 17:50:02 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,9 @@ void				display_link_right(int max_link, t_stat stats)
 
 void				date(t_stat stats)
 {
-	char **date;
-	char **date_f;
+	char	**date;
+	char	**date_f;
+	time_t	t;
 
 	date = ft_strsplit(ctime(&stats.st_mtime), ' ');
 	ft_putchar(' ');
@@ -78,17 +79,17 @@ void				date(t_stat stats)
 	display_date_right(date);
 	ft_putchar(' ');
 	date_f = ft_strsplit(date[3], ':');
-//	if (&stats.st_mtime > time(0)/* || &stats.st_mtime <= */)
-//	{
-//		ft_putchar(' ');
-//		ft_putstr(date[4]);
-//	}
-//	else
-//	{
+	if (time(&t) - stats.st_mtime > 15778800 || stats.st_mtime > t )
+	{
+		ft_putchar(' ');
+		ft_putstr(date[4]);
+	}
+	else
+	{
 		ft_putstr(date_f[0]);
 		ft_putchar(':');
 		ft_putstr_space(date_f[1], 1);
-//	}
+	}
 	ft_free_tab(date);
 	ft_free_tab(date_f);
 }
