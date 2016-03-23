@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/17 19:56:26 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/23 17:30:39 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 # define MAGENTA		"\x1B[35m"
 # define CYAN			"\x1B[36m"
 # define BCYAN			"\x1B[1;36m"
+
+# define TIME			st_mtimespec.tv_sec
 
 extern int				*g_flags;
 

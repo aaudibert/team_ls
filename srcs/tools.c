@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/22 17:50:02 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/23 18:48:20 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void				date(t_stat stats)
 	if (time(&t) - stats.st_mtime > 15778800 || stats.st_mtime > t )
 	{
 		ft_putchar(' ');
-		ft_putstr(date[4]);
+		print_length(date[4], 4);
+		ft_putchar(' ');
 	}
 	else
 	{
