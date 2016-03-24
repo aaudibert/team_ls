@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/23 17:30:39 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/24 19:15:31 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,13 @@ void					nationalite(t_stat stats);
 void					letters(t_stat stats);
 t_align					*max(t_file *dir);
 void					display_size_right(int max_size, t_stat stats);
-void					display_link_right(int max_link, t_stat stats);
+void					display_link_right(t_file *dir, t_align *mx);
 void					ft_putstr_space(char *str, int nbr_sp);
 void					display_date_right(char **tab);
 void					total_block(t_file *dir);
 void					affect(t_stat stats, t_align *max_all);
 void					ifslnk(t_stat stats, t_file *dir);
-void					date(t_stat stats);
+void					date(t_file *dir, t_stat stats);
 void					del_link(t_file *dir);
 void					ft_free_dir_lst(t_file *dir);
 #endif

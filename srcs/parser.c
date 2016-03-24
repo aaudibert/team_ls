@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 15:35:32 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/01/28 17:47:56 by yalaouf          ###   ########.fr       */
+/*   Updated: 2016/03/24 19:40:06 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int			parser(int ac, char **av)
 	i = 1;
 	while (ac > i && av[i][0] == '-')
 	{
-		if (av[i][0] == '-')
+		if (av[i][0] == '-' && av[i][1])
 		{
 			check_opt(av[i]);
 			f++;

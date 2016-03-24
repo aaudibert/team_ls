@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/23 17:55:45 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/24 18:37:47 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	affect(t_stat stats, t_align *max_all)
 	struct passwd	*uid;
 	struct group	*gid;
 
+	ft_putchar(' ');
 	uid = getpwuid(stats.st_uid);
 	gid = getgrgid(stats.st_gid);
 	if (uid != NULL)

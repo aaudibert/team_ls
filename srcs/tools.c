@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/23 18:48:20 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/24 18:50:10 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_align				*max(t_file *dir)
 {
 	t_align	*max_all;
+
 	max_all = (t_align*)malloc(sizeof(t_align));
 	max_all->link = 0;
 	max_all->usr = 0;
@@ -46,28 +47,29 @@ void				display_size_right(int max_size, t_stat stats)
 	}
 }
 
-void				display_link_right(int max_link, t_stat stats)
+void				display_link_right(t_file *dir, t_align *mx)
 {
 	int actual_length;
 	int space_nbr;
 
-	actual_length = ft_intlen(stats.st_nlink);
-	space_nbr = max_link - actual_length;
-	if (max_link == actual_length)
+	actual_length = ft_intlen(dir->stat->st_nlink);
+	space_nbr = mx->link - actual_length;
+	if (mx->link == actual_length)
 	{
 		ft_putstr("  ");
-		ft_putnbr(stats.st_nlink);
+		ft_putnbr(dir->stat->st_nlink);
 	}
-	else if (max_link > actual_length)
+	else if (mx->link > actual_length)
 	{
 		while (space_nbr--)
 			ft_putchar(' ');
 		ft_putstr("  ");
-		ft_putnbr(stats.st_nlink);
+		ft_putnbr(dir->stat->st_nlink);
 	}
+	affect(*(dir->stat), mx);
 }
 
-void				date(t_stat stats)
+void				date(t_file *dir, t_stat stats)
 {
 	char	**date;
 	char	**date_f;
@@ -79,7 +81,7 @@ void				date(t_stat stats)
 	display_date_right(date);
 	ft_putchar(' ');
 	date_f = ft_strsplit(date[3], ':');
-	if (time(&t) - stats.st_mtime > 15778800 || stats.st_mtime > t )
+	if (time(&t) - stats.st_mtime > 15778800 || stats.st_mtime > t)
 	{
 		ft_putchar(' ');
 		print_length(date[4], 4);
@@ -93,4 +95,5 @@ void				date(t_stat stats)
 	}
 	ft_free_tab(date);
 	ft_free_tab(date_f);
+	ifslnk(*(dir->stat), dir);
 }
