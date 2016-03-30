@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/24 18:37:47 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/30 19:31:14 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,6 @@ void	ft_putstr_space(char *str, int nbr_sp)
 		ft_putstr(str);
 	while (nbr_sp--)
 		ft_putchar(' ');
-}
-
-void	display_date_right(char **tab)
-{
-	if (ft_strlen(tab[2]) == 1)
-	{
-		ft_putchar(' ');
-		ft_putstr(tab[2]);
-	}
-	else
-		ft_putstr(tab[2]);
 }
 
 void	total_block(t_file *dir)
@@ -78,30 +67,40 @@ void	affect(t_stat stats, t_align *max_all)
 					ft_strlen(gid->gr_name) + 2));
 }
 
+void	print_fname(t_file *dir)
+{
+	if (S_ISDIR(dir->stat->st_mode))
+		ft_putendl_color(dir->f_name, CYAN);
+	else if (dir->stat->st_mode & S_IXUSR && S_ISREG(dir->stat->st_mode))
+		ft_putendl_color(dir->f_name, RED);
+	else
+		ft_putendl(dir->f_name);
+}
+
 void	ifslnk(t_stat stats, t_file *dir)
 {
 	char *link;
+	char *tmp;
 
 	if (S_ISLNK(stats.st_mode))
 	{
 		link = (char *)malloc(sizeof(char *));
+		tmp = ft_strjoin(dir->path, dir->f_name);
 		ft_putstr_space(dir->f_name, 1);
 		ft_putstr_space("->", 1);
-		if (readlink(ft_strjoin(dir->path, dir->f_name), link,
-					stats.st_mode + 1) != -1)
+		if (readlink(tmp, link, stats.st_mode + 1) != -1)
 		{
 			link[ft_strlen(link)] = 0;
 			ft_putendl(link);
 		}
-		free(link);
+		ft_putendl("ewmkog4");
+		if (link)
+			free(link);
+		ft_putendl("ewmkog4");
+		if (tmp)
+			free(tmp);
+		ft_putendl("ewmkog4");
 	}
 	else
-	{
-		if (S_ISDIR(dir->stat->st_mode))
-			ft_putendl_color(dir->f_name, CYAN);
-		else if (dir->stat->st_mode & S_IXUSR && S_ISREG(dir->stat->st_mode))
-			ft_putendl_color(dir->f_name, RED);
-		else
-			ft_putendl(dir->f_name);
-	}
+		print_fname(dir);
 }

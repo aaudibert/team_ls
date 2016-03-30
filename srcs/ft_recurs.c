@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:27:26 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/02/11 14:38:43 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/30 19:17:10 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@ int			*g_flags;
 void		rec_print(t_file *dir)
 {
 	char *s;
+	char *new;
 
 	s = ft_strjoin(dir->path, dir->f_name);
-	s = ft_strjoin(s, "/");
 	ft_putstr(s);
+	ft_putchar('/');
+	new = ft_strjoin(s, "/");
 	ft_putendl(":");
-	get_data(s);
+	get_data(new);
 	free(s);
+	free(new);
 }
 
 void		ft_recurs(t_file *dir)

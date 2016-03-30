@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/24 18:50:10 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/03/30 16:19:40 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,17 @@ void				display_link_right(t_file *dir, t_align *mx)
 		ft_putnbr(dir->stat->st_nlink);
 	}
 	affect(*(dir->stat), mx);
+}
+
+void	display_date_right(char **tab)
+{
+	if (ft_strlen(tab[2]) == 1)
+	{
+		ft_putchar(' ');
+		ft_putstr(tab[2]);
+	}
+	else
+		ft_putstr(tab[2]);
 }
 
 void				date(t_file *dir, t_stat stats)
