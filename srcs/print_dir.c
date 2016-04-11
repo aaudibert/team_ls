@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:30:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/30 16:10:20 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/11 19:46:03 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int *g_flags;
 
 void		col_print(t_file *dir, int file)
 {
-	if (dir->stat->st_mode & S_IRUSR)
-	{
+//tester stat sur dossier parent, pas fichier
+/*	if (dir->stat->st_mode & S_IRUSR)
+	{*/
 		if (file == 0 && S_ISDIR(dir->stat->st_mode))
 			ft_putendl_color(dir->f_name, CYAN);
 		else if (file == 0 && dir->stat->st_mode & S_IXUSR &&
@@ -25,12 +26,12 @@ void		col_print(t_file *dir, int file)
 			ft_putendl_color(dir->f_name, RED);
 		else
 			ft_putendl(dir->f_name);
-	}
+/*	}
 	else
 	{
 		ft_putstr("ls: ");
 		ft_putjoin(dir->f_name, ": Permission denied");
-	}
+	}*/
 }
 
 void		print_dir(t_file *dir, int file)

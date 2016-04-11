@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/30 19:31:14 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/11 18:46:10 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,22 +84,17 @@ void	ifslnk(t_stat stats, t_file *dir)
 
 	if (S_ISLNK(stats.st_mode))
 	{
-		link = (char *)malloc(sizeof(char *));
+		link = (char *)malloc(sizeof(char) * (stats.st_mode + 1));
 		tmp = ft_strjoin(dir->path, dir->f_name);
 		ft_putstr_space(dir->f_name, 1);
 		ft_putstr_space("->", 1);
 		if (readlink(tmp, link, stats.st_mode + 1) != -1)
 		{
-			link[ft_strlen(link)] = 0;
+			link[stats.st_mode + 1] = 0;
 			ft_putendl(link);
 		}
-		ft_putendl("ewmkog4");
-		if (link)
-			free(link);
-		ft_putendl("ewmkog4");
-		if (tmp)
-			free(tmp);
-		ft_putendl("ewmkog4");
+		free(link);
+		free(tmp);
 	}
 	else
 		print_fname(dir);

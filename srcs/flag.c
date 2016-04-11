@@ -6,7 +6,7 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/24 19:15:26 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/11 19:46:21 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void		ls_l(t_file *dir, int i)
 	max_all = max(dir);
 	while (dir != NULL)
 	{
+		//comme pour print dir
 		if ((opt_a(dir) || i == 1) && dir->stat->st_mode & S_IRUSR)
 		{
 			letters(*(dir->stat));
