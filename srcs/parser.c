@@ -6,11 +6,13 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 15:35:32 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/24 19:40:06 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/12 15:48:07 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
+
+int			g_rec;
 
 void		act_flag(char flag)
 {
@@ -69,6 +71,7 @@ int			parser(int ac, char **av)
 	int	f;
 	int	i;
 
+	g_rec = 0;
 	f = 0;
 	i = 1;
 	while (ac > i && av[i][0] == '-')

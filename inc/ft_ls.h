@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/30 16:19:48 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/12 19:24:26 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define TIME			st_mtimespec.tv_sec
 
 extern int				*g_flags;
+extern int				g_rec;
 
 typedef struct dirent	t_dirent;
 typedef struct stat		t_stat;
@@ -95,7 +96,7 @@ void					sort_date(t_file *dir);
 void					rsort_dir(t_file *dir);
 void					rsort_date(t_file *dir);
 int						swap_dir(t_file *dir);
-void					ls_l(t_file *dir, int i);
+void					ls_l(t_file *dir, int i, t_stat *st);
 int						no_perm(t_file *dir);
 void					set_max(t_file *dir, t_align *max_all);
 void					permissions_proprio(t_stat stats);

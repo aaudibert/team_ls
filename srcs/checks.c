@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/14 20:51:59 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/12 19:26:18 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void		print_file(char **file)
 	else
 		sort_dir(dir);
 	if (g_flags[FLAG_L] == 1)
-		ls_l(dir, 1);
+		ls_l(dir, 1, NULL);
 	else
 		print_dir(dir, 1);
 	ft_free_dir_lst(dir);

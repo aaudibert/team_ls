@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:27:26 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/30 19:17:10 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/12 19:43:59 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ void		rec_print(t_file *dir)
 	char *s;
 	char *new;
 
+	if (g_rec == 1)
+		ft_putchar('\n');
+	if (g_rec == 0)
+		g_rec++;
 	s = ft_strjoin(dir->path, dir->f_name);
 	ft_putstr(s);
 	ft_putchar('/');
@@ -32,7 +36,6 @@ void		rec_print(t_file *dir)
 void		ft_recurs(t_file *dir)
 {
 	print_dir(dir, 0);
-	ft_putchar('\n');
 	while (dir != NULL)
 	{
 		while (dir && (ft_strequ(".", dir->f_name) == 1 ||

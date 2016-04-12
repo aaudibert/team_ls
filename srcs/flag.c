@@ -6,7 +6,7 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/04/11 19:46:21 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/12 19:33:17 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		err_l(char *s)
 	perror("");
 }
 
-void		ls_l(t_file *dir, int i)
+void		ls_l(t_file *dir, int i, t_stat *st)
 {
 	t_align *max_all;
 
@@ -48,8 +48,7 @@ void		ls_l(t_file *dir, int i)
 	max_all = max(dir);
 	while (dir != NULL)
 	{
-		//comme pour print dir
-		if ((opt_a(dir) || i == 1) && dir->stat->st_mode & S_IRUSR)
+		if (i == 1 || (opt_a(dir) && st->st_mode & S_IXUSR))
 		{
 			letters(*(dir->stat));
 			display_link_right(dir, max_all);
@@ -59,7 +58,7 @@ void		ls_l(t_file *dir, int i)
 				display_size_right(max_all->size, *(dir->stat));
 			date(dir, *(dir->stat));
 		}
-		else if (opt_a(dir) || i == 1)
+		else if (opt_a(dir))
 			err_l(dir->f_name);
 		dir = dir->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 15:29:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/23 18:33:37 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/12 19:45:29 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,12 @@ void		data_proc(t_file *dir)
 void		ft_error(char *path)
 {
 	char	*s;
-	t_stat	stat;
 
-	lstat(path, &stat);
 	s = get_name(path);
 	ft_putstr("ls: ");
 	ft_putstr(s);
 	ft_putstr(": ");
 	perror("");
-	ft_putchar('\n');
-}
-
-DIR			*ft_opendir(char *path)
-{
-	t_stat stat;
-
-	lstat(path, &stat);
-	if (stat.st_mode & S_IRUSR)
-		return (opendir(path));
-	return (NULL);
 }
 
 void		get_data(char *path)
@@ -58,7 +45,7 @@ void		get_data(char *path)
 	t_file		*dir;
 	char		*tmp;
 
-	rep = ft_opendir(path);
+	rep = opendir(path);
 	dir = lst_new(path, path, 0);
 	if (rep != NULL)
 	{
