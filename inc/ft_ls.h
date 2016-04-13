@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/12 19:24:26 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/13 19:44:55 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void					permissions_locataire(t_stat stats);
 void					permissions_babacar(t_stat stats);
 void					nationalite(t_stat stats);
 void					letters(t_stat stats);
-t_align					*max(t_file *dir);
+t_align					*max(t_file *dir, int file, t_stat *st);
 void					display_size_right(int max_size, t_stat stats);
 void					display_link_right(t_file *dir, t_align *mx);
 void					ft_putstr_space(char *str, int nbr_sp);

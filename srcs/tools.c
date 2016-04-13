@@ -6,13 +6,13 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/03/30 16:19:40 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/13 19:46:41 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-t_align				*max(t_file *dir)
+t_align				*max(t_file *dir, int file, t_stat *st)
 {
 	t_align	*max_all;
 
@@ -23,7 +23,7 @@ t_align				*max(t_file *dir)
 	max_all->size = 0;
 	while (dir != NULL)
 	{
-		if (opt_a(dir) && dir->stat->st_mode & S_IRUSR)
+		if (file == 1 || (opt_a(dir) && st->st_mode & S_IXUSR))
 			set_max(dir, max_all);
 		dir = dir->next;
 	}

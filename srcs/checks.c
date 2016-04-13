@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/12 19:26:18 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/13 19:52:17 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,12 @@ void		print_err(char **err)
 	int i;
 
 	i = 0;
-	if (g_flags[FLAG_R] == 1)
+	while (err[i])
 	{
-		while (err[i])
-			i++;
-		while (--i >= 0)
-		{
-			ft_putstr("ls: ");
-			ft_putstr(err[i]);
-			ft_putendl(": No such file or directory");
-		}
-	}
-	else
-	{
-		while (err[i])
-		{
-			ft_putstr("ls: ");
-			ft_putstr(err[i]);
-			ft_putendl(": No such file or directory");
-			i++;
-		}
+		ft_putstr("ls: ");
+		ft_putstr(err[i]);
+		ft_putendl(": No such file or directory");
+		i++;
 	}
 }
 

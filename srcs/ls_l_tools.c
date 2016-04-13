@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/04/11 18:46:10 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/13 18:03:19 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,18 @@ void	affect(t_stat stats, t_align *max_all)
 				ft_strlen(uid->pw_name) + 2));
 	else if (uid == NULL)
 	{
-		ft_putstr_space(NULL, (max_all->usr - ft_intlen(stats.st_uid) + 2));
+		ft_putstr_space(NULL, (max_all->usr - ft_intlen(stats.st_uid)));
 		ft_putnbr(stats.st_uid);
+		ft_putstr("  ");
 	}
 	if (gid != NULL)
 		ft_putstr_space(gid->gr_name, (max_all->grp -
 					ft_strlen(gid->gr_name) + 2));
+	else
+	{
+		ft_putnbr(stats.st_uid);
+		ft_putstr_space(NULL, (max_all->grp - ft_intlen(stats.st_uid) + 2));
+	}
 }
 
 void	print_fname(t_file *dir)
