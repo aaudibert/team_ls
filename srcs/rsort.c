@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 18:12:54 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/23 17:25:09 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/14 17:37:14 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,16 @@ void	rsort_dir(t_file *dir)
 	int		swapped;
 
 	start = dir;
-	if (g_flags[FLAG_T] == 1)
-		rsort_date(dir);
-	else
+	swapped = 1;
+	while (swapped == 1)
 	{
-		swapped = 1;
-		while (swapped == 1)
+		swapped = 0;
+		dir = start;
+		while (dir->next)
 		{
-			swapped = 0;
-			dir = start;
-			while (dir->next)
-			{
-				if (ft_strcmp(dir->f_name, dir->next->f_name) < 0)
-					swapped = swap_dir(dir);
-				dir = dir->next;
-			}
+			if (ft_strcmp(dir->f_name, dir->next->f_name) < 0)
+				swapped = swap_dir(dir);
+			dir = dir->next;
 		}
 	}
 }

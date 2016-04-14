@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2016/03/23 17:24:34 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/14 17:46:54 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,16 @@ void	sort_date(t_file *dir)
 		while (dir->next)
 		{
 			if (dir->stat->TIME < dir->next->stat->TIME)
+			{
+				while (NEXT->next && dir->stat->TIME < dir->next->stat->TIME)
+					dir = dir->next;
 				swapped = swap_dir(dir);
-			else if (dir->stat->TIME == dir->next->stat->TIME &&
-					ft_strcmp(dir->f_name, dir->next->f_name) > 0)
+			}
+			else if (dir->stat->TIME == NEXT->stat->TIME &&
+					ft_strcmp(dir->f_name, NEXT->f_name) > 0)
 				swapped = swap_dir(dir);
+			if (!dir)
+				break ;
 			dir = dir->next;
 		}
 	}
@@ -55,21 +61,22 @@ void	sort_dir(t_file *dir)
 	int		swapped;
 
 	start = dir;
-	if (g_flags[FLAG_T] == 1)
-		sort_date(dir);
-	else
+	swapped = 1;
+	while (swapped == 1)
 	{
-		swapped = 1;
-		while (swapped == 1)
+		swapped = 0;
+		dir = start;
+		while (dir->next)
 		{
-			swapped = 0;
-			dir = start;
-			while (dir->next)
+			if (ft_strcmp(dir->f_name, dir->next->f_name) > 0)
 			{
-				if (ft_strcmp(dir->f_name, dir->next->f_name) > 0)
-					swapped = swap_dir(dir);
-				dir = dir->next;
+				while (NEXT->next && ft_strcmp(dir->f_name, NEXT->f_name) > 0)
+					dir = NEXT;
+				swapped = swap_dir(dir);
 			}
+			if (!dir)
+				break ;
+			dir = dir->next;
 		}
 	}
 }

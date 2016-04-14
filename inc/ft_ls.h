@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/13 19:44:55 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/14 17:21:24 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define BCYAN			"\x1B[1;36m"
 
 # define TIME			st_mtimespec.tv_sec
+# define NEXT			dir->next
 
 extern int				*g_flags;
 extern int				g_rec;
