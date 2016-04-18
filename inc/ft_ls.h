@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/14 17:21:24 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/18 18:53:29 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct			s_align
 	int					usr;
 	int					grp;
 	int					size;
+	int					minor;
 }						t_align;
 
 void					ft_free_tab(char **tab);

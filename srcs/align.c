@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 19:31:48 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/13 18:00:50 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/18 19:08:36 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,7 @@ void		set_max(t_file *dir, t_align *max_all)
 		max_all->grp = ft_strlen(tgrp);
 	if (ft_intlen(dir->stat->st_size) > max_all->size)
 		max_all->size = ft_intlen(dir->stat->st_size);
+	if ((S_ISCHR(dir->stat->st_mode) || S_ISBLK(dir->stat->st_mode)) &&
+			ft_intlen(minor(dir->stat->st_rdev)) > max_all->minor)
+		max_all->minor = ft_intlen(minor(dir->stat->st_rdev));
 }
