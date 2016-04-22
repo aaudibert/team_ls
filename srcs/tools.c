@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/04/18 18:53:02 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/19 18:17:50 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_align				*max(t_file *dir, int file, t_stat *st)
 	max_all->grp = 0;
 	max_all->size = 0;
 	max_all->minor = 0;
+	max_all->major = 0;
 	while (dir != NULL)
 	{
 		if (file == 1 || (opt_a(dir) && st->st_mode & S_IXUSR))
@@ -70,7 +71,7 @@ void				display_link_right(t_file *dir, t_align *mx)
 	affect(*(dir->stat), mx);
 }
 
-void	display_date_right(char **tab)
+void				display_date_right(char **tab)
 {
 	if (ft_strlen(tab[2]) == 1)
 	{

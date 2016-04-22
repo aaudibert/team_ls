@@ -6,7 +6,7 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/04/18 19:34:28 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/19 18:16:13 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,28 @@
 
 void		print_ischr(t_file *dir, t_align *max_all)
 {
-	ft_putnbr(major(dir->stat->st_rdev));
+	int sn;
+
+	sn = 0;
+	if (ft_intlen(major(dir->stat->st_rdev)) < max_all->major)
+	{
+		sn = max_all->major - ft_intlen(major(dir->stat->st_rdev));
+		while (sn-- != 0)
+			ft_putchar(' ');
+		ft_putnbr(major(dir->stat->st_rdev));
+	}
+	else
+		ft_putnbr(major(dir->stat->st_rdev));
 	ft_putstr(", ");
-	if (/*conditions espace*/)
-	ft_putnbr(minor(dir->stat->st_rdev));
+	if (ft_intlen(minor(dir->stat->st_rdev)) < max_all->minor)
+	{
+		sn = max_all->minor - ft_intlen(minor(dir->stat->st_rdev));
+		while (sn-- != 0)
+			ft_putchar(' ');
+		ft_putnbr(minor(dir->stat->st_rdev));
+	}
+	else
+		ft_putnbr(minor(dir->stat->st_rdev));
 	ft_putchar(' ');
 }
 
