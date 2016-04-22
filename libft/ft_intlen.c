@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 19:42:03 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/15 14:50:44 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/22 17:42:59 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int					ft_intlen(int nbr)
 	if (nbr < 0)
 	{
 		nbr *= -1;
-		len ++;
+		len++;
 	}
 	while (nbr > 9)
 	{

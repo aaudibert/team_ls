@@ -6,7 +6,7 @@
 /*   By: aaudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 19:19:37 by aaudiber          #+#    #+#             */
-/*   Updated: 2014/11/06 19:25:35 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/22 17:44:13 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		ft_putstr_fd(char const *str, int fd)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		write (fd, &str[i], 1);
+		write(fd, &str[i], 1);
 		i++;
 	}
 }
