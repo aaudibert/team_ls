@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2016/04/15 16:57:49 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/25 18:49:05 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void	sort_date(t_file *dir)
 			if (dir->stat->TIME < dir->next->stat->TIME)
 				swapped = swap_dir(dir);
 			else if (dir->stat->TIME == NEXT->stat->TIME &&
+					dir->stat->NTIME < NEXT->stat->NTIME)
+				swapped = swap_dir(dir);
+			else if (dir->stat->TIME == NEXT->stat->TIME &&
+					dir->stat->NTIME == NEXT->stat->NTIME &&
 					ft_strcmp(dir->f_name, NEXT->f_name) > 0)
 				swapped = swap_dir(dir);
 			dir = dir->next;
