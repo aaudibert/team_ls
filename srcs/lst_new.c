@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/12 12:06:53 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/02/04 14:59:56 by psaint-j         ###   ########.fr       */
+/*   Updated: 2016/04/26 18:32:17 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ t_file		*lst_new(char *f_name, char *path, int file)
 	else
 		new_link->f_name = ft_strdup(f_name);
 	new_link->stat = malloc(sizeof(t_stat));
-	lstat(s, new_link->stat);
+	if (lstat(s, new_link->stat))
+		;
+	else
+		new_link->stat = NULL;
 	free(s);
 	new_link->prev = NULL;
 	new_link->next = NULL;
