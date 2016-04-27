@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2016/04/25 18:49:05 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/27 21:25:48 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ void	sort_date(t_file *dir)
 		dir = start;
 		while (dir->next)
 		{
-			if (dir->stat->TIME < dir->next->stat->TIME)
+			if (!ERR && !NERR && dir->stat->TIME < dir->next->stat->TIME)
 				swapped = swap_dir(dir);
-			else if (dir->stat->TIME == NEXT->stat->TIME &&
+			else if (!ERR && !NERR && dir->stat->TIME == NEXT->stat->TIME &&
 					dir->stat->NTIME < NEXT->stat->NTIME)
 				swapped = swap_dir(dir);
-			else if (dir->stat->TIME == NEXT->stat->TIME &&
+			else if (!NERR && !ERR && dir->stat->TIME == NEXT->stat->TIME &&
 					dir->stat->NTIME == NEXT->stat->NTIME &&
 					ft_strcmp(dir->f_name, NEXT->f_name) > 0)
 				swapped = swap_dir(dir);
@@ -66,7 +66,7 @@ void	sort_dir(t_file *dir)
 		dir = start;
 		while (dir->next)
 		{
-			if (ft_strcmp(dir->f_name, dir->next->f_name) > 0)
+			if (!ERR && !NERR && ft_strcmp(dir->f_name, dir->next->f_name) > 0)
 				swapped = swap_dir(dir);
 			dir = dir->next;
 		}

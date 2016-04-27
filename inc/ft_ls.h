@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/25 18:47:56 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/27 21:00:15 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@
 # define NTIME			st_mtimespec.tv_nsec
 # define STAT			dir->stat
 # define NEXT			dir->next
+# define ERR			dir->err
+# define NERR			dir->next->err
 
 extern int				*g_flags;
 extern int				g_rec;
@@ -56,6 +58,7 @@ typedef struct			s_file
 	char				*path;
 	char				*f_name;
 	t_stat				*stat;
+	int					err;
 	struct s_file		*next;
 	struct s_file		*prev;
 }						t_file;
@@ -103,6 +106,7 @@ void					rsort_date(t_file *dir);
 int						swap_dir(t_file *dir);
 void					ls_l(t_file *dir, int i, t_stat *st);
 int						no_perm(t_file *dir);
+int						no_permx(t_file *dir);
 void					set_max(t_file *dir, t_align *max_all);
 void					permissions_proprio(t_stat stats);
 void					permissions_locataire(t_stat stats);

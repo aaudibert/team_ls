@@ -6,7 +6,7 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/04/26 18:34:56 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/27 21:32:12 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,6 @@ void		print_ischr(t_file *dir, t_align *max_all)
 	ft_putchar(' ');
 }
 
-int			no_perm(t_file *dir)
-{
-	while (dir != NULL)
-	{
-		if (opt_a(dir) && dir->stat->st_mode & S_IRUSR)
-			return (1);
-		dir = dir->next;
-	}
-	return (0);
-}
-
 void		err_l(char *s)
 {
 	ft_putstr("ls: ");
@@ -67,7 +56,7 @@ void		ls_l(t_file *dir, int i, t_stat *st)
 	max_all = max(dir, i, st);
 	while (dir != NULL)
 	{
-		if (i == 1 || (opt_a(dir) && st->st_mode & S_IXUSR && STAT))
+		if (i == 1 || (!ERR && opt_a(dir) && st->st_mode & S_IXUSR && STAT))
 		{
 			letters(*(dir->stat));
 			display_link_right(dir, max_all);
