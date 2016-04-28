@@ -6,7 +6,7 @@
 /*   By: psaint-j <psaint-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:05:49 by psaint-j          #+#    #+#             */
-/*   Updated: 2016/04/28 16:37:21 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/28 22:32:17 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@ void		prm_new(t_prm *s)
 		s->ddir = 0;
 }
 
-char		*errfunc(t_prm *s, char *path)
-{
-	s->e--;
-	return (path);
-}
-
 t_prm		*check_params(char **paths, t_prm *s, int i)
 {
 	int				v;
@@ -53,20 +47,18 @@ t_prm		*check_params(char **paths, t_prm *s, int i)
 	while (paths[i])
 	{
 		dir = opendir(paths[i]);
-		v = stat(paths[i], &t);
-		if (dir || errno)
+		v = lstat(paths[i], &t);
+		if (v != 0)
+			s->error[--s->e] = paths[i];
+		else if ((t.st_mode & S_IFREG) || (S_ISLNK(t.st_mode) &&
+					paths[i][ft_strlen(paths[i])] == '/' &&
+					g_flags[FLAG_L] == 1))
+			s->file[--s->f] = paths[i];
+		else if (S_ISDIR(t.st_mode))
 		{
-			s->d--;
-			s->ddir[s->d] = paths[i];
+			s->ddir[--s->d] = paths[i];
 			if (dir)
 				closedir(dir);
-		}
-		else if (v != 0)
-			s->error[s->e] = errfunc(s, paths[i]);
-		else if ((t.st_mode & S_IFREG))
-		{
-			s->f--;
-			s->file[s->f] = paths[i];
 		}
 		i++;
 	}

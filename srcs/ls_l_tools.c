@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/04/27 21:01:20 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/28 21:30:57 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	ft_putstr_space(char *str, int nbr_sp)
 		ft_putchar(' ');
 }
 
-void	total_block(t_file *dir)
+void	total_block(t_file *dir, t_stat *st)
 {
 	int total;
 	int i;
 
 	total = 0;
 	i = 0;
-	if (!no_permx(dir) || !no_perm(dir))
+	if (!no_permx(dir, st) || !no_perm(dir))
 		return ;
 	while (dir != NULL)
 	{

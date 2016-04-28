@@ -6,7 +6,7 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/04/27 21:32:12 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/28 21:06:19 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		ls_l(t_file *dir, int i, t_stat *st)
 	t_align *max_all;
 
 	if (i == 0)
-		total_block(dir);
+		total_block(dir, st);
 	max_all = max(dir, i, st);
 	while (dir != NULL)
 	{

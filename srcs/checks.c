@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/28 16:38:02 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/28 22:31:04 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,30 @@ t_prm		*count_params(char **paths, t_prm *s, int i)
 	while (paths[i])
 	{
 		dir = opendir(paths[i]);
-		v = stat(paths[i], &t);
-		if (dir || errno)
+		v = lstat(paths[i], &t);
+		if (v != 0)
+			s->e++;
+		else if ((t.st_mode & S_IFREG) || (S_ISLNK(t.st_mode) &&
+					paths[i][ft_strlen(paths[i])] == '/' &&
+					g_flags[FLAG_L] == 1))
+		{
+			ft_putendl(paths[i]);
+			s->f++;
+		}
+		else if (S_ISDIR(t.st_mode))
 		{
 			s->d++;
 			if (dir)
 				closedir(dir);
 		}
-		if (v != 0)
-			s->e++;
-		else if ((t.st_mode & S_IFREG))
-			s->f++;
 		i++;
 	}
+	ft_putnbr(s->d);
+	ft_putchar('\n');
+	ft_putnbr(s->e);
+	ft_putchar('\n');
+	ft_putnbr(s->f);
+	ft_putchar('\n');
 	return (s);
 }
 
