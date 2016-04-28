@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/13 19:52:17 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/28 16:38:02 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ t_prm		*count_params(char **paths, t_prm *s, int i)
 	{
 		dir = opendir(paths[i]);
 		v = stat(paths[i], &t);
-		if (dir)
+		if (dir || errno)
+		{
 			s->d++;
+			if (dir)
+				closedir(dir);
+		}
 		if (v != 0)
 			s->e++;
 		else if ((t.st_mode & S_IFREG))

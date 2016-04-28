@@ -6,7 +6,7 @@
 /*   By: psaint-j <psaint-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:05:49 by psaint-j          #+#    #+#             */
-/*   Updated: 2016/03/11 19:14:29 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/28 16:37:21 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@ t_prm		*check_params(char **paths, t_prm *s, int i)
 	{
 		dir = opendir(paths[i]);
 		v = stat(paths[i], &t);
-		if (dir)
+		if (dir || errno)
 		{
 			s->d--;
 			s->ddir[s->d] = paths[i];
-			closedir(dir);
+			if (dir)
+				closedir(dir);
 		}
 		else if (v != 0)
 			s->error[s->e] = errfunc(s, paths[i]);

@@ -6,7 +6,7 @@
 /*   By: aaudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:17:02 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/03/11 19:16:06 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/28 15:47:36 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void		del_link(t_file *dir)
 {
-	free(dir->stat);
+	if (!ERR)
+		free(dir->stat);
 	free(dir->f_name);
 	free(dir);
 }

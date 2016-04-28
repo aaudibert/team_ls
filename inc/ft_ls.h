@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/27 21:00:15 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/28 16:29:51 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <dirent.h>
 # include <sys/stat.h>
+# include <errno.h>
 # include "../libft/includes/libft.h"
 # include <time.h>
 # include <pwd.h>

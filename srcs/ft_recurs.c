@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 14:27:26 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/26 19:21:46 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/28 16:43:02 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void		ft_recurs(t_file *dir)
 		while (dir && (ft_strequ(".", dir->f_name) == 1 ||
 					ft_strequ("..", dir->f_name) == 1))
 			dir = dir->next;
-		if (dir && STAT)
+		if (dir && !ERR)
 		{
 			if (opt_a(dir) && S_ISDIR(dir->stat->st_mode))
 				rec_print(dir);
 			dir = dir->next;
 		}
-		else if (!STAT)
+		else if (dir && ERR)
 			dir = dir->next;
 	}
 }

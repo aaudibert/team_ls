@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2016/04/28 15:34:20 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/28 15:46:57 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	sort_date(t_file *dir)
 
 	start = dir;
 	swapped = 1;
-	ft_putendl("kmvekwrnvqkj");
 	while (swapped == 1)
 	{
 		swapped = 0;
@@ -45,8 +44,8 @@ void	sort_date(t_file *dir)
 			else if (!ERR && !NERR && dir->stat->TIME == NEXT->stat->TIME &&
 					dir->stat->NTIME < NEXT->stat->NTIME)
 				swapped = swap_dir(dir);
-			else if (((NERR && ERR) || (dir->stat->TIME == NEXT->stat->TIME &&
-					dir->stat->NTIME == NEXT->stat->NTIME)) &&
+			else if (dir->stat->TIME == NEXT->stat->TIME &&
+					dir->stat->NTIME == NEXT->stat->NTIME &&
 					ft_strcmp(dir->f_name, NEXT->f_name) > 0)
 				swapped = swap_dir(dir);
 			dir = dir->next;
@@ -61,7 +60,6 @@ void	sort_dir(t_file *dir)
 
 	start = dir;
 	swapped = 1;
-	ft_putendl("oemoer");
 	while (swapped == 1)
 	{
 		swapped = 0;
