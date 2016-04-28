@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 15:29:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/27 21:32:50 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/28 15:17:14 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void		data_proc(t_file *dir)
 {
 	dir->next = NULL;
 	dir = rewind_lst(dir);
-	if (!no_perm(dir) && g_flags[FLAG_R] == 1 && g_flags[FLAG_T] == 1)
+	if (no_perm(dir) && g_flags[FLAG_R] == 1 && g_flags[FLAG_T] == 1)
 		rsort_date(dir);
 	else if (g_flags[FLAG_R] == 1 && g_flags[FLAG_T] != 1)
 		rsort_dir(dir);
-	else if (!no_perm(dir) && g_flags[FLAG_R] != 1 && g_flags[FLAG_T] == 1)
+	else if (no_perm(dir) && g_flags[FLAG_R] != 1 && g_flags[FLAG_T] == 1)
 		sort_date(dir);
 	else
 		sort_dir(dir);
