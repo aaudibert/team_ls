@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/28 22:31:04 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/29 15:36:06 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_prm		*count_params(char **paths, t_prm *s, int i)
 {
 	int				v;
-	DIR				*dir;
 	struct stat		t;
 
 	s->d = 0;
@@ -23,7 +22,6 @@ t_prm		*count_params(char **paths, t_prm *s, int i)
 	s->e = 0;
 	while (paths[i])
 	{
-		dir = opendir(paths[i]);
 		v = lstat(paths[i], &t);
 		if (v != 0)
 			s->e++;
@@ -35,19 +33,9 @@ t_prm		*count_params(char **paths, t_prm *s, int i)
 			s->f++;
 		}
 		else if (S_ISDIR(t.st_mode))
-		{
 			s->d++;
-			if (dir)
-				closedir(dir);
-		}
 		i++;
 	}
-	ft_putnbr(s->d);
-	ft_putchar('\n');
-	ft_putnbr(s->e);
-	ft_putchar('\n');
-	ft_putnbr(s->f);
-	ft_putchar('\n');
 	return (s);
 }
 
