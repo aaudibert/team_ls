@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/12 12:06:53 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/28 15:46:34 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/29 15:51:35 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_file		*lst_new(char *f_name, char *path, int file)
 	if (lstat(s, new_link->stat) == 0)
 		new_link->err = 0;
 	else
-		new_link->err = 1;
+		new_link->err = errno;
 	free(s);
 	new_link->prev = NULL;
 	new_link->next = NULL;

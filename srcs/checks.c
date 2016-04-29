@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/29 15:36:06 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/29 16:03:28 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 t_prm		*count_params(char **paths, t_prm *s, int i)
 {
-	int				v;
 	struct stat		t;
 
 	s->d = 0;
@@ -22,16 +21,12 @@ t_prm		*count_params(char **paths, t_prm *s, int i)
 	s->e = 0;
 	while (paths[i])
 	{
-		v = lstat(paths[i], &t);
-		if (v != 0)
+		if (lstat(paths[i], &t) != 0)
 			s->e++;
 		else if ((t.st_mode & S_IFREG) || (S_ISLNK(t.st_mode) &&
 					paths[i][ft_strlen(paths[i])] == '/' &&
 					g_flags[FLAG_L] == 1))
-		{
-			ft_putendl(paths[i]);
 			s->f++;
-		}
 		else if (S_ISDIR(t.st_mode))
 			s->d++;
 		i++;
@@ -42,14 +37,18 @@ t_prm		*count_params(char **paths, t_prm *s, int i)
 void		print_err(char **err)
 {
 	int i;
+	struct stat		t;
 
 	i = 0;
 	while (err[i])
 	{
 		ft_putstr("ls: ");
 		ft_putstr(err[i]);
-		ft_putendl(": No such file or directory");
-		i++;
+		lstat(err[i++], &t);
+		if (errno == EACCES)
+			ft_putendl(": Permission denied");
+		else
+			ft_putendl(": No such file or directory");
 	}
 }
 
