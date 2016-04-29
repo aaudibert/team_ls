@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 15:35:32 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/12 15:48:07 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/29 18:19:49 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void		act_flag(char flag)
 		g_flags[FLAG_T] = 1;
 	else if (flag == 'a')
 		g_flags[FLAG_A] = 1;
+	else if (flag == 'G')
+		g_flags[FLAG_GG] = 1;
 }
 
 void		wrong_flag(char flag)
@@ -40,11 +42,8 @@ void		wrong_flag(char flag)
 
 int			check_flags(char flag)
 {
-	if (flag == 'R'
-		|| flag == 'l'
-		|| flag == 'r'
-		|| flag == 'a'
-		|| flag == 't')
+	if (flag == 'R' || flag == 'l' || flag == 'r' || flag == 'a'
+			|| flag == 't' || flag == 'G')
 		return (1);
 	return (0);
 }

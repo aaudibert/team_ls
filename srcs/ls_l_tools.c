@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:05:18 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/04/28 21:30:57 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/29 18:43:16 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,13 @@ void	affect(t_stat stats, t_align *max_all)
 
 void	print_fname(t_file *dir)
 {
-	if (S_ISDIR(dir->stat->st_mode))
-		ft_putendl_color(dir->f_name, CYAN);
-	else if (dir->stat->st_mode & S_IXUSR && S_ISREG(dir->stat->st_mode))
-		ft_putendl_color(dir->f_name, RED);
+	if (g_flags[FLAG_GG] == 1)
+	{
+		if (S_ISDIR(dir->stat->st_mode))
+			ft_putendl_color(dir->f_name, BCYAN);
+		else if (dir->stat->st_mode & S_IXUSR && S_ISREG(dir->stat->st_mode))
+			ft_putendl_color(dir->f_name, BRED);
+	}
 	else
 		ft_putendl(dir->f_name);
 }
@@ -92,7 +95,11 @@ void	ifslnk(t_stat stats, t_file *dir)
 	{
 		link = (char *)malloc(sizeof(char) * (stats.st_mode + 1));
 		tmp = ft_strjoin(dir->path, dir->f_name);
-		ft_putstr_space(dir->f_name, 1);
+		if (g_flags[FLAG_GG] == 1)
+			ft_putendl_color(dir->f_name, BMAGENTA);
+		else
+			ft_putendl_color(dir->f_name, BMAGENTA);
+		ft_putchar(' ');
 		ft_putstr_space("->", 1);
 		if (readlink(tmp, link, stats.st_mode + 1) != -1)
 		{

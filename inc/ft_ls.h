@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/28 21:09:44 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/29 18:19:39 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define FLAG_L			2
 # define FLAG_A			3
 # define FLAG_T			4
+# define FLAG_GG		5
 
 # define RESET			"\x1B[0m"
 # define RED			"\x1B[31m"
@@ -38,6 +39,7 @@
 # define YELLOW			"\x1B[33m"
 # define BLUE			"\x1B[34m"
 # define MAGENTA		"\x1B[35m"
+# define BMAGENTA		"\x1B[1;35m"
 # define CYAN			"\x1B[36m"
 # define BCYAN			"\x1B[1;36m"
 

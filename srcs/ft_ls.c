@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:15:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/28 20:32:30 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/29 18:18:16 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int			main(int ac, char **av)
 	int		f;
 	char	**paths;
 
-	g_flags = (int *)malloc(sizeof(int) * 5);
+	g_flags = (int *)malloc(sizeof(int) * 6);
 	ft_bzero(g_flags, sizeof(int) * 5);
 	f = 0;
 	if (ac > 1)
