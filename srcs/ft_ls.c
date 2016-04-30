@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:15:30 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/29 18:18:16 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/30 18:23:59 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,41 @@
 
 int		*g_flags;
 
-void		one_path(char *path)
+void		one_path(t_file *path)
 {
 	char *s;
 
-	s = ft_strjoin(path, "/");
-	if (path[ft_strlen(path) - 1] == '/')
-		get_data(path);
+	s = ft_strjoin(path->path, "/");
+	if (path->path[ft_strlen(path->path) - 1] == '/')
+		get_data(path->path);
 	else
 		get_data(s);
 	free(s);
 }
 
-void		to_prm(char **paths)
+void		to_prm(t_file *paths)
 {
-	int		f;
 	char	*s;
 
-	f = 0;
 	s = NULL;
-	if (paths[1])
+	if (paths->next)
 	{
-		while (paths[f])
+		while (paths != NULL)
 		{
-			ft_putstr(paths[f]);
+			ft_putstr(paths->path);
 			ft_putendl(":");
-			s = ft_strjoin(paths[f], "/");
-			if (paths[f][ft_strlen(paths[f]) - 1] == '/')
-				get_data(paths[f]);
+			s = ft_strjoin(paths->path, "/");
+			if (paths->path[ft_strlen(paths->path) - 1] == '/')
+				get_data(paths->path);
 			else
 				get_data(s);
-			f++;
-			if (paths[f])
+			paths = paths->next;
+			if (paths)
 				ft_putchar('\n');
 		}
 	}
 	else
-		one_path(paths[f]);
+		one_path(paths);
 	free(s);
 	free(g_flags);
 }
@@ -58,7 +56,7 @@ void		to_prm(char **paths)
 int			main(int ac, char **av)
 {
 	int		f;
-	char	**paths;
+	t_file	*paths;
 
 	g_flags = (int *)malloc(sizeof(int) * 6);
 	ft_bzero(g_flags, sizeof(int) * 5);
@@ -66,7 +64,6 @@ int			main(int ac, char **av)
 	if (ac > 1)
 	{
 		f = parser(ac, av);
-		paths = (char **)malloc(sizeof(char *) * (f + 1));
 		if (ac - f == 1)
 			get_data("./");
 		else
@@ -75,7 +72,7 @@ int			main(int ac, char **av)
 			if (paths)
 			{
 				to_prm(paths);
-				ft_free_tab(paths);
+				ft_free_dir_lst(paths);
 			}
 		}
 	}

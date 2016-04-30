@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/04/19 18:17:50 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/30 18:43:45 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void				display_date_right(char **tab)
 		ft_putstr(tab[2]);
 }
 
-void				date(t_file *dir, t_stat stats)
+void				date(t_file *dir, t_stat stats, int file)
 {
 	char	**date;
 	char	**date_f;
@@ -108,5 +108,5 @@ void				date(t_file *dir, t_stat stats)
 	}
 	ft_free_tab(date);
 	ft_free_tab(date_f);
-	ifslnk(*(dir->stat), dir);
+	ifslnk(*(dir->stat), dir, file);
 }

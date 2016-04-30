@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/29 16:03:28 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/30 19:16:33 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,12 @@ void		print_file(char **file)
 	t_file	*dir;
 
 	dir = file_l(file);
-	if (g_flags[FLAG_R] == 1)
+	if (no_perm(dir) && g_flags[FLAG_R] == 1 && g_flags[FLAG_T] == 1)
+		rsort_date(dir);
+	else if (g_flags[FLAG_R] == 1 && g_flags[FLAG_T] != 1)
 		rsort_dir(dir);
+	else if (no_perm(dir) && g_flags[FLAG_R] != 1 && g_flags[FLAG_T] == 1)
+		sort_date(dir);
 	else
 		sort_dir(dir);
 	if (g_flags[FLAG_L] == 1)
@@ -68,26 +72,10 @@ void		print_file(char **file)
 	ft_free_dir_lst(dir);
 }
 
-char		**get_dir(char **a)
-{
-	int		i;
-	char	**ret;
-
-	i = 0;
-	ret = (char **)malloc(sizeof(char *) * arr_size(a) + 1);
-	ret[arr_size(a)] = NULL;
-	while (a[i])
-	{
-		ret[i] = ft_strdup(a[i]);
-		i++;
-	}
-	return (ret);
-}
-
-char		**checks(char **paths, int i)
+t_file		*checks(char **paths, int i)
 {
 	t_prm	s;
-	char	**ret;
+	t_file	*ret;
 
 	ret = NULL;
 	count_params(paths, &s, i);
@@ -102,9 +90,6 @@ char		**checks(char **paths, int i)
 	if (s.ddir && s.file)
 		ft_putchar('\n');
 	if (s.ddir)
-	{
-		ret = get_dir(s.ddir);
-		sort_params(ret);
-	}
+		ret = sort_pdirs(s.ddir);
 	return (ret);
 }

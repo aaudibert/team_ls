@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/12 12:06:53 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/29 15:51:35 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/30 20:20:43 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_file		*lst_new(char *f_name, char *path, int file)
 	s = ft_strjoin(path, f_name);
 	if (file == 2)
 		new_link->f_name = ft_strjoin(path, ".");
-	if (file == 1 && ft_strcmp(path, "./") != 0)
+	else if (file == 1 && ft_strcmp(path, "./") != 0)
 		new_link->f_name = ft_strdup(s);
 	else
 		new_link->f_name = ft_strdup(f_name);

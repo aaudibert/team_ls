@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/29 18:19:39 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/04/30 19:15:41 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct			s_align
 void					ft_free_tab(char **tab);
 int						parser(int ac, char **av);
 t_prm					*check_params(char **paths, t_prm *s, int i);
-char					**checks(char **paths, int f);
+t_file					*checks(char **paths, int f);
 t_file					*file_l(char **file);
 char					*get_path(char *s);
 char					*get_file(char *s);
@@ -102,6 +102,7 @@ void					print_dir(t_file *dir, int i);
 int						opt_a(t_file *dir);
 void					ft_recurs(t_file *dir);
 void					sort_params(char **tab);
+t_file					*sort_pdirs(char **tab);
 void					sort_dir(t_file *dir);
 void					sort_date(t_file *dir);
 void					rsort_dir(t_file *dir);
@@ -122,8 +123,8 @@ void					display_link_right(t_file *dir, t_align *mx);
 void					ft_putstr_space(char *str, int nbr_sp);
 void					total_block(t_file *dir, t_stat *st);
 void					affect(t_stat stats, t_align *max_all);
-void					ifslnk(t_stat stats, t_file *dir);
-void					date(t_file *dir, t_stat stats);
+void					date(t_file *dir, t_stat stats, int file);
+void					ifslnk(t_stat stats, t_file *dir, int file);
 void					del_link(t_file *dir);
 void					ft_free_dir_lst(t_file *dir);
 #endif
