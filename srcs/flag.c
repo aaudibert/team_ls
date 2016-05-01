@@ -6,11 +6,31 @@
 /*   By: yalaouf <yalaouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/27 19:35:27 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/04/30 18:48:31 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/05/01 18:24:45 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
+
+t_align		*max(t_file *dir, int file, t_stat *st)
+{
+	t_align	*max_all;
+
+	max_all = (t_align*)malloc(sizeof(t_align));
+	max_all->link = 0;
+	max_all->usr = 0;
+	max_all->grp = 0;
+	max_all->size = 0;
+	max_all->minor = 0;
+	max_all->major = 0;
+	while (dir != NULL)
+	{
+		if (file == 1 || (opt_a(dir) && st->st_mode & S_IXUSR))
+			set_max(dir, max_all);
+		dir = dir->next;
+	}
+	return (max_all);
+}
 
 void		print_ischr(t_file *dir, t_align *max_all)
 {

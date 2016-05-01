@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:17 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/30 19:16:33 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/05/01 18:24:10 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ t_prm		*count_params(char **paths, t_prm *s, int i)
 
 void		print_err(char **err)
 {
-	int i;
-	struct stat		t;
+	int			i;
+	struct stat	t;
 
 	i = 0;
 	while (err[i])

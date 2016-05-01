@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/12 12:06:53 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/30 20:20:43 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/05/01 19:18:10 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ t_file		*lst_new(char *f_name, char *path, int file)
 	char		*s;
 
 	new_link = (t_file*)malloc(sizeof(t_file));
+	new_link->stat = malloc(sizeof(t_stat));
 	new_link->path = path;
-	s = ft_strjoin(path, f_name);
 	if (file == 2)
-		new_link->f_name = ft_strjoin(path, ".");
-	else if (file == 1 && ft_strcmp(path, "./") != 0)
+		s = ft_strjoin(f_name, "/.");
+	else
+		s = ft_strjoin(path, f_name);
+	if (file == 1 && ft_strcmp(path, "./") != 0)
 		new_link->f_name = ft_strdup(s);
 	else
 		new_link->f_name = ft_strdup(f_name);
-	new_link->stat = malloc(sizeof(t_stat));
 	if (lstat(s, new_link->stat) == 0)
 		new_link->err = 0;
 	else

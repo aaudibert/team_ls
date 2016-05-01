@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/30 19:15:41 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/05/01 19:36:32 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define FLAG_A			3
 # define FLAG_T			4
 # define FLAG_GG		5
+# define FLAG_TT		6
+# define FLAG_AA		7
 
 # define RESET			"\x1B[0m"
 # define RED			"\x1B[31m"
@@ -91,6 +93,7 @@ int						parser(int ac, char **av);
 t_prm					*check_params(char **paths, t_prm *s, int i);
 t_file					*checks(char **paths, int f);
 t_file					*file_l(char **file);
+t_file					*dir_l(char **file);
 char					*get_path(char *s);
 char					*get_file(char *s);
 char					*get_name(char *s);
@@ -117,7 +120,6 @@ void					permissions_locataire(t_stat stats);
 void					permissions_babacar(t_stat stats);
 void					nationalite(t_stat stats);
 void					letters(t_stat stats);
-t_align					*max(t_file *dir, int file, t_stat *st);
 void					display_size_right(int max_size, t_stat stats);
 void					display_link_right(t_file *dir, t_align *mx);
 void					ft_putstr_space(char *str, int nbr_sp);

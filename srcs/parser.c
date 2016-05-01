@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 15:35:32 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/29 18:19:49 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/05/01 19:58:29 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ void		act_flag(char flag)
 		g_flags[FLAG_A] = 1;
 	else if (flag == 'G')
 		g_flags[FLAG_GG] = 1;
+	else if (flag == 'T')
+		g_flags[FLAG_TT] = 1;
+	else if (flag == 'A')
+		g_flags[FLAG_AA] = 1;
 }
 
 void		wrong_flag(char flag)
@@ -35,7 +39,7 @@ void		wrong_flag(char flag)
 	ft_putstr("ft_ls: illegal option -- ");
 	ft_putchar(flag);
 	ft_putchar('\n');
-	ft_putstr("usage: ft_ls [-Ralrt] [file ...]");
+	ft_putstr("usage: ft_ls [-AGRTalrt] [file ...]");
 	ft_putchar('\n');
 	exit(1);
 }
@@ -43,7 +47,7 @@ void		wrong_flag(char flag)
 int			check_flags(char flag)
 {
 	if (flag == 'R' || flag == 'l' || flag == 'r' || flag == 'a'
-			|| flag == 't' || flag == 'G')
+			|| flag == 't' || flag == 'G' || flag == 'T' || flag == 'A')
 		return (1);
 	return (0);
 }
@@ -58,9 +62,7 @@ void		check_opt(char *opt)
 		if (check_flags(opt[i]) == 0)
 			wrong_flag(opt[i]);
 		else
-		{
 			act_flag(opt[i]);
-		}
 		i++;
 	}
 }

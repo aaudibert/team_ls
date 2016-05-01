@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/06 17:30:14 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/04/28 17:46:23 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/05/01 18:23:09 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,21 @@ int *g_flags;
 
 void		col_print(t_file *dir, int file, t_stat *st)
 {
-	if (!ERR && (file == 1 || st->st_mode & S_IXUSR))
+	if (!ERR && (file == 1 || st->st_mode & S_IXUSR) && g_flags[FLAG_GG] == 1)
 	{
 		if (file == 0 && S_ISDIR(dir->stat->st_mode))
-			ft_putendl_color(dir->f_name, CYAN);
+			ft_putendl_color(dir->f_name, BCYAN);
 		else if (file == 0 && dir->stat->st_mode & S_IXUSR &&
 				S_ISREG(dir->stat->st_mode))
 			ft_putendl_color(dir->f_name, RED);
+		else if (file == 0 && S_ISLNK(STAT->st_mode))
+			ft_putendl_color(dir->f_name, MAGENTA);
 		else
 			ft_putendl(dir->f_name);
 	}
+	else if (!ERR && (file == 1 || st->st_mode & S_IXUSR) &&
+			g_flags[FLAG_GG] != 1)
+		ft_putendl(dir->f_name);
 	else
 	{
 		ft_putstr("ls: ");

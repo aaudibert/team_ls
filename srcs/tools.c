@@ -6,33 +6,13 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/04/30 18:43:45 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/05/01 18:16:40 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-t_align				*max(t_file *dir, int file, t_stat *st)
-{
-	t_align	*max_all;
-
-	max_all = (t_align*)malloc(sizeof(t_align));
-	max_all->link = 0;
-	max_all->usr = 0;
-	max_all->grp = 0;
-	max_all->size = 0;
-	max_all->minor = 0;
-	max_all->major = 0;
-	while (dir != NULL)
-	{
-		if (file == 1 || (opt_a(dir) && st->st_mode & S_IXUSR))
-			set_max(dir, max_all);
-		dir = dir->next;
-	}
-	return (max_all);
-}
-
-void				display_size_right(int max_size, t_stat stats)
+void		display_size_right(int max_size, t_stat stats)
 {
 	int actual_length;
 	int space_nbr;
@@ -49,7 +29,7 @@ void				display_size_right(int max_size, t_stat stats)
 	}
 }
 
-void				display_link_right(t_file *dir, t_align *mx)
+void		display_link_right(t_file *dir, t_align *mx)
 {
 	int actual_length;
 	int space_nbr;
@@ -71,7 +51,7 @@ void				display_link_right(t_file *dir, t_align *mx)
 	affect(*(dir->stat), mx);
 }
 
-void				display_date_right(char **tab)
+char		**display_date_right(char **tab)
 {
 	if (ft_strlen(tab[2]) == 1)
 	{
@@ -80,20 +60,14 @@ void				display_date_right(char **tab)
 	}
 	else
 		ft_putstr(tab[2]);
+	ft_putchar(' ');
+	return (ft_strsplit(tab[3], ':'));
 }
 
-void				date(t_file *dir, t_stat stats, int file)
+void		print_reg_date(t_stat stats, char **date, char **date_f)
 {
-	char	**date;
-	char	**date_f;
 	time_t	t;
 
-	date = ft_strsplit(ctime(&stats.st_mtime), ' ');
-	ft_putchar(' ');
-	ft_putstr_space(date[1], 1);
-	display_date_right(date);
-	ft_putchar(' ');
-	date_f = ft_strsplit(date[3], ':');
 	if (time(&t) - stats.st_mtime > 15778800 || stats.st_mtime > t)
 	{
 		ft_putchar(' ');
@@ -106,6 +80,25 @@ void				date(t_file *dir, t_stat stats, int file)
 		ft_putchar(':');
 		ft_putstr_space(date_f[1], 1);
 	}
+}
+
+void		date(t_file *dir, t_stat stats, int file)
+{
+	char	**date;
+	char	**date_f;
+
+	date = ft_strsplit(ctime(&stats.st_mtime), ' ');
+	ft_putchar(' ');
+	ft_putstr_space(date[1], 1);
+	date_f = display_date_right(date);
+	if (g_flags[FLAG_TT] == 1)
+	{
+		ft_putstr_space(date[3], 1);
+		print_length(date[4], 4);
+		ft_putchar(' ');
+	}
+	else
+		print_reg_date(stats, date, date_f);
 	ft_free_tab(date);
 	ft_free_tab(date_f);
 	ifslnk(*(dir->stat), dir, file);

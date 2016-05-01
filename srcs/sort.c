@@ -6,7 +6,7 @@
 /*   By: rlechapt <rlechapt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:54:47 by rlechapt          #+#    #+#             */
-/*   Updated: 2016/04/30 20:03:50 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/05/01 19:28:55 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_file	*sort_pdirs(char **tab)
 {
 	t_file	*dir;
 
-	dir = file_l(tab);
+	dir = dir_l(tab);
 	if (no_perm(dir) && g_flags[FLAG_R] == 1 && g_flags[FLAG_T] == 1)
 		rsort_date(dir);
 	else if (g_flags[FLAG_R] == 1 && g_flags[FLAG_T] != 1)
@@ -106,5 +106,6 @@ t_file	*sort_pdirs(char **tab)
 		sort_date(dir);
 	else
 		sort_dir(dir);
+	print_dir(dir, 1);
 	return (dir);
 }
