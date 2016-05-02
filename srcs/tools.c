@@ -6,7 +6,7 @@
 /*   By: yalaouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/03 18:18:39 by yalaouf           #+#    #+#             */
-/*   Updated: 2016/05/01 18:16:40 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/05/02 21:06:28 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,23 @@ void		display_size_right(int max_size, t_stat stats)
 	}
 }
 
-void		display_link_right(t_file *dir, t_align *mx)
+void		display_link_right(t_file *dir, t_align *mx, char *tmp)
 {
 	int actual_length;
 	int space_nbr;
 
 	actual_length = ft_intlen(dir->stat->st_nlink);
 	space_nbr = mx->link - actual_length;
+	if (listxattr(tmp, "0", 0, XATTR_NOFOLLOW) > 0 ||
+			acl_get_file(tmp, ACL_TYPE_EXTENDED) > 0)
+		space_nbr--;
 	if (mx->link == actual_length)
 	{
-		ft_putstr("  ");
+		if (listxattr(tmp, "0", 0, XATTR_NOFOLLOW) > 0 ||
+				acl_get_file(tmp, ACL_TYPE_EXTENDED) > 0)
+			ft_putchar(' ');
+		else
+			ft_putstr("  ");
 		ft_putnbr(dir->stat->st_nlink);
 	}
 	else if (mx->link > actual_length)

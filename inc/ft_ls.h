@@ -6,7 +6,7 @@
 /*   By: aaudiber <aaudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 17:09:28 by aaudiber          #+#    #+#             */
-/*   Updated: 2016/05/01 19:36:32 by aaudiber         ###   ########.fr       */
+/*   Updated: 2016/05/02 21:07:03 by aaudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdio.h>
 # include <dirent.h>
 # include <sys/stat.h>
+# include <sys/xattr.h>
+# include <sys/acl.h>
 # include <errno.h>
 # include "../libft/includes/libft.h"
 # include <time.h>
@@ -119,9 +121,9 @@ void					permissions_proprio(t_stat stats);
 void					permissions_locataire(t_stat stats);
 void					permissions_babacar(t_stat stats);
 void					nationalite(t_stat stats);
-void					letters(t_stat stats);
+void					letters(t_file *dir, t_stat stats, t_align *max_all);
 void					display_size_right(int max_size, t_stat stats);
-void					display_link_right(t_file *dir, t_align *mx);
+void					display_link_right(t_file *dir, t_align *mx, char *tmp);
 void					ft_putstr_space(char *str, int nbr_sp);
 void					total_block(t_file *dir, t_stat *st);
 void					affect(t_stat stats, t_align *max_all);
